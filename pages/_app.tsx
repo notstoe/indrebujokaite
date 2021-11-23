@@ -4,12 +4,18 @@ import { NextComponentType, NextPageContext } from "next";
 
 import { ApolloProvider } from "@apollo/client";
 import withData from "../lib/withData";
+import { AppInitialProps } from "next/app";
 
-type AppProps = {
-	pageProps: any;
-	Component: NextComponentType<NextPageContext, any, {}>;
+interface AppProps extends AppInitialProps {
 	apollo: any;
-};
+	Component: NextComponentType<NextPageContext, any, {}>;
+}
+
+// type AppProps = {
+// 	pageProps: any;
+// 	Component: NextComponentType<NextPageContext, any, {}>;
+// 	apollo: any;
+// };
 
 type InitialProps = {
 	Component: NextComponentType<NextPageContext, any, {}>;
@@ -29,7 +35,7 @@ function MyApp({ Component, pageProps, apollo }: AppProps) {
 // every page will have getInitialProps cause withData() is adding it to them
 
 MyApp.getInitialProps = async function ({ Component, ctx }: InitialProps) {
-	let pageProps = {};
+	let pageProps: Record<string, string> = {};
 	if (Component.getInitialProps) {
 		pageProps = await Component.getInitialProps(ctx);
 	}
