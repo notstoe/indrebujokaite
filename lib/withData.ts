@@ -1,5 +1,4 @@
 // configs for the apollo client
-// installed - apollo-link-http, next-with-apollo, @apollo/client
 
 import { ApolloClient, ApolloLink, InMemoryCache } from "@apollo/client";
 import { onError } from "@apollo/client/link/error";
@@ -8,7 +7,15 @@ import { createUploadLink } from "apollo-upload-client";
 import withApollo from "next-with-apollo";
 import { endpoint, prodEndpoint } from "../config";
 
-function createClient({ headers, initialState }: any) {
+import { NextPage } from "next";
+
+type withDataProps = {
+	initialState?: any;
+	headers?: any;
+};
+
+// creates apollo client
+function withData({ headers, initialState }: withDataProps): ApolloClient<any> {
 	return new ApolloClient({
 		link: ApolloLink.from([
 			onError(({ graphQLErrors, networkError }) => {
@@ -36,7 +43,7 @@ function createClient({ headers, initialState }: any) {
 	});
 }
 
-// 'withApollo' package will crawl all queries from the site (it'll go into all components looking for queries),
-// it will fetch all that data and it will make sure that all data is fetched before the html is sent from server to client-side
+// 'withApollo' package will crawl all queries (it'll go into all components looking for queries),
+// it'll fetch all that data and it will make sure that all data is fetched before the html is sent from server to client-side
 
-export default withApollo(createClient, { getDataFromTree });
+export default withApollo(withData, { getDataFromTree });

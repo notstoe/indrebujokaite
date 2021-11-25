@@ -1,29 +1,22 @@
 import "../styles/globals.css";
 
+import { ApolloClient, ApolloProvider } from "@apollo/client";
+import withData from "../lib/withData";
+
+import { AppInitialProps, AppProps } from "next/app";
 import { NextComponentType, NextPageContext } from "next";
 
-import { ApolloProvider } from "@apollo/client";
-import withData from "../lib/withData";
-import { AppInitialProps } from "next/app";
-
-interface AppProps extends AppInitialProps {
-	apollo: any;
-	Component: NextComponentType<NextPageContext, any, {}>;
+interface AppPropsI extends AppProps {
+	apollo: ApolloClient<any>;
 }
 
-// type AppProps = {
-// 	pageProps: any;
-// 	Component: NextComponentType<NextPageContext, any, {}>;
-// 	apollo: any;
-// };
-
-type InitialProps = {
+interface InitialPropsI extends AppInitialProps {
 	Component: NextComponentType<NextPageContext, any, {}>;
 	ctx: any;
 	pageProps: any;
-};
+}
 
-function MyApp({ Component, pageProps, apollo }: AppProps) {
+function MyApp({ Component, pageProps, apollo }: AppPropsI) {
 	return (
 		<ApolloProvider client={apollo}>
 			<Component {...pageProps} />
@@ -34,7 +27,7 @@ function MyApp({ Component, pageProps, apollo }: AppProps) {
 // boilerplate code, to make sure that every page that has getInitialProps, it will wait for it to be fetched
 // every page will have getInitialProps cause withData() is adding it to them
 
-MyApp.getInitialProps = async function ({ Component, ctx }: InitialProps) {
+MyApp.getInitialProps = async function ({ Component, ctx }: InitialPropsI) {
 	let pageProps: Record<string, string> = {};
 	if (Component.getInitialProps) {
 		pageProps = await Component.getInitialProps(ctx);
@@ -43,6 +36,6 @@ MyApp.getInitialProps = async function ({ Component, ctx }: InitialProps) {
 	return { pageProps };
 };
 
-// exporting the app through withData function, this way the apollo prop sends the data through MyApp to the <ApolloProvider>
-
+// exporting app through withData, apollo prop sends the data through MyApp to the <ApolloProvider>
+// @ts-ignore
 export default withData(MyApp);
