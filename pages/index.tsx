@@ -24,21 +24,21 @@ const Home: NextPage = () => {
 
 	console.log({ data });
 
-	// const paintings = data?.paintings.map((painting, index) => (
-	// 	<div key={index}>
-	// 		{painting.Title + " " + painting.Price}
-	// 		<img
-	// 			src={painting.Picture[1].url}
-	// 			style={{ width: "200px" }}
-	// 			alt=""
-	// 		></img>
-	// 		<img
-	// 			src={painting.Picture[0].url}
-	// 			style={{ width: "200px" }}
-	// 			alt={painting.Title}
-	// 		></img>
-	// 	</div>
-	// ));
+	const paintings = data?.paintings.map((painting, index) => (
+		<div key={index}>
+			{painting.Title + " " + painting.Price}
+			<img
+				src={painting.Picture[1].url}
+				style={{ width: "200px" }}
+				alt={painting.Title}
+			/>
+			<img
+				src={painting.Picture[0].url}
+				style={{ width: "200px" }}
+				alt={painting.Title}
+			/>
+		</div>
+	));
 
 	return (
 		<div>
