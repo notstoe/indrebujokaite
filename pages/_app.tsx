@@ -24,8 +24,7 @@ function MyApp({ Component, pageProps, apollo }: AppPropsI) {
 	);
 }
 
-// boilerplate code, to make sure that every page that has getInitialProps, it will wait for it to be fetched
-// every page will have getInitialProps cause withData() is adding it to them
+// every page that has getInitialProps, it will wait for it to be fetched
 
 MyApp.getInitialProps = async function ({ Component, ctx }: InitialPropsI) {
 	let pageProps: Record<string, string> = {};
@@ -36,6 +35,5 @@ MyApp.getInitialProps = async function ({ Component, ctx }: InitialPropsI) {
 	return { pageProps };
 };
 
-// exporting app through withData, apollo prop sends the data through MyApp to the <ApolloProvider>
 // @ts-ignore
 export default withData(MyApp);

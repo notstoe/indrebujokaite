@@ -7,14 +7,11 @@ import { createUploadLink } from "apollo-upload-client";
 import withApollo from "next-with-apollo";
 import { endpoint, prodEndpoint } from "../config";
 
-import { NextPage } from "next";
-
 type withDataProps = {
 	initialState?: any;
 	headers?: any;
 };
 
-// creates apollo client
 function withData({ headers, initialState }: withDataProps): ApolloClient<any> {
 	return new ApolloClient({
 		link: ApolloLink.from([
@@ -35,15 +32,11 @@ function withData({ headers, initialState }: withDataProps): ApolloClient<any> {
 				fetchOptions: {
 					credentials: "include",
 				},
-				// This enables SSR with logged in state
 				headers,
 			}),
 		]),
-		cache: new InMemoryCache().restore(initialState || {}), // if there is an initial state, restore it, otherwise nah
+		cache: new InMemoryCache().restore(initialState || {}),
 	});
 }
-
-// 'withApollo' package will crawl all queries (it'll go into all components looking for queries),
-// it'll fetch all that data and it will make sure that all data is fetched before the html is sent from server to client-side
 
 export default withApollo(withData, { getDataFromTree });
