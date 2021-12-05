@@ -21,7 +21,7 @@ function MyApp({ Component, pageProps, apollo }: AppPropsI) {
 	return (
 		<ApolloProvider client={apollo}>
 			<Head>
-				<link rel="icon" href="/favicon.png" />
+				<link rel="icon" href="/favicon2.png" />
 			</Head>
 
 			<Component {...pageProps} />
