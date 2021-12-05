@@ -5,6 +5,7 @@ import withData from "../lib/withData";
 
 import { AppInitialProps, AppProps } from "next/app";
 import { NextComponentType, NextPageContext } from "next";
+import Head from "next/head";
 
 interface AppPropsI extends AppProps {
 	apollo: ApolloClient<any>;
@@ -19,6 +20,10 @@ interface InitialPropsI extends AppInitialProps {
 function MyApp({ Component, pageProps, apollo }: AppPropsI) {
 	return (
 		<ApolloProvider client={apollo}>
+			<Head>
+				<link rel="icon" href="/favicon.png" />
+			</Head>
+
 			<Component {...pageProps} />
 		</ApolloProvider>
 	);

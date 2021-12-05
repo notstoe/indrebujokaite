@@ -1,5 +1,4 @@
 import type { NextPage } from "next";
-import Head from "next/head";
 import { gql, useQuery } from "@apollo/client";
 
 import { DataI } from "./index.types";
@@ -22,8 +21,6 @@ const Home: NextPage = () => {
 	if (loading) return <div>Loading...</div>;
 	if (error) return <div>{JSON.stringify(error)}</div>;
 
-	console.log({ data });
-
 	const paintings = data?.paintings.map((painting, index) => (
 		<div key={index}>
 			{painting.Title + " " + painting.Price}
@@ -42,8 +39,6 @@ const Home: NextPage = () => {
 
 	return (
 		<div>
-			<Head>{/* <link rel="icon" href="/favicon.ico" /> */}</Head>
-
 			<main>{paintings}</main>
 
 			<footer></footer>
