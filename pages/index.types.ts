@@ -1,5 +1,7 @@
 import { ApolloError } from "@apollo/client";
 
+// FIXME - change to the page that'll do the queries, index was testing
+
 enum Collection {
 	LANDSCAPE = "Landscape",
 	MODERN_BLOCKS = "Modern_Blocks",
