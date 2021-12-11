@@ -105,14 +105,13 @@ const StyledWrapper = styled.main`
 	.background {
 		content: "";
 		position: absolute;
-		/* top: 0; */
 		width: 100vw;
 		height: 100vh;
 		z-index: -99;
 
 		.bgcolor {
 			position: absolute;
-			background: black;
+			background: var(--bg-black);
 			width: 100%;
 			height: 100%;
 			z-index: -90;
