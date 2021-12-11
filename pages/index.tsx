@@ -72,12 +72,6 @@ const GlobalStyles = createGlobalStyle`
 		font: inherit;
 	}
 
-	*,
-	*:before,
-	*:after {
-		box-sizing: inherit;
-	}
-
 	button {
 		cursor: pointer;
 	}
@@ -89,13 +83,13 @@ const GlobalStyles = createGlobalStyle`
 
 	@media (max-width: 1080px) {
 		html {
-			font-size: 93.75%;
+			font-size: 87.5%;
 		}
 	}
 
 	@media (max-width: 720px) {
 		html {
-			font-size: 87.5%;
+			font-size: 75%;
 		}
 	}
 `;
@@ -106,15 +100,32 @@ const StyledWrapper = styled.main`
 	width: 100vw;
 	min-height: 100vh;
 
-	.noise {
-		opacity: 0.05;
-		width: 100%;
-		height: 100%;
+	z-index: 0;
 
+	.background {
+		content: "";
 		position: absolute;
-	}
+		/* top: 0; */
+		width: 100vw;
+		height: 100vh;
+		z-index: -99;
 
-	header {
+		.bgcolor {
+			position: absolute;
+			background: black;
+			width: 100%;
+			height: 100%;
+			z-index: -90;
+		}
+
+		.noise {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+
+			opacity: 0.05;
+			z-index: -80;
+		}
 	}
 
 	.contentWrapper {
@@ -163,12 +174,15 @@ export default function Home() {
 	return (
 		<StyledWrapper>
 			<GlobalStyles />
-			<Image
-				src="https://d3n32ilufxuvd1.cloudfront.net/59ee0858278cca00855b0b53/1287165/upload-4fb97271-7cb7-4746-9c56-87e24141d41a.gif"
-				alt="old tv static"
-				className="noise"
-				layout="fill"
-			/>
+			<div className="background">
+				<div className="bgcolor" />
+				<Image
+					src="https://d3n32ilufxuvd1.cloudfront.net/59ee0858278cca00855b0b53/1287165/upload-4fb97271-7cb7-4746-9c56-87e24141d41a.gif"
+					alt="old tv static"
+					className="noise"
+					layout="fill"
+				/>
+			</div>
 
 			<Header />
 			<div className="contentWrapper">Hello World!</div>
