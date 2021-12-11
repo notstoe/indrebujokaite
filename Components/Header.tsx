@@ -6,15 +6,25 @@ const StyledHeader = styled.header`
 	justify-content: space-between;
 	align-items: center;
 
-	width: 100%;
+	width: 90%;
+	max-width: 1500px;
 	height: 10vh;
 	max-height: 80px;
 
-	color: var(--fullwhite);
-	span {
-		padding: 0 3rem;
+	margin: 0 auto;
 
-		font-size: 1.1rem;
+	color: var(--fullwhite);
+
+	font-family: "Cormorant Garamond";
+
+	div {
+		flex: 0.7;
+
+		text-align: center;
+	}
+
+	span {
+		font-size: 1.2rem;
 		cursor: pointer;
 
 		:hover {
@@ -22,9 +32,7 @@ const StyledHeader = styled.header`
 		}
 
 		&.ownerName {
-			flex: 1;
-
-			font-size: 1.6rem;
+			font-size: 1.7rem;
 			text-align: center;
 		}
 	}
@@ -33,11 +41,14 @@ const StyledHeader = styled.header`
 export default function Header() {
 	return (
 		<StyledHeader>
-			<span>Home</span>
+			{/* FIXME - make it link to each part of the page later on */}
+			<span className="home">Home</span>
 			<span>About</span>
-			<span className="ownerName">Indrė Bujokaitė</span>
+			<div>
+				<span className="ownerName">Indrė Bujokaitė</span>
+			</div>
 			<span>Projects</span>
-			<span>Contact</span>
+			<span className="contact">Contact</span>
 		</StyledHeader>
 	);
 }
