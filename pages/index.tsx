@@ -21,7 +21,7 @@ const GlobalStyles = createGlobalStyle`
 		/* Project color variables */
 		--fullwhite: #ffffff;
 		--dark-grey: #c4c4c4;
-		--bg-black: #000000f4;
+		--bg-black: #000000d1;
 	}
 
 	main {
@@ -122,7 +122,7 @@ const StyledWrapper = styled.main`
 			width: 100%;
 			height: 100%;
 
-			opacity: 0.05;
+			opacity: 0.07;
 			z-index: -80;
 		}
 	}
