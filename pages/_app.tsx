@@ -20,6 +20,11 @@ function MyApp({ Component, pageProps, apollo }: AppPropsI) {
 		<ApolloProvider client={apollo}>
 			<Head>
 				<link rel="icon" href="/favicon2.png" />
+				{/* eslint-disable-next-line @next/next/no-page-custom-font */}
+				<link
+					href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&display=swap"
+					rel="stylesheet"
+				/>
 			</Head>
 
 			<Component {...pageProps} />

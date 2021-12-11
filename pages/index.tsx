@@ -7,6 +7,7 @@ import Header from "../Components/Header";
 // import { DataI } from "./index.types";
 
 const GlobalStyles = createGlobalStyle`
+
 	* {
 		margin: 0;
 		padding: 0;
@@ -20,11 +21,11 @@ const GlobalStyles = createGlobalStyle`
 		/* Project color variables */
 		--fullwhite: #ffffff;
 		--dark-grey: #c4c4c4;
-		--fullblack: #000000;
+		--bg-black: #000000f4;
 	}
 
 	main {
-		background: var(--fullblack);
+		background: var(--bg-black);
 	}
 
 	/* HTML5 display-role reset for older browsers */
@@ -114,12 +115,13 @@ const StyledWrapper = styled.main`
 	}
 
 	header {
-		/* z-index: 9999; */
 	}
 
 	.contentWrapper {
-		/* z-index: 9999; */
-		color: white;
+		color: var(--fullwhite);
+		font-family: "Cormorant Garamond";
+		font-weight: normal;
+		font-size: 2rem;
 	}
 `;
 
