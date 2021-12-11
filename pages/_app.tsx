@@ -1,5 +1,3 @@
-import "../styles/globals.css";
-
 import { ApolloClient, ApolloProvider } from "@apollo/client";
 import withData from "../lib/withData";
 
