@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 
 const StyledHeader = styled.header`
@@ -45,7 +44,7 @@ export default function Header() {
 			<span className="home">Home</span>
 			<span>About</span>
 			<div>
-				<span className="ownerName">Indrė Bujokaitė</span>
+				<span className="ownerName">Indreta Art</span>
 			</div>
 			<span>Projects</span>
 			<span className="contact">Contact</span>
