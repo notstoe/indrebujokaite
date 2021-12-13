@@ -3,6 +3,7 @@ import Image from "next/image";
 // import { gql, useQuery } from "@apollo/client";
 
 import Header from "../Components/Header";
+import Intro from "../Components/Intro";
 
 // import { DataI } from "./index.types";
 
@@ -94,19 +95,22 @@ const GlobalStyles = createGlobalStyle`
 	}
 `;
 
-const StyledWrapper = styled.main`
+const StyledPageWrapper = styled.main`
+	display: flex;
+	flex-direction: column;
+
 	position: relative;
 
-	width: 100vw;
-	min-height: 100vh;
+	width: 100%;
+	min-height: 100%;
 
 	z-index: 0;
 
 	.background {
 		content: "";
 		position: absolute;
-		width: 100vw;
-		height: 100vh;
+		width: 100%;
+		height: 100%;
 		z-index: -99;
 
 		.bgcolor {
@@ -128,6 +132,8 @@ const StyledWrapper = styled.main`
 	}
 
 	.contentWrapper {
+		flex: 1;
+
 		color: var(--fullwhite);
 		font-family: "Cormorant Garamond";
 		font-weight: normal;
@@ -136,7 +142,6 @@ const StyledWrapper = styled.main`
 `;
 
 export default function Home() {
-	// const Home: NextPage = () => {
 	// 	const ALL_PAINTINGS_QUERY = gql`
 	// 		query ALL_PAINTINGS {
 	// 			paintings {
@@ -171,7 +176,7 @@ export default function Home() {
 	// ));
 
 	return (
-		<StyledWrapper>
+		<StyledPageWrapper>
 			<GlobalStyles />
 			<div className="background">
 				<div className="bgcolor" />
@@ -184,9 +189,11 @@ export default function Home() {
 			</div>
 
 			<Header />
-			<div className="contentWrapper">Hello World!</div>
+			<div className="contentWrapper">
+				<Intro />
+			</div>
 
 			<footer></footer>
-		</StyledWrapper>
+		</StyledPageWrapper>
 	);
 }
