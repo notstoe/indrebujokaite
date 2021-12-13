@@ -96,9 +96,6 @@ const GlobalStyles = createGlobalStyle`
 `;
 
 const StyledPageWrapper = styled.main`
-	display: flex;
-	flex-direction: column;
-
 	position: relative;
 
 	width: 100%;
@@ -111,14 +108,14 @@ const StyledPageWrapper = styled.main`
 		position: absolute;
 		width: 100%;
 		height: 100%;
-		z-index: -99;
+		z-index: -1;
 
 		.bgcolor {
 			position: absolute;
 			background: var(--bg-black);
 			width: 100%;
 			height: 100%;
-			z-index: -90;
+			z-index: 1;
 		}
 
 		.noise {
@@ -127,13 +124,11 @@ const StyledPageWrapper = styled.main`
 			height: 100%;
 
 			opacity: 0.07;
-			z-index: -80;
+			z-index: 2;
 		}
 	}
 
 	.contentWrapper {
-		flex: 1;
-
 		color: var(--fullwhite);
 		font-family: "Cormorant Garamond";
 		font-weight: normal;
@@ -191,6 +186,7 @@ export default function Home() {
 			<Header />
 			<div className="contentWrapper">
 				<Intro />
+				<p>Hello WOrld!</p>
 			</div>
 
 			<footer></footer>
