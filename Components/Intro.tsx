@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const StyledWrapper = styled.div`
+const StyledWrapper = styled.section`
 	width: 85%;
 	max-width: 69rem;
 	height: 90vh;
@@ -45,7 +45,7 @@ const StyledImage = styled.img`
 	width: 34rem;
 	height: 30rem;
 
-	@media (max-width: 400px) {
+	@media (max-width: 450px) {
 		right: 0;
 		top: 18vh;
 

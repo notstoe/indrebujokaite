@@ -8,11 +8,22 @@ const StyledAboutSectionWrapper = styled.section`
 
 	padding: 0;
 
-	font-size: 10rem;
 	font-weight: lighter;
 
 	display: flex;
 	flex-direction: column;
+
+	.title {
+		font-size: 10rem;
+
+		@media (max-width: 615px) {
+			font-size: 6.5rem;
+		}
+
+		@media (max-width: 450px) {
+			font-size: 4.5rem;
+		}
+	}
 
 	.first {
 		position: relative;
@@ -63,7 +74,6 @@ const StyledInnerContentWrapper = styled.div`
 		padding: 0 0.5rem 1rem 2rem;
 
 		font-size: 1.35rem;
-		font-weight: lighter;
 	}
 `;
 
@@ -80,13 +90,13 @@ const StyledImage = styled.img`
 export default function About() {
 	return (
 		<StyledAboutSectionWrapper>
-			<div className="left first">
+			<div className="left first title">
 				<span>ABOUT ME</span>
 			</div>
-			<div className="right">
+			<div className="right title">
 				<span>ABOUT ME</span>
 			</div>
-			<div className="left">
+			<div className="left title">
 				<span>ABOUT ME</span>
 			</div>
 			<StyledInnerContentWrapper>
