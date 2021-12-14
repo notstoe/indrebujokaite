@@ -31,7 +31,7 @@ const StyledHeader = styled.header`
 		cursor: pointer;
 
 		:hover {
-			color: var(--dark-grey);
+			color: var(--light-grey);
 		}
 
 		&.ownerName {
