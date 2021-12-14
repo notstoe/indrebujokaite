@@ -4,6 +4,7 @@ import Image from "next/image";
 
 import Header from "../Components/Header";
 import Intro from "../Components/Intro";
+import About from "../Components/About";
 
 // import { DataI } from "./index.types";
 
@@ -21,8 +22,9 @@ const GlobalStyles = createGlobalStyle`
 	:root {
 		/* Project color variables */
 		--fullwhite: #ffffff;
-		--dark-grey: #c4c4c4;
-		--bg-black: #000000d1;
+		--light-grey: #c4c4c4;
+		--dark-grey: #c4c4c439;
+		--bg-black: #000000be;
 	}
 
 	main {
@@ -123,7 +125,7 @@ const StyledPageWrapper = styled.main`
 			width: 100%;
 			height: 100%;
 
-			opacity: 0.07;
+			opacity: 0.05;
 			z-index: 2;
 		}
 	}
@@ -186,7 +188,7 @@ export default function Home() {
 			<Header />
 			<div className="contentWrapper">
 				<Intro />
-				<p>Hello WOrld!</p>
+				<About />
 			</div>
 
 			<footer></footer>
