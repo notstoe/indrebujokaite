@@ -1,3 +1,5 @@
+import { gql, useQuery } from "@apollo/client";
+
 import styled from "styled-components";
 
 const StyledAboutSectionWrapper = styled.section`
@@ -87,7 +89,27 @@ const StyledImage = styled.img`
 	padding-left: 1rem;
 `;
 
+interface DataA {
+	about: {
+		__typename: string;
+		about_me_txt: string;
+	};
+}
+
 export default function About() {
+	const ABOUT_ME_QUERY = gql`
+		query ABOUT_ME_TXT {
+			about {
+				about_me_txt
+			}
+		}
+	`;
+
+	const { data, loading, error } = useQuery<DataA>(ABOUT_ME_QUERY);
+
+	if (loading) return <div>Loading...</div>;
+	if (error) return <div>{JSON.stringify(error)}</div>;
+
 	return (
 		<StyledAboutSectionWrapper>
 			<div className="left first title">
@@ -100,16 +122,7 @@ export default function About() {
 				<span>ABOUT ME</span>
 			</div>
 			<StyledInnerContentWrapper>
-				<span>
-					{/* FIXME - fetch from backend the "about me" txt */}
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris magna
-					lacus, mollis vitae dignissim in, molestie id odio. Cras non ipsum
-					eget tortor euismod sodales at sed nunc. Duis eu auctor ex. Integer
-					finibus, est sed rhoncus sodales, diam dui consectetur sem, nec cursus
-					tortor tellus at est. Sed in ligula gravida, luctus velit vitae,
-					ultricies sem. Maecenas malesuada tortor vel ipsum sagittis semper.
-					Aliquam mattis et odio sit amet sodales.
-				</span>
+				<span>{data?.about.about_me_txt}</span>
 				<StyledImage
 					src="https://res.cloudinary.com/dowa8tjdi/image/upload/v1639500322/profile_2_nslztr.jpg"
 					alt="Indre's picture"
