@@ -4,33 +4,33 @@ import styled from "styled-components";
 import RollingTitle from "./RollingTitle";
 
 const SectionWrapper = styled.section`
+	display: flex;
+	flex-direction: column;
+
 	width: 95%;
 	max-width: 1500px;
 	margin: 0 auto;
-	margin-top: 8rem;
 
 	padding: 0;
 
 	font-weight: lighter;
-`;
-const InnerContentDiv = styled.div`
-	display: flex;
-	flex-direction: column;
-	line-height: 1.9rem;
-	text-align: right;
 
-	margin-top: 10rem;
+	.description {
+		align-self: center;
 
-	max-width: 81rem;
+		display: flex;
+		justify-content: flex-end;
 
-	span {
-		align-self: flex-end;
+		text-align: right;
 
-		width: 80%;
-		max-width: 30rem;
+		width: 95%;
+		max-width: 76rem;
+	}
 
-		padding: 0 0.5rem 1rem 2rem;
-
+	.description span {
+		width: 85%;
+		max-width: 25rem;
+		line-height: 1.9rem;
 		font-size: 1.35rem;
 	}
 `;
@@ -45,7 +45,7 @@ const StyledImage = styled.img`
 	padding-left: 1rem;
 `;
 
-const s = { StyledImage, InnerContentDiv, SectionWrapper };
+const s = { StyledImage, SectionWrapper };
 
 interface aboutMeInfo {
 	about_me_txt: string;
@@ -53,6 +53,7 @@ interface aboutMeInfo {
 		id: string;
 		url: string;
 	};
+	my_vision_txt: string;
 }
 
 export interface DataA {
@@ -66,6 +67,7 @@ export default function About() {
 		query ABOUT_ME_TXT {
 			about {
 				about_me_txt
+				my_vision_txt
 				ProfilePic {
 					url
 				}
@@ -78,22 +80,22 @@ export default function About() {
 	if (loading) return <div style={{ textAlign: "center" }}>Loading...</div>;
 	if (error)
 		return (
-			<div style={{ textAlign: "center" }}>
-				Something went wrong... Try refreshing the page
+			<div style={{ textAlign: "center", fontSize: "2rem" }}>
+				Something went wrong... Try refreshing the page.
 			</div>
 		);
 
 	return (
 		<s.SectionWrapper>
 			<RollingTitle title="ABOUT ME" altMode={false} />
-			<s.InnerContentDiv>
+			<div className="description">
 				<span>{data?.about.about_me_txt}</span>
-				<s.StyledImage
-					src={data?.about.ProfilePic.url}
-					alt="Artist's Profile"
-				/>
-			</s.InnerContentDiv>
+			</div>
+			<s.StyledImage src={data?.about.ProfilePic.url} alt="Artist's Profile" />
 			<RollingTitle title="MY VISION" altMode={true} />
+			<div className="description">
+				<span>{data?.about.my_vision_txt}</span>
+			</div>
 		</s.SectionWrapper>
 	);
 }
