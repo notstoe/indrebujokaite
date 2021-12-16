@@ -4,6 +4,8 @@ const Wrapper = styled.div<{ altMode: boolean }>`
 	display: flex;
 	flex-direction: column;
 
+	position: relative;
+
 	div {
 		font-size: 10rem;
 		line-height: 10rem;
@@ -18,43 +20,38 @@ const Wrapper = styled.div<{ altMode: boolean }>`
 		}
 	}
 
-	.first {
-		position: relative;
+	::after {
+		content: "";
+		display: block;
+		position: absolute;
 
-		::after {
-			content: "";
-			display: block;
-			position: absolute;
+		${({ altMode }) =>
+			altMode
+				? css`
+						bottom: -15%;
+						right: 50%;
+				  `
+				: css`
+						top: -13%;
+						right: 27%;
+				  `}
 
-			${({ altMode }) =>
-				altMode
-					? css`
-							top: 108%;
-							right: 50%;
-					  `
-					: css`
-							top: -35%;
-							right: 30%;
-					  `}
+		z-index: -2;
 
-			z-index: -2;
+		width: 23rem;
+		height: 23rem;
 
-			width: 23rem;
-			height: 23rem;
+		border-radius: 50%;
 
-			border-radius: 50%;
+		background-color: var(--dark-grey);
 
-			background-color: var(--dark-grey);
-
-			@media (max-width: 600px) {
-				width: 18rem;
-				height: 18rem;
-			}
+		@media (max-width: 600px) {
+			width: 18rem;
+			height: 18rem;
 		}
 	}
 
-	.top,
-	.bottom {
+	.edge {
 		${({ altMode }) =>
 			altMode
 				? css`
@@ -86,13 +83,13 @@ interface RollingTitle {
 export default function RollingTitle({ title, altMode }: RollingTitle) {
 	return (
 		<s.Wrapper altMode={altMode}>
-			<div className="top first">
+			<div className="edge">
 				<span>{title}</span>
 			</div>
 			<div className="middle">
 				<span>{title}</span>
 			</div>
-			<div className="bottom">
+			<div className="edge">
 				<span>{title}</span>
 			</div>
 		</s.Wrapper>
