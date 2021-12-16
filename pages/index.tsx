@@ -97,7 +97,7 @@ const GlobalStyles = createGlobalStyle`
 	}
 `;
 
-const PageWrapper = styled.main`
+const HomePageWrapper = styled.main`
 	position: relative;
 
 	width: 100%;
@@ -138,7 +138,7 @@ const PageWrapper = styled.main`
 	}
 `;
 
-const s = { PageWrapper };
+const s = { HomePageWrapper };
 
 export default function Home() {
 	// 	const ALL_PAINTINGS_QUERY = gql`
@@ -158,24 +158,8 @@ export default function Home() {
 	// if (loading) return <div>Loading...</div>;
 	// if (error) return <div>{JSON.stringify(error)}</div>;
 
-	// const paintings = data?.paintings.map((painting, index) => (
-	// 	<div key={index}>
-	// 		{painting.Title + " " + painting.Price}
-	// 		<img
-	// 			src={painting.Picture[1].url}
-	// 			style={{ width: "200px" }}
-	// 			alt={painting.Title}
-	// 		/>
-	// 		<img
-	// 			src={painting.Picture[0].url}
-	// 			style={{ width: "200px" }}
-	// 			alt={painting.Title}
-	// 		/>
-	// 	</div>
-	// ));
-
 	return (
-		<s.PageWrapper>
+		<s.HomePageWrapper>
 			<GlobalStyles />
 			<div className="background">
 				<div className="bgcolor" />
@@ -194,6 +178,6 @@ export default function Home() {
 			</div>
 
 			<footer></footer>
-		</s.PageWrapper>
+		</s.HomePageWrapper>
 	);
 }

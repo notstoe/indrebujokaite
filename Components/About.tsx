@@ -1,8 +1,7 @@
 import { ApolloError, gql, useQuery } from "@apollo/client";
 
 import styled from "styled-components";
-
-import SectionTitleBig from "./SectionTitleBig";
+import RollingTitle from "./RollingTitle";
 
 const SectionWrapper = styled.section`
 	width: 95%;
@@ -86,7 +85,7 @@ export default function About() {
 
 	return (
 		<s.SectionWrapper>
-			<SectionTitleBig title="ABOUT ME" topBottomPos="left" middlePos="right" />
+			<RollingTitle title="ABOUT ME" altMode={false} />
 			<s.InnerContentDiv>
 				<span>{data?.about.about_me_txt}</span>
 				<s.StyledImage
@@ -94,6 +93,7 @@ export default function About() {
 					alt="Artist's Profile"
 				/>
 			</s.InnerContentDiv>
+			<RollingTitle title="MY VISION" altMode={true} />
 		</s.SectionWrapper>
 	);
 }
