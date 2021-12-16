@@ -97,7 +97,7 @@ const GlobalStyles = createGlobalStyle`
 	}
 `;
 
-const StyledPageWrapper = styled.main`
+const PageWrapper = styled.main`
 	position: relative;
 
 	width: 100%;
@@ -138,6 +138,8 @@ const StyledPageWrapper = styled.main`
 	}
 `;
 
+const s = { PageWrapper };
+
 export default function Home() {
 	// 	const ALL_PAINTINGS_QUERY = gql`
 	// 		query ALL_PAINTINGS {
@@ -173,7 +175,7 @@ export default function Home() {
 	// ));
 
 	return (
-		<StyledPageWrapper>
+		<s.PageWrapper>
 			<GlobalStyles />
 			<div className="background">
 				<div className="bgcolor" />
@@ -192,6 +194,6 @@ export default function Home() {
 			</div>
 
 			<footer></footer>
-		</StyledPageWrapper>
+		</s.PageWrapper>
 	);
 }

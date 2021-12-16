@@ -41,9 +41,11 @@ const StyledHeader = styled.header`
 	}
 `;
 
+const s = { StyledHeader };
+
 export default function Header() {
 	return (
-		<StyledHeader>
+		<s.StyledHeader>
 			{/* FIXME - make it link to each part of the page later on */}
 			<span className="home">Home</span>
 			<span>About</span>
@@ -52,6 +54,6 @@ export default function Header() {
 			</div>
 			<span>Projects</span>
 			<span className="contact">Contact</span>
-		</StyledHeader>
+		</s.StyledHeader>
 	);
 }

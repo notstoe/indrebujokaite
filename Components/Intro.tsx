@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const StyledWrapper = styled.section`
+const Wrapper = styled.section`
 	width: 85%;
 	max-width: 69rem;
 	height: 90vh;
@@ -54,15 +54,17 @@ const StyledImage = styled.img`
 	}
 `;
 
+const s = { Wrapper, StyledImage };
+
 export default function Intro() {
 	return (
-		<StyledWrapper>
+		<s.Wrapper>
 			<span className="title">Indrė Bujokaitė</span>
 			<span className="subtitle">Oil Painting</span>
-			<StyledImage
+			<s.StyledImage
 				src="https://res.cloudinary.com/dowa8tjdi/image/upload/v1639426063/DSC_0949-min_2_gac2oy.jpg"
 				alt="the back of a canvas board"
 			/>
-		</StyledWrapper>
+		</s.Wrapper>
 	);
 }
