@@ -6,6 +6,9 @@ const Wrapper = styled.div<{ altMode: boolean }>`
 
 	position: relative;
 
+	margin-top: 10rem;
+	margin-bottom: 10rem;
+
 	div {
 		font-size: 10rem;
 		line-height: 10rem;
@@ -20,21 +23,10 @@ const Wrapper = styled.div<{ altMode: boolean }>`
 		}
 	}
 
-	::after {
+	&::after {
 		content: "";
 		display: block;
 		position: absolute;
-
-		${({ altMode }) =>
-			altMode
-				? css`
-						bottom: -15%;
-						right: 50%;
-				  `
-				: css`
-						top: -13%;
-						right: 27%;
-				  `}
 
 		z-index: -2;
 
@@ -51,26 +43,34 @@ const Wrapper = styled.div<{ altMode: boolean }>`
 		}
 	}
 
-	.edge {
-		${({ altMode }) =>
-			altMode
-				? css`
+	${({ altMode }) =>
+		altMode
+			? css`
+					&::after {
+						bottom: -15%;
+						right: 50%;
+					}
+
+					.edge {
 						text-align: right;
-				  `
-				: css`
+					}
+					.middle {
 						text-align: left;
-				  `}
-	}
-	.middle {
-		${({ altMode }) =>
-			altMode
-				? css`
+					}
+			  `
+			: css`
+					&::after {
+						top: -13%;
+						right: 27%;
+					}
+
+					.edge {
 						text-align: left;
-				  `
-				: css`
+					}
+					.middle {
 						text-align: right;
-				  `}
-	}
+					}
+			  `}
 `;
 
 const s = { Wrapper };
