@@ -5,6 +5,7 @@ import Image from "next/image";
 import Header from "../Components/Header";
 import Intro from "../Components/Intro";
 import About from "../Components/About";
+import Projects from "../Components/Projects";
 
 // import { DataI } from "./index.types";
 
@@ -175,6 +176,7 @@ export default function Home() {
 			<div className="contentWrapper">
 				<Intro />
 				<About />
+				<Projects />
 			</div>
 
 			<footer></footer>
