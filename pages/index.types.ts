@@ -8,13 +8,13 @@ enum Collection {
 	COMTEMPORARY_FINE_ART = "Comtemporary_Fine_art",
 }
 
-interface PaintingI {
-	Title: string;
-	Description: string;
-	Price: number;
-	Available: boolean;
-	Collection: Collection;
-	Picture: {
+export interface PaintingI {
+	title: string;
+	description: string;
+	price: number;
+	available: boolean;
+	collection: Collection;
+	picture: {
 		url: string;
 	}[];
 }
