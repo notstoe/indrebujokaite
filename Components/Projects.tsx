@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import PaintingDisplay from "./PaintingDisplay";
 
 const SectionWrapper = styled.section`
 	.sectionTitle {
@@ -76,7 +77,7 @@ export default function Projects() {
 				/>
 			</div>
 			{/* TODO - finish projects section, insert 3 example paintings*/}
-			{/* <div>New Painting goes Here</div> */}
+			<PaintingDisplay />
 		</s.SectionWrapper>
 	);
 }
