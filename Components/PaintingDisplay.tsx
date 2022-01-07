@@ -28,6 +28,10 @@ const SingleDisplayWrapper = styled.div<{ inverted: boolean }>`
 
 	@media (max-width: 1000px) {
 		flex-direction: column;
+
+		div {
+			order: 0;
+		}
 	}
 
 	div {
@@ -46,7 +50,6 @@ const SingleDisplayWrapper = styled.div<{ inverted: boolean }>`
 		@media (max-width: 1000px) {
 			font-size: 1.2rem;
 			align-self: center;
-			margin-bottom: 5rem;
 		}
 
 		.title {
