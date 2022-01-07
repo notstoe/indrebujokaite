@@ -7,15 +7,18 @@ const SectionWrapper = styled.section`
 
 		margin-top: 10.5rem;
 
+		width: 100%;
+		height: 90vh;
+
+		display: flex;
+		justify-content: center;
+
+		@media (max-width: 600px) {
+			height: 55vh;
+		}
+
 		h1 {
-			position: absolute;
-
-			top: 50%;
-			transform: translateY(-50%);
-
-			width: 100%;
-			text-align: center;
-
+			align-self: center;
 			font-size: 10rem;
 			font-weight: lighter;
 
@@ -57,26 +60,72 @@ const SectionWrapper = styled.section`
 	}
 `;
 
-const StyledImageBg = styled.img`
-	position: relative;
-	z-index: -2;
+const ArrowCSS = styled.div`
+	position: absolute;
+	bottom: 6rem;
+	left: 50%;
+	transform: translateY(0, -50%);
 
-	width: 100%;
+	opacity: 0.4;
+
+	@media (max-width: 500px) {
+		bottom: 2rem;
+	}
+
+	span {
+		display: block;
+		width: 30px;
+		height: 30px;
+		border-bottom: 5px solid var(--light-grey);
+		border-right: 5px solid var(--fullwhite);
+		transform: rotate(45deg);
+		margin: -10px;
+		animation: animate 2s infinite;
+
+		@media (max-width: 500px) {
+			width: 20px;
+			height: 20px;
+			border-bottom: 4px solid var(--light-grey);
+			border-right: 4px solid var(--fullwhite);
+		}
+	}
+
+	span:nth-child(2) {
+		animation-delay: -0.2s;
+	}
+
+	span:nth-child(3) {
+		animation-delay: -0.4s;
+	}
+
+	@keyframes animate {
+		0% {
+			opacity: 0;
+			transform: rotate(45deg) translate(-20px, -20px);
+		}
+		50% {
+			opacity: 1;
+		}
+		100% {
+			opacity: 0;
+			transform: rotate(45deg) translate(20px, 20px);
+		}
+	}
 `;
 
-const s = { SectionWrapper, StyledImageBg };
+const s = { SectionWrapper, ArrowCSS };
 
 export default function Projects() {
 	return (
 		<s.SectionWrapper>
 			<div className="sectionTitle">
 				<h1>PROJECTS</h1>
-				<s.StyledImageBg
-					src="https://res.cloudinary.com/dowa8tjdi/image/upload/v1641400988/1373062_v9kwuq.jpg"
-					alt="woman with black hair"
-				/>
+				<s.ArrowCSS>
+					<span></span>
+					<span></span>
+					<span></span>
+				</s.ArrowCSS>
 			</div>
-			{/* TODO - finish projects section, insert 3 example paintings*/}
 			<PaintingDisplay />
 		</s.SectionWrapper>
 	);
