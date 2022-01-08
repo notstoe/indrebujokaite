@@ -91,6 +91,8 @@ const HomePageWrapper = styled.main`
 
 	z-index: 0;
 
+	font-family: 'Cormorant Garamond';
+
 	.background {
 		content: '';
 		position: fixed;
@@ -119,7 +121,7 @@ const HomePageWrapper = styled.main`
 
 const ContentWrapper = styled.div`
 	color: ${brand.white};
-	font-family: 'Cormorant Garamond';
+
 	font-weight: normal;
 	font-size: 2rem;
 `;
