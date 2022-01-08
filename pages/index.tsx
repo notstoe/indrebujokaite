@@ -3,7 +3,7 @@ import Image from 'next/image';
 // import { gql, useQuery } from "@apollo/client";
 
 import Header from '../Components/Header/Header';
-import Intro from '../Components/Intro';
+import Intro from '../Components/Intro/Intro';
 import About from '../Components/About/About';
 import Projects from '../Components/Projects';
 import { brand } from '@helpers/brand';
