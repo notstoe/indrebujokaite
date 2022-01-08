@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import PaintingDisplay from './PaintingDisplay';
 import Carousel from './Carousel';
-import { until, Device } from '../helpers/media';
+import { until, Device } from '@helpers/media';
+import brand from '@helpers/brand';
 
 const SectionWrapper = styled.section`
 	.sectionTitle {
@@ -37,7 +38,7 @@ const SectionWrapper = styled.section`
 
 			border-radius: 50%;
 
-			background-color: var(--dark-grey);
+			background-color: ${brand.grey.dark};
 		}
 	}
 
@@ -80,8 +81,8 @@ const ArrowCSS = styled.div`
 		display: block;
 		width: 30px;
 		height: 30px;
-		border-bottom: 5px solid var(--light-grey);
-		border-right: 5px solid var(--fullwhite);
+		border-bottom: 5px solid ${brand.grey.light};
+		border-right: 5px solid ${brand.white};
 		transform: rotate(45deg);
 		margin: -10px;
 		animation: animate 2s infinite;
@@ -115,8 +116,8 @@ const ArrowCSS = styled.div`
 		span {
 			width: 20px;
 			height: 20px;
-			border-bottom: 4px solid var(--light-grey);
-			border-right: 4px solid var(--fullwhite);
+			border-bottom: 4px solid ${brand.grey.light};
+			border-right: 4px solid ${brand.white};
 		}
 	}
 `;

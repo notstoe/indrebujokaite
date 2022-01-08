@@ -6,7 +6,8 @@ import Header from '../Components/Header';
 import Intro from '../Components/Intro';
 import About from '../Components/About';
 import Projects from '../Components/Projects';
-import { until, Device } from '../helpers/media';
+import brand from '@helpers/brand';
+import { until, Device } from '@helpers/media';
 
 // import { DataI } from "./index.types";
 
@@ -30,7 +31,7 @@ const GlobalStyles = createGlobalStyle`
 	}
 
 	main {
-		background: var(--bg-black);
+		background: ${brand.black};
 	}
 
 	/* HTML5 display-role reset for older browsers */
@@ -116,7 +117,7 @@ const HomePageWrapper = styled.main`
 
 		.bgcolor {
 			position: absolute;
-			background: var(--bg-black);
+			background: ${brand.black};
 			width: 100%;
 			height: 100%;
 			z-index: 1;
@@ -133,7 +134,7 @@ const HomePageWrapper = styled.main`
 	}
 
 	.contentWrapper {
-		color: var(--fullwhite);
+		color: ${brand.white};
 		font-family: 'Cormorant Garamond';
 		font-weight: normal;
 		font-size: 2rem;

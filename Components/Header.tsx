@@ -1,4 +1,5 @@
-import styled from "styled-components";
+import styled from 'styled-components';
+import brand from '@helpers/brand';
 
 const StyledHeader = styled.header`
 	position: sticky;
@@ -16,9 +17,9 @@ const StyledHeader = styled.header`
 
 	margin: 0 auto;
 
-	color: var(--fullwhite);
+	color: ${brand.white};
 
-	font-family: "Cormorant Garamond";
+	font-family: 'Cormorant Garamond';
 
 	div {
 		flex: 0.7;
@@ -31,7 +32,7 @@ const StyledHeader = styled.header`
 		cursor: pointer;
 
 		:hover {
-			color: var(--light-grey);
+			color: ${brand.grey.light};
 		}
 
 		&.ownerName {

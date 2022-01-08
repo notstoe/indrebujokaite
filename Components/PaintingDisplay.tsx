@@ -1,6 +1,7 @@
 import { ApolloError, gql, useQuery } from '@apollo/client';
+import { until, Device } from '@helpers/media';
+import brand from '@helpers/brand';
 import styled, { css } from 'styled-components';
-import { until, Device } from '../helpers/media';
 
 const DisplaysWrapper = styled.section`
 	padding: 3rem 0;
@@ -65,7 +66,7 @@ const SingleDisplayWrapper = styled.div<{ inverted: boolean }>`
 
 			border-radius: 50%;
 
-			background-color: var(--dark-grey);
+			background-color: ${brand.grey.dark};
 		}
 	}
 

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { until, Device } from '../helpers/media';
+import { until, Device } from '@helpers/media';
 
 const Wrapper = styled.section`
 	width: 85%;
