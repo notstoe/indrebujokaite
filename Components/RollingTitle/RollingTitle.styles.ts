@@ -1,6 +1,7 @@
 import { brand } from '@helpers/brand';
 import styled, { css } from 'styled-components';
 import { until, Device } from '@helpers/media';
+import { motion } from 'framer-motion';
 
 const Wrapper = styled.div<{ altMode: boolean }>`
 	display: flex;
@@ -8,75 +9,73 @@ const Wrapper = styled.div<{ altMode: boolean }>`
 
 	position: relative;
 
-	margin-top: 10rem;
-	margin-bottom: 10rem;
-
-	div {
-		font-size: 10rem;
-		line-height: 10rem;
-	}
-
-	&::after {
-		content: '';
-		display: block;
-		position: absolute;
-
-		z-index: -2;
-
-		width: 23rem;
-		height: 23rem;
-
-		border-radius: 50%;
-
-		background-color: ${brand.grey.dark};
-	}
+	padding-top: 10rem;
+	padding-bottom: 10rem;
+	overflow: hidden;
 
 	${({ altMode }) =>
 		altMode
 			? css`
-					&::after {
-						bottom: -15%;
+					${BackgroundCircle} {
+						bottom: 2%;
 						right: 50%;
 					}
 
-					.edge {
-						text-align: right;
-					}
-					.middle {
+					${Text} {
 						text-align: left;
+
+						&:nth-child(2) {
+							text-align: right;
+						}
 					}
 			  `
 			: css`
-					&::after {
-						top: -13%;
-						right: 27%;
-					}
-
-					.edge {
-						text-align: left;
-					}
-					.middle {
-						text-align: right;
+					${BackgroundCircle} {
+						top: 8%;
+						right: 25%;
 					}
 			  `}
+`;
+
+const Text = styled(motion.p)`
+	font-size: 10rem;
+	line-height: 10rem;
+
+	text-align: right;
+	color: ${brand.grey.dark};
+
+	&:nth-child(2) {
+		text-align: left;
+		color: ${brand.white};
+	}
 
 	@media ${until(Device.Tablet)} {
-		div {
-			font-size: 6.5rem;
-			line-height: normal;
-		}
-
-		&::after {
-			width: 18rem;
-			height: 18rem;
-		}
+		font-size: 6.5rem;
+		line-height: normal;
 	}
 
 	@media ${until(Device.MobileLarge)} {
-		div {
-			font-size: 4.5rem;
-		}
+		font-size: 4.5rem;
 	}
 `;
 
-export const s = { Wrapper };
+const BackgroundCircle = styled(motion.div)`
+	display: block;
+	position: absolute;
+
+	z-index: -2;
+
+	width: 23rem;
+	height: 23rem;
+
+	border-radius: 50%;
+
+	background-color: ${brand.grey.dark};
+
+	@media ${until(Device.Tablet)} {
+		width: 18rem;
+		height: 18rem;
+	}
+`;
+
+export const s = { Wrapper, Text, BackgroundCircle };
