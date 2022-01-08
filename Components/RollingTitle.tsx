@@ -1,5 +1,6 @@
+import brand from '@helpers/brand';
 import styled, { css } from 'styled-components';
-import { until, Device } from '../helpers/media';
+import { until, Device } from '@helpers/media';
 
 const Wrapper = styled.div<{ altMode: boolean }>`
 	display: flex;
@@ -27,7 +28,7 @@ const Wrapper = styled.div<{ altMode: boolean }>`
 
 		border-radius: 50%;
 
-		background-color: var(--dark-grey);
+		background-color: ${brand.grey.dark};
 	}
 
 	${({ altMode }) =>
