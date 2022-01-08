@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import PaintingDisplay from './PaintingDisplay';
-import Carousel from './Carousel';
+import Carousel from './Carousel/Carousel';
 import { until, Device } from '@helpers/media';
 import { brand } from '@helpers/brand';
 
