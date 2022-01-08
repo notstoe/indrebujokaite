@@ -11,20 +11,39 @@ export default function RollingTitle({ title, altMode }: RollingTitleProps) {
 	const [scrollStart, setScrollStart] = useState<number>(0);
 	const [scrollEnd, setScrollEnd] = useState<number>(0);
 
+	const [opacityStart, setOpacityStart] = useState(0);
+	const [opacityIn, setOpacityIn] = useState(0);
+	const [opacityOut, setOpacityOut] = useState(0);
+	const [opacityEnd, setOpacityEnd] = useState(0);
+
 	useEffect(() => {
 		if (wrapperRef?.current) {
 			const { y: elementY, height: elementHeight } =
 				wrapperRef.current.getBoundingClientRect();
 
-			setScrollStart(Math.max(elementY - window.innerHeight, 0));
-			setScrollEnd(elementY + elementHeight + window.innerHeight);
+			const calculatedScrollStart = Math.max(elementY - window.innerHeight, 0);
+			const calculatedScrollEnd = elementY + elementHeight;
+
+			setScrollStart(calculatedScrollStart);
+			setScrollEnd(calculatedScrollEnd);
+
+			setOpacityStart(calculatedScrollStart + elementHeight / 4);
+			setOpacityIn(calculatedScrollStart + elementHeight);
+			setOpacityOut(calculatedScrollEnd - elementHeight);
+			setOpacityEnd(calculatedScrollEnd - elementHeight / 2);
 		}
 	}, [wrapperRef]);
 
 	const ballScale = useTransform(
 		scrollY,
 		[scrollStart, scrollEnd],
-		['.8', '1']
+		['.5', '1']
+	);
+
+	const textOpacity = useTransform(
+		scrollY,
+		[opacityStart, opacityIn, opacityOut, opacityEnd],
+		[0, 1, 1, 0]
 	);
 
 	const verticalSlide = (isInverse?: boolean): MotionValue => {
@@ -37,10 +56,10 @@ export default function RollingTitle({ title, altMode }: RollingTitleProps) {
 
 	const horizontalSlide = (isInverse?: boolean): MotionValue => {
 		if (isInverse) {
-			return useTransform(scrollY, [scrollStart, scrollEnd], ['0', '25%']);
+			return useTransform(scrollY, [scrollStart, scrollEnd], ['0', '50%']);
 		}
 
-		return useTransform(scrollY, [scrollStart, scrollEnd], ['0', '-25%']);
+		return useTransform(scrollY, [scrollStart, scrollEnd], ['0', '-50%']);
 	};
 
 	return (
@@ -49,14 +68,12 @@ export default function RollingTitle({ title, altMode }: RollingTitleProps) {
 			altMode={altMode}
 			onClick={() => console.log({ scrollStart, scrollEnd })}
 		>
-			<s.Text style={{ x: horizontalSlide(altMode) }}>
-				<span>{title}</span>
+			<s.Text style={{ x: horizontalSlide(altMode), opacity: textOpacity }}>
+				{title}
 			</s.Text>
-			<s.Text style={{ x: horizontalSlide(!altMode) }}>
-				<span>{title}</span>
-			</s.Text>
-			<s.Text style={{ x: horizontalSlide(altMode) }}>
-				<span>{title}</span>
+			<s.Text style={{ x: horizontalSlide(!altMode) }}>{title}</s.Text>
+			<s.Text style={{ x: horizontalSlide(altMode), opacity: textOpacity }}>
+				{title}
 			</s.Text>
 
 			<s.BackgroundCircle
