@@ -6,6 +6,7 @@ import About from '../Components/About/About';
 import Projects from '../Components/Projects/Projects';
 
 import { s } from './index.styles';
+import Contact from 'Components/Contact/Contact';
 
 export default function Home() {
 	return (
@@ -26,6 +27,7 @@ export default function Home() {
 				<Intro />
 				<About />
 				<Projects />
+				<Contact />
 			</s.ContentWrapper>
 
 			<footer></footer>
