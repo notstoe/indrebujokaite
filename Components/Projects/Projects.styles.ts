@@ -32,7 +32,7 @@ const SectionWrapper = styled.section`
 			width: 21rem;
 			height: 21rem;
 
-			z-index: 0;
+			z-index: -2;
 
 			border-radius: 50%;
 
