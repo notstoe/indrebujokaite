@@ -1,7 +1,7 @@
-import { ApolloClient, ApolloProvider } from "@apollo/client";
-import withData from "../lib/withData";
+import { ApolloClient, ApolloProvider } from '@apollo/client';
+import withData from '@lib/withData';
 
-import { AppProps } from "next/app";
+import { AppProps } from 'next/app';
 
 interface AppPropsI extends AppProps {
 	apollo: ApolloClient<any>;
