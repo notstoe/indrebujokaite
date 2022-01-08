@@ -1,4 +1,5 @@
-import styled from "styled-components";
+import styled from 'styled-components';
+import { until, Device } from '../helpers/media';
 
 const Wrapper = styled.section`
 	width: 85%;
@@ -20,15 +21,17 @@ const Wrapper = styled.section`
 		font-weight: normal;
 		padding-right: 2.2rem;
 		padding-top: 10rem;
-
-		@media (max-width: 400px) {
-			padding-right: 6vw;
-		}
 	}
 
 	.subtitle {
 		font-size: 1.4rem;
 		font-weight: lighter;
+	}
+
+	@media ${until(Device.MobileLarge)} {
+		.title {
+			padding-right: 6vw;
+		}
 	}
 `;
 
@@ -45,7 +48,7 @@ const StyledImage = styled.img`
 	width: 34rem;
 	height: 30rem;
 
-	@media (max-width: 450px) {
+	@media ${until(Device.MobileLarge)} {
 		right: 0;
 		top: 18vh;
 

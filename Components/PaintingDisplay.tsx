@@ -1,5 +1,6 @@
-import { ApolloError, gql, useQuery } from "@apollo/client";
-import styled, { css } from "styled-components";
+import { ApolloError, gql, useQuery } from '@apollo/client';
+import styled, { css } from 'styled-components';
+import { until, Device } from '../helpers/media';
 
 const DisplaysWrapper = styled.section`
 	padding: 3rem 0;
@@ -26,14 +27,6 @@ const SingleDisplayWrapper = styled.div<{ inverted: boolean }>`
 			}
 		`}
 
-	@media (max-width: 1000px) {
-		flex-direction: column;
-
-		div {
-			order: 0;
-		}
-	}
-
 	div {
 		flex: 1;
 
@@ -47,19 +40,10 @@ const SingleDisplayWrapper = styled.div<{ inverted: boolean }>`
 		font-size: 1.4rem;
 		font-weight: lighter;
 
-		@media (max-width: 1000px) {
-			font-size: 1.2rem;
-			align-self: center;
-		}
-
 		.title {
 			font-weight: normal;
 			font-size: 3rem;
 			align-self: center;
-
-			@media (max-width: 1000px) {
-				padding-left: 2rem;
-			}
 		}
 
 		.author {
@@ -67,7 +51,7 @@ const SingleDisplayWrapper = styled.div<{ inverted: boolean }>`
 		}
 
 		&::before {
-			content: "";
+			content: '';
 			display: block;
 			position: absolute;
 
@@ -82,11 +66,25 @@ const SingleDisplayWrapper = styled.div<{ inverted: boolean }>`
 			border-radius: 50%;
 
 			background-color: var(--dark-grey);
+		}
+	}
 
-			@media (max-width: 950px) {
+	@media ${until(Device.TabletLarge)} {
+		flex-direction: column;
+
+		div {
+			order: 0;
+			font-size: 1.2rem;
+			align-self: center;
+
+			&::before {
 				width: 10rem;
 				height: 10rem;
 			}
+		}
+
+		.title {
+			padding-left: 2rem;
 		}
 	}
 `;
@@ -95,7 +93,7 @@ const StyledImage = styled.img`
 	width: 95%;
 	max-width: 40rem;
 
-	@media (max-width: 1000px) {
+	@media ${until(Device.TabletLarge)} {
 		align-self: center;
 	}
 `;
@@ -103,9 +101,9 @@ const StyledImage = styled.img`
 const s = { StyledImage, SingleDisplayWrapper, DisplaysWrapper };
 
 enum Collection {
-	LANDSCAPE = "Landscape",
-	MODERN_BLOCKS = "Modern_Blocks",
-	COMTEMPORARY_FINE_ART = "Comtemporary_Fine_art",
+	LANDSCAPE = 'Landscape',
+	MODERN_BLOCKS = 'Modern_Blocks',
+	CONTEMPORARY_FINE_ART = 'Contemporary_Fine_art',
 }
 
 interface PaintingD {
@@ -143,18 +141,18 @@ export default function PaintingDisplay() {
 
 	const { data, loading, error } = useQuery<DataD>(DISPLAY_PAINTINGS_QUERY);
 
-	if (loading) return <div style={{ textAlign: "center" }}>Loading...</div>;
+	if (loading) return <div style={{ textAlign: 'center' }}>Loading...</div>;
 
 	if (error)
 		return (
-			<div style={{ textAlign: "center", fontSize: "2rem" }}>
+			<div style={{ textAlign: 'center', fontSize: '2rem' }}>
 				Something went wrong... Try refreshing the page.
 			</div>
 		);
 
 	const displayPaintingsDivs = data?.displayPaintings[0].paintings.map(
 		(painting, index) => {
-			const collectionType = painting.collection_type.split("_").join(" ");
+			const collectionType = painting.collection_type.split('_').join(' ');
 
 			return (
 				<s.SingleDisplayWrapper key={painting.id} inverted={index % 2 !== 0}>
