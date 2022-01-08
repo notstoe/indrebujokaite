@@ -40,9 +40,9 @@ export default function Carousel({ collection }: { collection: string }) {
 
 	const paintingsDivs = data?.paintings.map((painting) => {
 		return (
-			<div key={painting.id} className='embla__slide'>
+			<a href='' key={painting.id} className='embla__slide'>
 				<s.StyledImage src={painting.picture[0].url} alt="Indreta's painting" />
-			</div>
+			</a>
 		);
 	});
 

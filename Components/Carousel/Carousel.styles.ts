@@ -31,6 +31,12 @@ const CarouselWrapper = styled.div`
 const StyledImage = styled.img`
 	height: 49vh;
 	max-height: 400px;
+
+	transition: opacity 0.2s ease-out;
+
+	:hover {
+		opacity: 0.2;
+	}
 `;
 
 export const s = { StyledImage, SingleCarouselWrapper, CarouselWrapper };
