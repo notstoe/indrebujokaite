@@ -16,7 +16,8 @@
 		"incremental": true,
 		"baseUrl": ".",
 		"paths": {
-			"@helpers/*": ["helpers/*"]
+			"@helpers/*": ["helpers/*"],
+			"@hooks/*": ["hooks/*"]
 		}
 	},
 	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
