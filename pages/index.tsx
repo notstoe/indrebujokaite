@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Header from '../Components/Header/Header';
 import Intro from '../Components/Intro/Intro';
 import About from '../Components/About/About';
-import Projects from '../Components/Projects';
+import Projects from '../Components/Projects/Projects';
 import { brand } from '@helpers/brand';
 import { until, Device } from '@helpers/media';
 

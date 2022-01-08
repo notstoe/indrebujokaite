@@ -1,6 +1,4 @@
 import styled from 'styled-components';
-import PaintingDisplay from './PaintingDisplay/PaintingDisplay';
-import Carousel from './Carousel/Carousel';
 import { until, Device } from '@helpers/media';
 import { brand } from '@helpers/brand';
 
@@ -122,23 +120,4 @@ const ArrowCSS = styled.div`
 	}
 `;
 
-const s = { SectionWrapper, ArrowCSS };
-
-export default function Projects() {
-	return (
-		<s.SectionWrapper>
-			<div className='sectionTitle'>
-				<h1>PROJECTS</h1>
-				<s.ArrowCSS>
-					<span></span>
-					<span></span>
-					<span></span>
-				</s.ArrowCSS>
-			</div>
-			<PaintingDisplay />
-			<Carousel collection='Landscapes' />
-			<Carousel collection='Contemporary_Fine_Art' />
-			<Carousel collection='Modern_Blocks' />
-		</s.SectionWrapper>
-	);
-}
+export const s = { SectionWrapper, ArrowCSS };

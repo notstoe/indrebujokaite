@@ -1,9 +1,9 @@
 import { gql, useQuery } from '@apollo/client';
 
-import RollingTitle from '../RollingTitle';
+import RollingTitle from '../RollingTitle/RollingTitle';
 
 import { s } from './About.styles';
-import { ss } from '@helpers/loading.styles';
+import { ss } from 'Components/Loading/loading.styles';
 import { DataA } from './About.types';
 
 export default function About() {
