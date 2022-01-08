@@ -22,14 +22,6 @@ const GlobalStyles = createGlobalStyle`
 		box-sizing: border-box;
 	}
 
-	:root {
-		/* Project color variables */
-		--fullwhite: #ffffff;
-		--light-grey: #c4c4c4;
-		--dark-grey: #c4c4c439;
-		--bg-black: #000000be;
-	}
-
 	main {
 		background: ${brand.black};
 	}
