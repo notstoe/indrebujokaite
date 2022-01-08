@@ -7,6 +7,9 @@ import Projects from '../Components/Projects/Projects';
 
 import { s } from './index.styles';
 import Contact from 'Components/Contact/Contact';
+import Footer from 'Components/Footer/Footer';
+
+// TODO - loader before page opens
 
 export default function Home() {
 	return (
@@ -30,7 +33,7 @@ export default function Home() {
 				<Contact />
 			</s.ContentWrapper>
 
-			<footer></footer>
+			<Footer />
 		</s.HomePageWrapper>
 	);
 }
