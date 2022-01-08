@@ -1,12 +1,23 @@
-import { useQuery } from '@apollo/client';
+import { gql, useQuery } from '@apollo/client';
 
 import RollingTitle from '../RollingTitle';
 
 import { s } from './About.styles';
 import { DataA } from './About.types';
-import { ABOUT_ME_QUERY } from './About.queries';
 
 export default function About() {
+	const ABOUT_ME_QUERY = gql`
+		query ABOUT_ME_TXT {
+			about {
+				about_me_txt
+				my_vision_txt
+				ProfilePic {
+					url
+				}
+			}
+		}
+	`;
+
 	const { data, loading, error } = useQuery<DataA>(ABOUT_ME_QUERY);
 
 	if (loading)
@@ -17,7 +28,7 @@ export default function About() {
 		);
 	if (error) {
 		console.log([error, error.message]);
-		return <></>;
+		return null;
 	}
 
 	return (
