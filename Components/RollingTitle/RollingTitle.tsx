@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { MotionValue, useTransform, useViewportScroll } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import { s } from './RollingTitle.styles';
@@ -18,8 +19,10 @@ export default function RollingTitle({ title, altMode }: RollingTitleProps) {
 
 	useEffect(() => {
 		if (wrapperRef?.current) {
-			const { y: elementY, height: elementHeight } =
-				wrapperRef.current.getBoundingClientRect();
+			const {
+				y: elementY,
+				height: elementHeight,
+			} = wrapperRef.current.getBoundingClientRect();
 
 			const calculatedScrollStart = Math.max(elementY - window.innerHeight, 0);
 			const calculatedScrollEnd = elementY + elementHeight;
@@ -29,8 +32,8 @@ export default function RollingTitle({ title, altMode }: RollingTitleProps) {
 
 			setOpacityStart(calculatedScrollStart + elementHeight / 4);
 			setOpacityIn(calculatedScrollStart + elementHeight);
-			setOpacityOut(calculatedScrollEnd - elementHeight);
-			setOpacityEnd(calculatedScrollEnd - elementHeight / 2);
+			setOpacityOut(calculatedScrollEnd - elementHeight / 2);
+			setOpacityEnd(calculatedScrollEnd);
 		}
 	}, [wrapperRef]);
 
@@ -63,11 +66,7 @@ export default function RollingTitle({ title, altMode }: RollingTitleProps) {
 	};
 
 	return (
-		<s.Wrapper
-			ref={wrapperRef}
-			altMode={altMode}
-			onClick={() => console.log({ scrollStart, scrollEnd })}
-		>
+		<s.Wrapper ref={wrapperRef} altMode={altMode}>
 			<s.Text style={{ x: horizontalSlide(altMode), opacity: textOpacity }}>
 				{title}
 			</s.Text>
