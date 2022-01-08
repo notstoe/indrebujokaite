@@ -110,6 +110,7 @@ enum Collection {
 
 interface PaintingD {
 	paintings: {
+		id: string;
 		title: string;
 		collection_type: Collection;
 		picture: {
@@ -129,6 +130,7 @@ export default function PaintingDisplay() {
 		query DISPLAY_PAINTINGS {
 			displayPaintings {
 				paintings {
+					id
 					title
 					collection_type
 					picture {
@@ -155,7 +157,7 @@ export default function PaintingDisplay() {
 			const collectionType = painting.collection_type.split("_").join(" ");
 
 			return (
-				<s.SingleDisplayWrapper key={index} inverted={index % 2 !== 0}>
+				<s.SingleDisplayWrapper key={painting.id} inverted={index % 2 !== 0}>
 					<div>
 						<span>{collectionType}</span>
 						<span className="title">{painting.title}</span>
