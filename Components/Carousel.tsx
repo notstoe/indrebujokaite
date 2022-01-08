@@ -9,6 +9,8 @@ const SingleCarouselWrapper = styled.div`
 	justify-content: center;
 	gap: 1rem;
 
+	padding: 2rem 0;
+
 	h1 {
 		text-align: center;
 		font-size: 2rem;
@@ -24,14 +26,14 @@ const CarouselWrapper = styled.div`
 
 		.embla__slide {
 			position: relative;
-			flex: 0 0 0%;
+			flex: 0 0 20%;
 		}
 	}
 `;
 
 const StyledImage = styled.img`
-	height: 40vh;
-	max-height: 350px;
+	height: 49vh;
+	max-height: 400px;
 `;
 
 const s = { StyledImage, SingleCarouselWrapper, CarouselWrapper };
@@ -56,11 +58,11 @@ interface DataP {
 	error?: ApolloError;
 }
 
-export default function Carousel() {
+export default function Carousel({ collection }: { collection: string }) {
 	const COLLECTION_PAINTINGS_QUERY = gql`
-		query COLLECTION_PAINTINGS_FILTER {
+		query COLLECTION_PAINTINGS_FILTER($collection: String!) {
 			paintings(
-				where: { collection_type: "Landscapes" }
+				where: { collection_type: $collection }
 				sort: "createdAt:desc"
 			) {
 				id
@@ -78,7 +80,9 @@ export default function Carousel() {
 		containScroll: "trimSnaps",
 	});
 
-	const { data, loading, error } = useQuery<DataP>(COLLECTION_PAINTINGS_QUERY);
+	const { data, loading, error } = useQuery<DataP>(COLLECTION_PAINTINGS_QUERY, {
+		variables: { collection },
+	});
 
 	if (loading)
 		return (
@@ -104,7 +108,7 @@ export default function Carousel() {
 
 	return (
 		<s.SingleCarouselWrapper>
-			<h1>Contemporary Fine Art</h1>
+			<h1>{collection.split("_").join(" ")}</h1>
 			<s.CarouselWrapper ref={emblaRef}>
 				<div>{paintingsDivs}</div>
 			</s.CarouselWrapper>
