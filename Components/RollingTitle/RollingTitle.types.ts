@@ -1,4 +1,4 @@
-export interface RollingTitle {
+export interface RollingTitleProps {
 	title: string;
 	altMode: boolean;
 }

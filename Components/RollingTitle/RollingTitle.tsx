@@ -1,8 +1,8 @@
 import { s } from './RollingTitle.styles';
 
-import { RollingTitle } from './RollingTitle.types';
+import { RollingTitleProps } from './RollingTitle.types';
 
-export default function RollingTitle({ title, altMode }: RollingTitle) {
+export default function RollingTitle({ title, altMode }: RollingTitleProps) {
 	return (
 		<s.Wrapper altMode={altMode}>
 			<div className='edge'>

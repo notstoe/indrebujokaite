@@ -1,7 +1,7 @@
 import { gql, useQuery } from '@apollo/client';
 
 import { s } from './PaintingDisplay.styles';
-import { ss } from 'Components/loading.styles';
+import { ss } from 'Components/Loading/loading.styles';
 
 import { DataD } from './PaintingDisplay.types';
 
