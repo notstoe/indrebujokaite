@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import PaintingDisplay from "./PaintingDisplay";
+import Carousel from "./Carousel/Carousel";
 
 const SectionWrapper = styled.section`
 	.sectionTitle {
@@ -127,6 +128,7 @@ export default function Projects() {
 				</s.ArrowCSS>
 			</div>
 			<PaintingDisplay />
+			<Carousel />
 		</s.SectionWrapper>
 	);
 }
