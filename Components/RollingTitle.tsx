@@ -1,4 +1,5 @@
-import styled, { css } from "styled-components";
+import styled, { css } from 'styled-components';
+import { until, Device } from '../helpers/media';
 
 const Wrapper = styled.div<{ altMode: boolean }>`
 	display: flex;
@@ -12,19 +13,10 @@ const Wrapper = styled.div<{ altMode: boolean }>`
 	div {
 		font-size: 10rem;
 		line-height: 10rem;
-
-		@media (max-width: 615px) {
-			font-size: 6.5rem;
-			line-height: normal;
-		}
-
-		@media (max-width: 450px) {
-			font-size: 4.5rem;
-		}
 	}
 
 	&::after {
-		content: "";
+		content: '';
 		display: block;
 		position: absolute;
 
@@ -36,11 +28,6 @@ const Wrapper = styled.div<{ altMode: boolean }>`
 		border-radius: 50%;
 
 		background-color: var(--dark-grey);
-
-		@media (max-width: 600px) {
-			width: 18rem;
-			height: 18rem;
-		}
 	}
 
 	${({ altMode }) =>
@@ -71,6 +58,24 @@ const Wrapper = styled.div<{ altMode: boolean }>`
 						text-align: right;
 					}
 			  `}
+
+	@media ${until(Device.Tablet)} {
+		div {
+			font-size: 6.5rem;
+			line-height: normal;
+		}
+
+		&::after {
+			width: 18rem;
+			height: 18rem;
+		}
+	}
+
+	@media ${until(Device.MobileLarge)} {
+		div {
+			font-size: 4.5rem;
+		}
+	}
 `;
 
 const s = { Wrapper };

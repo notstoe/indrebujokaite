@@ -1,6 +1,7 @@
-import styled from "styled-components";
-import PaintingDisplay from "./PaintingDisplay";
-import Carousel from "./Carousel";
+import styled from 'styled-components';
+import PaintingDisplay from './PaintingDisplay';
+import Carousel from './Carousel';
+import { until, Device } from '../helpers/media';
 
 const SectionWrapper = styled.section`
 	.sectionTitle {
@@ -14,27 +15,14 @@ const SectionWrapper = styled.section`
 		display: flex;
 		justify-content: center;
 
-		@media (max-width: 600px) {
-			height: 55vh;
-		}
-
 		h1 {
 			align-self: center;
 			font-size: 10rem;
 			font-weight: lighter;
-
-			@media (max-width: 615px) {
-				font-size: 6.5rem;
-				line-height: normal;
-			}
-
-			@media (max-width: 450px) {
-				font-size: 4.5rem;
-			}
 		}
 
 		&::before {
-			content: "";
+			content: '';
 			display: block;
 			position: absolute;
 
@@ -50,12 +38,31 @@ const SectionWrapper = styled.section`
 			border-radius: 50%;
 
 			background-color: var(--dark-grey);
+		}
+	}
 
-			@media (max-width: 600px) {
+	@media ${until(Device.Tablet)} {
+		.sectionTitle {
+			height: 55vh;
+
+			h1 {
+				font-size: 6.5rem;
+				line-height: normal;
+			}
+
+			&::before {
 				left: 52.5%;
 
 				width: 10rem;
 				height: 10rem;
+			}
+		}
+	}
+
+	@media ${until(Device.MobileLarge)} {
+		.sectionTitle {
+			h1 {
+				font-size: 4.5rem;
 			}
 		}
 	}
@@ -69,10 +76,6 @@ const ArrowCSS = styled.div`
 
 	opacity: 0.4;
 
-	@media (max-width: 500px) {
-		bottom: 2rem;
-	}
-
 	span {
 		display: block;
 		width: 30px;
@@ -82,13 +85,6 @@ const ArrowCSS = styled.div`
 		transform: rotate(45deg);
 		margin: -10px;
 		animation: animate 2s infinite;
-
-		@media (max-width: 500px) {
-			width: 20px;
-			height: 20px;
-			border-bottom: 4px solid var(--light-grey);
-			border-right: 4px solid var(--fullwhite);
-		}
 	}
 
 	span:nth-child(2) {
@@ -110,6 +106,17 @@ const ArrowCSS = styled.div`
 		100% {
 			opacity: 0;
 			transform: rotate(45deg) translate(20px, 20px);
+		}
+	}
+
+	@media ${until(Device.MobileLarge)} {
+		bottom: 2rem;
+
+		span {
+			width: 20px;
+			height: 20px;
+			border-bottom: 4px solid var(--light-grey);
+			border-right: 4px solid var(--fullwhite);
 		}
 	}
 `;

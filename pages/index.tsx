@@ -1,11 +1,12 @@
-import styled, { createGlobalStyle } from "styled-components";
-import Image from "next/image";
+import styled, { createGlobalStyle } from 'styled-components';
+import Image from 'next/image';
 // import { gql, useQuery } from "@apollo/client";
 
-import Header from "../Components/Header";
-import Intro from "../Components/Intro";
-import About from "../Components/About";
-import Projects from "../Components/Projects";
+import Header from '../Components/Header';
+import Intro from '../Components/Intro';
+import About from '../Components/About';
+import Projects from '../Components/Projects';
+import { until, Device } from '../helpers/media';
 
 // import { DataI } from "./index.types";
 
@@ -85,13 +86,13 @@ const GlobalStyles = createGlobalStyle`
 		text-decoration: none;
 	}
 
-	@media (max-width: 1080px) {
+	@media ${until(Device.TabletLarge)} {
 		html {
 			font-size: 87.5%;
 		}
 	}
 
-	@media (max-width: 720px) {
+	@media ${until(Device.Tablet)} {
 		html {
 			font-size: 75%;
 		}
@@ -107,7 +108,7 @@ const HomePageWrapper = styled.main`
 	z-index: 0;
 
 	.background {
-		content: "";
+		content: '';
 		position: fixed;
 		width: 100%;
 		height: 100vh;
@@ -133,7 +134,7 @@ const HomePageWrapper = styled.main`
 
 	.contentWrapper {
 		color: var(--fullwhite);
-		font-family: "Cormorant Garamond";
+		font-family: 'Cormorant Garamond';
 		font-weight: normal;
 		font-size: 2rem;
 	}
