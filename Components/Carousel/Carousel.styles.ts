@@ -1,3 +1,4 @@
+import { Device, until } from '@helpers/media';
 import styled from 'styled-components';
 
 const SingleCarouselWrapper = styled.div`
@@ -36,6 +37,10 @@ const StyledImage = styled.img`
 
 	:hover {
 		opacity: 0.2;
+	}
+
+	@media (${until(Device.Tablet)}) {
+		height: 35vh;
 	}
 `;
 
