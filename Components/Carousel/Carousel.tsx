@@ -2,6 +2,7 @@ import { gql, useQuery } from '@apollo/client';
 
 import useEmblaCarousel from 'embla-carousel-react';
 import { s } from './Carousel.styles';
+import { ss } from '@helpers/loading.styles';
 
 import { DataP } from './Carousel.types';
 
@@ -31,12 +32,7 @@ export default function Carousel({ collection }: { collection: string }) {
 		variables: { collection },
 	});
 
-	if (loading)
-		return (
-			<div style={{ textAlign: 'center', fontSize: '2rem', padding: '5rem' }}>
-				Loading...
-			</div>
-		);
+	if (loading) return <ss.Loading>Loading...</ss.Loading>;
 	if (error) {
 		console.log([error, error.message]);
 		return null;
