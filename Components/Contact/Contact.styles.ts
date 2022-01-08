@@ -8,6 +8,7 @@ const Wrapper = styled.section`
 	align-items: center;
 
 	width: 90%;
+	max-width: 80rem;
 
 	margin: 0 auto;
 
@@ -44,16 +45,19 @@ const Wrapper = styled.section`
 	@media ${until(Device.Tablet)} {
 		flex-direction: column;
 
-		padding-top: 5rem;
+		padding-bottom: 10rem;
 
 		h1 {
-			font-size: 4rem;
+			font-size: 6.5rem;
 			text-align: center;
-			order: 0;
+			order: -1;
 
 			&::before {
-				width: 10rem;
-				height: 10rem;
+				top: 37%;
+				right: 13%;
+
+				width: 13rem;
+				height: 13rem;
 			}
 		}
 	}
@@ -72,7 +76,7 @@ const ContactInfo = styled.div`
 
 	.author {
 		color: ${brand.grey.light};
-		padding-left: 2rem;
+		padding-left: 1.7rem;
 	}
 
 	span {
