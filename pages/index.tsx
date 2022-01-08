@@ -4,9 +4,9 @@ import Image from 'next/image';
 
 import Header from '../Components/Header';
 import Intro from '../Components/Intro';
-import About from '../Components/About';
+import About from '../Components/About/About';
 import Projects from '../Components/Projects';
-import brand from '@helpers/brand';
+import { brand } from '@helpers/brand';
 import { until, Device } from '@helpers/media';
 
 // import { DataI } from "./index.types";
@@ -23,7 +23,7 @@ const GlobalStyles = createGlobalStyle`
 	}
 
 	main {
-		background: ${brand.black};
+		background: ${brand.black.bg};
 	}
 
 	/* HTML5 display-role reset for older browsers */
@@ -109,7 +109,7 @@ const HomePageWrapper = styled.main`
 
 		.bgcolor {
 			position: absolute;
-			background: ${brand.black};
+			background: ${brand.black.bg};
 			width: 100%;
 			height: 100%;
 			z-index: 1;
@@ -156,18 +156,18 @@ export default function Home() {
 	return (
 		<s.HomePageWrapper>
 			<GlobalStyles />
-			<div className="background">
-				<div className="bgcolor" />
+			<div className='background'>
+				<div className='bgcolor' />
 				<Image
-					src="https://res.cloudinary.com/dowa8tjdi/image/upload/v1639673525/upload-4fb97271-7cb7-4746-9c56-87e24141d41a_yvrwds.gif"
-					alt="old tv static"
-					className="noise"
-					layout="fill"
+					src='https://res.cloudinary.com/dowa8tjdi/image/upload/v1639673525/upload-4fb97271-7cb7-4746-9c56-87e24141d41a_yvrwds.gif'
+					alt='old tv static'
+					className='noise'
+					layout='fill'
 				/>
 			</div>
 
 			<Header />
-			<div className="contentWrapper">
+			<div className='contentWrapper'>
 				<Intro />
 				<About />
 				<Projects />
