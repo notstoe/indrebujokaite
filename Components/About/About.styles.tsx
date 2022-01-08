@@ -1,10 +1,11 @@
+import { Device, until } from '@helpers/media';
 import styled from 'styled-components';
 
 const SectionWrapper = styled.section`
 	display: flex;
 	flex-direction: column;
 
-	width: 95%;
+	width: 100%;
 	max-width: 1500px;
 	margin: 0 auto;
 
@@ -20,8 +21,10 @@ const SectionWrapper = styled.section`
 
 		text-align: right;
 
-		width: 95%;
+		width: 100%;
 		max-width: 76rem;
+
+		padding: 0 1rem;
 	}
 
 	.description span {
@@ -38,8 +41,11 @@ const StyledImage = styled.img`
 	width: 50%;
 	max-width: 25rem;
 
-	margin-top: 10rem;
-	padding-left: 1rem;
+	padding: 10rem 0 0 3rem;
+
+	@media (${until(Device.Tablet)}) {
+		padding-left: 1rem;
+	}
 `;
 
 export const s = { StyledImage, SectionWrapper };
