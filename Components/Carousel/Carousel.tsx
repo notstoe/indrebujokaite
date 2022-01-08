@@ -6,6 +6,10 @@ import { ss } from 'Components/Loading/loading.styles';
 
 import { DataP } from './Carousel.types';
 
+// TODO - add painting title, collection and author on individual hover
+// TODO - add element on top of carousels indicating you can slide
+// TODO - optimize image loading from different sizes on cloudinary uri
+
 export default function Carousel({ collection }: { collection: string }) {
 	const COLLECTION_PAINTINGS_QUERY = gql`
 		query COLLECTION_PAINTINGS_FILTER($collection: String!) {
