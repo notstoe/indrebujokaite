@@ -1,5 +1,5 @@
-import styled from 'styled-components';
 import { brand } from '@helpers/brand';
+import styled from 'styled-components';
 
 const StyledHeader = styled.header`
 	position: sticky;
@@ -42,19 +42,4 @@ const StyledHeader = styled.header`
 	}
 `;
 
-const s = { StyledHeader };
-
-export default function Header() {
-	return (
-		<s.StyledHeader>
-			{/* FIXME - make it link to each part of the page later on */}
-			<span className='home'>Home</span>
-			<span>About</span>
-			<div>
-				<span className='ownerName'>Indreta Art</span>
-			</div>
-			<span>Projects</span>
-			<span className='contact'>Contact</span>
-		</s.StyledHeader>
-	);
-}
+export const s = { StyledHeader };

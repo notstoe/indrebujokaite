@@ -2,7 +2,7 @@ import styled, { createGlobalStyle } from 'styled-components';
 import Image from 'next/image';
 // import { gql, useQuery } from "@apollo/client";
 
-import Header from '../Components/Header';
+import Header from '../Components/Header/Header';
 import Intro from '../Components/Intro';
 import About from '../Components/About/About';
 import Projects from '../Components/Projects';
