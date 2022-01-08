@@ -111,7 +111,7 @@ const HomePageWrapper = styled.main`
 			width: 100%;
 			height: 100%;
 
-			opacity: 0.05;
+			opacity: 0.07;
 			z-index: 2;
 		}
 	}
