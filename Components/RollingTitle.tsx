@@ -1,4 +1,4 @@
-import brand from '@helpers/brand';
+import { brand } from '@helpers/brand';
 import styled, { css } from 'styled-components';
 import { until, Device } from '@helpers/media';
 
@@ -89,13 +89,13 @@ interface RollingTitle {
 export default function RollingTitle({ title, altMode }: RollingTitle) {
 	return (
 		<s.Wrapper altMode={altMode}>
-			<div className="edge">
+			<div className='edge'>
 				<span>{title}</span>
 			</div>
-			<div className="middle">
+			<div className='middle'>
 				<span>{title}</span>
 			</div>
-			<div className="edge">
+			<div className='edge'>
 				<span>{title}</span>
 			</div>
 		</s.Wrapper>

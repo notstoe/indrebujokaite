@@ -1,4 +1,4 @@
-export default {
+export const brand = {
 	black: {
 		base: '#000000',
 		bg: '#000000be',

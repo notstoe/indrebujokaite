@@ -1,6 +1,6 @@
 import { ApolloError, gql, useQuery } from '@apollo/client';
 import { until, Device } from '@helpers/media';
-import brand from '@helpers/brand';
+import { brand } from '@helpers/brand';
 import styled, { css } from 'styled-components';
 
 const DisplaysWrapper = styled.section`
@@ -159,8 +159,8 @@ export default function PaintingDisplay() {
 				<s.SingleDisplayWrapper key={painting.id} inverted={index % 2 !== 0}>
 					<div>
 						<span>{collectionType}</span>
-						<span className="title">{painting.title}</span>
-						<span className="author">Indrė Bujokaitė</span>
+						<span className='title'>{painting.title}</span>
+						<span className='author'>Indrė Bujokaitė</span>
 					</div>
 					<StyledImage
 						src={painting.picture[0].url}

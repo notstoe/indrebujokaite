@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import PaintingDisplay from './PaintingDisplay';
 import Carousel from './Carousel';
 import { until, Device } from '@helpers/media';
-import brand from '@helpers/brand';
+import { brand } from '@helpers/brand';
 
 const SectionWrapper = styled.section`
 	.sectionTitle {
@@ -127,7 +127,7 @@ const s = { SectionWrapper, ArrowCSS };
 export default function Projects() {
 	return (
 		<s.SectionWrapper>
-			<div className="sectionTitle">
+			<div className='sectionTitle'>
 				<h1>PROJECTS</h1>
 				<s.ArrowCSS>
 					<span></span>
@@ -136,9 +136,9 @@ export default function Projects() {
 				</s.ArrowCSS>
 			</div>
 			<PaintingDisplay />
-			<Carousel collection="Landscapes" />
-			<Carousel collection="Contemporary_Fine_Art" />
-			<Carousel collection="Modern_Blocks" />
+			<Carousel collection='Landscapes' />
+			<Carousel collection='Contemporary_Fine_Art' />
+			<Carousel collection='Modern_Blocks' />
 		</s.SectionWrapper>
 	);
 }
