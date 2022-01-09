@@ -4,8 +4,8 @@ import Document, {
 	Head,
 	Main,
 	NextScript,
-} from "next/document";
-import { ServerStyleSheet } from "styled-components";
+} from 'next/document';
+import { ServerStyleSheet } from 'styled-components';
 
 // gets Initial Props and Stylesheet from server (ssr)
 
@@ -39,10 +39,10 @@ export default class MyDocument extends Document {
 		return (
 			<Html>
 				<Head>
-					<link rel="icon" href="/favicon.ico" />
+					<link rel='icon' href='/favicon.ico' />
 					<link
-						href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&display=swap"
-						rel="stylesheet"
+						href='https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&display=swap'
+						rel='stylesheet'
 					/>
 				</Head>
 				<body>
