@@ -70,7 +70,7 @@ const BackgroundCircle = styled(motion.div)`
 
 	border-radius: 50%;
 
-	background-color: ${brand.grey.dark};
+	background-color: ${brand.grey.detail};
 
 	@media ${until(Device.Tablet)} {
 		width: 18rem;

@@ -60,7 +60,7 @@ const SingleDisplayWrapper = styled.div<{ inverted: boolean }>`
 
 			border-radius: 50%;
 
-			background-color: ${brand.grey.dark};
+			background-color: ${brand.grey.detail};
 		}
 	}
 

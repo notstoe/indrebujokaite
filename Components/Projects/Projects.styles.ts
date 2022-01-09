@@ -36,7 +36,7 @@ const SectionWrapper = styled.section`
 
 			border-radius: 50%;
 
-			background-color: ${brand.grey.dark};
+			background-color: ${brand.grey.detail};
 		}
 	}
 
