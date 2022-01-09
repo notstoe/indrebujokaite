@@ -10,6 +10,7 @@ import Contact from 'Components/Contact/Contact';
 import Footer from 'Components/Footer/Footer';
 
 // TODO - loader before page opens
+// TODO - Query from here and pass as props
 
 export default function Home() {
 	return (
