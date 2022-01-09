@@ -6,8 +6,31 @@ import { s } from './About.styles';
 import { ss } from 'Components/Loading/loading.styles';
 import { DataA } from './About.types';
 import { getOptimizedCloudinaryUrl } from '@helpers/getOptimizedCloudinaryUrl';
+import { motion, Variants } from 'framer-motion';
+import { useInView } from '@hooks/useInView';
+
+const descriptionVariants: Variants = {
+	hiddenLeft: { opacity: 0, x: -80 },
+	hiddenRight: { opacity: 0, x: 80 },
+	visible: { opacity: 1, x: 0 },
+};
 
 export default function About() {
+	const [elementRef, inView] = useInView<HTMLSpanElement>(
+		{ threshold: 0.45 },
+		true
+	);
+
+	const [elementRef2, inView2] = useInView<HTMLSpanElement>(
+		{ threshold: 0.35 },
+		true
+	);
+
+	const [elementRefImg, inViewImg] = useInView<HTMLImageElement>(
+		{ threshold: 0.4 },
+		true
+	);
+
 	const ABOUT_ME_QUERY = gql`
 		query ABOUT_ME_TXT {
 			about {
@@ -36,13 +59,41 @@ export default function About() {
 		<s.SectionWrapper>
 			<RollingTitle title='ABOUT ME' altMode={false} />
 			<div className='description'>
-				<span>{data?.about.about_me_txt}</span>
+				<motion.span
+					ref={elementRef}
+					initial='hiddenRight'
+					animate={inView ? 'visible' : 'hidden'}
+					variants={descriptionVariants}
+					transition={{ type: 'tween', duration: 0.7 }}
+				>
+					{data?.about.about_me_txt}
+				</motion.span>
 			</div>
-			<s.StyledImage src={optimizedUrl} alt="Artist's Profile" />
+			<s.StyledImage
+				src={optimizedUrl}
+				alt="Artist's Profile"
+				ref={elementRefImg}
+				initial='hiddenLeft'
+				animate={inViewImg ? 'visible' : 'hidden'}
+				variants={descriptionVariants}
+				transition={{ type: 'tween', duration: 0.7 }}
+			/>
 			<RollingTitle title='MY VISION' altMode={true} />
-			<div className='description'>
-				<span>{data?.about.my_vision_txt}</span>
-			</div>
+			<motion.div
+				className='description'
+				style={{ justifyContent: 'flex-start' }}
+			>
+				<motion.span
+					ref={elementRef2}
+					initial='hiddenLeft'
+					animate={inView2 ? 'visible' : 'hidden'}
+					variants={descriptionVariants}
+					transition={{ type: 'tween', duration: 0.7 }}
+					style={{ textAlign: 'left' }}
+				>
+					{data?.about.my_vision_txt}
+				</motion.span>
+			</motion.div>
 		</s.SectionWrapper>
 	);
 }

@@ -1,5 +1,6 @@
-import { Device, until } from '@helpers/media';
 import styled from 'styled-components';
+import { Device, until } from '@helpers/media';
+import { motion } from 'framer-motion';
 
 const SectionWrapper = styled.section`
 	display: flex;
@@ -25,6 +26,8 @@ const SectionWrapper = styled.section`
 		max-width: 76rem;
 
 		padding: 0 1rem;
+
+		overflow: hidden;
 	}
 
 	.description span {
@@ -35,7 +38,7 @@ const SectionWrapper = styled.section`
 	}
 `;
 
-const StyledImage = styled.img`
+const StyledImage = styled(motion.img)`
 	align-self: flex-start;
 
 	width: 50%;
