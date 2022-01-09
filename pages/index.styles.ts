@@ -92,31 +92,6 @@ const HomePageWrapper = styled.main`
 	z-index: 0;
 
 	font-family: 'Cormorant Garamond';
-
-	.background {
-		content: '';
-		position: fixed;
-		width: 100%;
-		height: 100vh;
-		z-index: -1;
-
-		.bgcolor {
-			position: absolute;
-			background: ${brand.black.bg};
-			width: 100%;
-			height: 100%;
-			z-index: 1;
-		}
-
-		.noise {
-			position: absolute;
-			width: 100%;
-			height: 100%;
-
-			opacity: 0.07;
-			z-index: 2;
-		}
-	}
 `;
 
 const ContentWrapper = styled.div`
@@ -126,4 +101,21 @@ const ContentWrapper = styled.div`
 	font-size: 2rem;
 `;
 
-export const s = { HomePageWrapper, ContentWrapper, GlobalStyles };
+const NoisyBg = styled.div`
+	content: '';
+	position: fixed;
+	width: 100%;
+	height: 100vh;
+	z-index: -1;
+
+	.noise {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+
+		opacity: 0.07;
+		z-index: 2;
+	}
+`;
+
+export const s = { HomePageWrapper, ContentWrapper, GlobalStyles, NoisyBg };
