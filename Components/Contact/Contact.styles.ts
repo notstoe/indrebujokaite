@@ -61,6 +61,12 @@ const Wrapper = styled.section`
 			}
 		}
 	}
+
+	@media ${until(Device.MobileLarge)} {
+		h1 {
+			font-size: 4.5rem;
+		}
+	}
 `;
 
 const ContactInfo = styled.div`

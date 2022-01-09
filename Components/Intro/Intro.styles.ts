@@ -2,10 +2,11 @@ import styled from 'styled-components';
 import { until, Device } from '@helpers/media';
 
 const Wrapper = styled.section`
-	width: 85%;
+	width: 100%;
 	max-width: 69rem;
 	height: 90vh;
 
+	padding: 0 7.5%;
 	margin: 0 auto;
 
 	text-align: right;
@@ -15,6 +16,8 @@ const Wrapper = styled.section`
 	justify-content: center;
 
 	position: relative;
+
+	overflow: hidden;
 
 	.title {
 		font-size: 5.5rem;
@@ -40,7 +43,7 @@ const StyledImage = styled.img`
 
 	z-index: -2;
 
-	left: 0;
+	left: 2rem;
 	right: 32%;
 
 	margin: auto;
