@@ -35,6 +35,8 @@ const StyledImage = styled.img`
 
 	transition: opacity 0.2s ease-out;
 
+	padding: 1rem 0.5rem;
+
 	:hover {
 		opacity: 0.2;
 	}
