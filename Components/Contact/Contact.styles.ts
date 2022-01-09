@@ -71,12 +71,16 @@ const ContactInfo = styled.div`
 	justify-content: space-between;
 
 	font-size: 1.6rem;
+	font-weight: lighter;
 
 	height: 50%;
 
+	color: ${brand.grey.light};
+
 	.author {
-		color: ${brand.grey.light};
+		color: ${brand.white};
 		padding-left: 1.7rem;
+		font-size: 1.8rem;
 	}
 
 	span {
@@ -99,7 +103,7 @@ const ExternalLinks = styled.div`
 		padding-right: 0.5rem;
 
 		:hover {
-			color: ${brand.grey.light};
+			color: ${brand.white};
 		}
 	}
 	@media ${until(Device.Tablet)} {
