@@ -1,8 +1,9 @@
 import { gql, useQuery } from '@apollo/client';
 
+import { getOptimizedCloudinaryUrl } from '@helpers/getOptimizedCloudinaryUrl';
+
 import { s } from './PaintingDisplay.styles';
 import { ss } from 'Components/Loading/loading.styles';
-
 import { DataD } from './PaintingDisplay.types';
 
 export default function PaintingDisplay() {
@@ -33,6 +34,11 @@ export default function PaintingDisplay() {
 		(painting, index) => {
 			const collectionType = painting.collection_type.split('_').join(' ');
 
+			const optimizedUrl = getOptimizedCloudinaryUrl(
+				painting.picture[0].url,
+				'large'
+			);
+
 			return (
 				<s.SingleDisplayWrapper key={painting.id} inverted={index % 2 !== 0}>
 					<div>
@@ -41,7 +47,7 @@ export default function PaintingDisplay() {
 						<span className='author'>Indrė Bujokaitė</span>
 					</div>
 					<s.StyledImage
-						src={painting.picture[0].url}
+						src={optimizedUrl}
 						alt={`${painting.title} painting`}
 					/>
 				</s.SingleDisplayWrapper>

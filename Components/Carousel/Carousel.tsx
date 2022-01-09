@@ -5,10 +5,10 @@ import { s } from './Carousel.styles';
 import { ss } from 'Components/Loading/loading.styles';
 
 import { DataP } from './Carousel.types';
+import { getOptimizedCloudinaryUrl } from '@helpers/getOptimizedCloudinaryUrl';
 
 // TODO - add painting title, collection and author on individual hover
 // TODO - add element on top of carousels indicating you can slide
-// TODO - optimize image loading from different sizes on cloudinary uri
 
 export default function Carousel({ collection }: { collection: string }) {
 	const COLLECTION_PAINTINGS_QUERY = gql`
@@ -43,9 +43,14 @@ export default function Carousel({ collection }: { collection: string }) {
 	}
 
 	const paintingsDivs = data?.paintings.map((painting) => {
+		const optimizedUrl = getOptimizedCloudinaryUrl(
+			painting.picture[0].url,
+			'medium'
+		);
+
 		return (
 			<a href='' key={painting.id} className='embla__slide'>
-				<s.StyledImage src={painting.picture[0].url} alt="Indreta's painting" />
+				<s.StyledImage src={optimizedUrl} alt="Indreta's painting" />
 			</a>
 		);
 	});

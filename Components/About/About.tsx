@@ -5,6 +5,7 @@ import RollingTitle from '../RollingTitle/RollingTitle';
 import { s } from './About.styles';
 import { ss } from 'Components/Loading/loading.styles';
 import { DataA } from './About.types';
+import { getOptimizedCloudinaryUrl } from '@helpers/getOptimizedCloudinaryUrl';
 
 export default function About() {
 	const ABOUT_ME_QUERY = gql`
@@ -27,13 +28,17 @@ export default function About() {
 		return null;
 	}
 
+	const url = data?.about.ProfilePic.url;
+
+	const optimizedUrl = getOptimizedCloudinaryUrl(url, 'medium');
+
 	return (
 		<s.SectionWrapper>
 			<RollingTitle title='ABOUT ME' altMode={false} />
 			<div className='description'>
 				<span>{data?.about.about_me_txt}</span>
 			</div>
-			<s.StyledImage src={data?.about.ProfilePic.url} alt="Artist's Profile" />
+			<s.StyledImage src={optimizedUrl} alt="Artist's Profile" />
 			<RollingTitle title='MY VISION' altMode={true} />
 			<div className='description'>
 				<span>{data?.about.my_vision_txt}</span>
