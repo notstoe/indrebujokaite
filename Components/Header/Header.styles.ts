@@ -1,7 +1,8 @@
 import { brand } from '@helpers/brand';
+import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
-const StyledHeader = styled.header`
+const StyledHeader = styled(motion.header)`
 	position: sticky;
 	top: 0;
 	z-index: 1;
