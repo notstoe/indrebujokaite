@@ -6,15 +6,17 @@ enum Collection {
 	CONTEMPORARY_FINE_ART = 'Contemporary_Fine_art',
 }
 
-interface PaintingD {
-	paintings: {
-		id: string;
-		title: string;
-		collection_type: Collection;
-		picture: {
-			url: string;
-		}[];
+export type Painting = {
+	id: string;
+	title: string;
+	collection_type: Collection;
+	picture: {
+		url: string;
 	}[];
+};
+
+interface PaintingD {
+	paintings: Painting[];
 }
 
 export interface DataD {
