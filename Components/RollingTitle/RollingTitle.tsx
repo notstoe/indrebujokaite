@@ -12,10 +12,10 @@ export default function RollingTitle({ title, altMode }: RollingTitleProps) {
 	const [scrollStart, setScrollStart] = useState<number>(0);
 	const [scrollEnd, setScrollEnd] = useState<number>(0);
 
-	const [opacityStart, setOpacityStart] = useState(0);
-	const [opacityIn, setOpacityIn] = useState(0);
-	const [opacityOut, setOpacityOut] = useState(0);
-	const [opacityEnd, setOpacityEnd] = useState(0);
+	const [opacityStart, setOpacityStart] = useState<number>(0);
+	const [opacityIn, setOpacityIn] = useState<number>(0);
+	const [opacityOut, setOpacityOut] = useState<number>(0);
+	const [opacityEnd, setOpacityEnd] = useState<number>(0);
 
 	useEffect(() => {
 		if (wrapperRef?.current) {
