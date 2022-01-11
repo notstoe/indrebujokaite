@@ -1,7 +1,7 @@
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { s } from './Intro.styles';
 
-const titleVariants = {
+const titleVariants: Variants = {
 	hidden: { opacity: 0 },
 	visible: {
 		opacity: 1,
@@ -9,7 +9,7 @@ const titleVariants = {
 	},
 };
 
-const subtitleVariants = {
+const subtitleVariants: Variants = {
 	hidden: { x: '+10vw', opacity: 0 },
 	visible: {
 		x: 0,
@@ -35,7 +35,7 @@ export default function Intro() {
 				animate='visible'
 				className='subtitle'
 			>
-				Oil Painting
+				Acrylic Painting
 			</motion.span>
 			<s.StyledImage
 				src='https://res.cloudinary.com/dowa8tjdi/image/upload/v1641758923/indrebujokaite/medium_test2darker_170f3b96b5.jpg'
