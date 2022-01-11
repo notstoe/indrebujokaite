@@ -2,8 +2,9 @@ import { until, Device } from '@helpers/media';
 
 import { brand } from '@helpers/brand';
 import styled, { css } from 'styled-components';
+import { motion } from 'framer-motion';
 
-const DisplaysWrapper = styled.section`
+const DisplaysWrapper = styled(motion.section)`
 	padding: 3rem 0;
 `;
 
@@ -28,7 +29,7 @@ const SingleDisplayWrapper = styled.div<{ inverted: boolean }>`
 			}
 		`}
 
-	div {
+	> div {
 		flex: 1;
 
 		position: relative;
@@ -44,24 +45,6 @@ const SingleDisplayWrapper = styled.div<{ inverted: boolean }>`
 		.author {
 			align-self: flex-end;
 		}
-
-		&::before {
-			content: '';
-			display: block;
-			position: absolute;
-
-			left: 11%;
-			top: 13%;
-
-			z-index: -2;
-
-			width: 13rem;
-			height: 13rem;
-
-			border-radius: 50%;
-
-			background-color: ${brand.grey.detail};
-		}
 	}
 
 	@media ${until(Device.TabletLarge)} {
@@ -71,11 +54,6 @@ const SingleDisplayWrapper = styled.div<{ inverted: boolean }>`
 			order: 0;
 			font-size: 1.2rem;
 			align-self: center;
-
-			&::before {
-				width: 10rem;
-				height: 10rem;
-			}
 		}
 	}
 `;
@@ -89,7 +67,7 @@ const StyledImage = styled.img`
 	}
 `;
 
-const Title = styled.span`
+const Title = styled(motion.span)`
 	font-weight: normal;
 	font-size: 3rem;
 	align-self: center;
@@ -99,9 +77,31 @@ const Title = styled.span`
 	}
 `;
 
+const BackgroundCircle = styled(motion.div)`
+	display: block;
+	position: absolute;
+
+	z-index: -2;
+	border-radius: 50%;
+
+	background-color: ${brand.grey.detail};
+
+	width: 13rem;
+	height: 13rem;
+
+	top: 13%;
+	left: 11%;
+
+	@media ${until(Device.Tablet)} {
+		width: 10rem;
+		height: 10rem;
+	}
+`;
+
 export const s = {
 	StyledImage,
 	SingleDisplayWrapper,
 	DisplaysWrapper,
 	Title,
+	BackgroundCircle,
 };
