@@ -34,16 +34,16 @@ export default function SingleDisplay({
 	const txtVariants = (inverted?: boolean): Variants => {
 		if (inverted) {
 			return {
-				firstSpan: { x: '25vw', opacity: 0 },
-				secSpan: { x: '18vw', opacity: 0 },
-				lastSpan: { x: '10vw', opacity: 0 },
+				firstSpan: { x: 80, opacity: 0 },
+				secSpan: { x: 80, opacity: 0 },
+				lastSpan: { x: 80, opacity: 0 },
 				visible: { x: 0, opacity: 1 },
 			};
 		} else {
 			return {
-				firstSpan: { x: '-10vw', opacity: 0 },
-				secSpan: { x: '-18vw', opacity: 0 },
-				lastSpan: { x: '-25vw', opacity: 0 },
+				firstSpan: { x: -80, opacity: 0 },
+				secSpan: { x: -80, opacity: 0 },
+				lastSpan: { x: -80, opacity: 0 },
 				visible: { x: 0, opacity: 1 },
 			};
 		}
@@ -60,13 +60,13 @@ export default function SingleDisplay({
 				<s.BackgroundCircle
 					initial='hidden'
 					animate={inView ? 'visible' : 'hidden'}
-					transition={{ duration: 0.5, delay: 0.8 }}
+					transition={{ duration: 0.9, delay: 0.6 }}
 					variants={circleVariants}
 				/>
 				<motion.span
 					initial='hidden'
 					animate={inView ? 'visible' : 'firstSpan'}
-					transition={{ duration: inverted ? 0.7 : 0.3, delay: 0.5 }}
+					transition={{ duration: 1.5, delay: inverted ? 0.2 : 0.6 }}
 					variants={txtVariants(inverted)}
 				>
 					{collectionType}
@@ -74,7 +74,7 @@ export default function SingleDisplay({
 				<s.Title
 					initial='hidden'
 					animate={inView ? 'visible' : 'secSpan'}
-					transition={{ duration: 0.5, delay: 0.5 }}
+					transition={{ duration: 1.5, delay: 0.4 }}
 					variants={txtVariants(inverted)}
 				>
 					{painting.title}
@@ -82,7 +82,7 @@ export default function SingleDisplay({
 				<motion.span
 					initial='hidden'
 					animate={inView ? 'visible' : 'lastSpan'}
-					transition={{ duration: inverted ? 0.3 : 0.7, delay: 0.5 }}
+					transition={{ duration: 1.5, delay: inverted ? 0.6 : 0.2 }}
 					variants={txtVariants(inverted)}
 					className='author'
 				>
