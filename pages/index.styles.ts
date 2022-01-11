@@ -92,6 +92,8 @@ const HomePageWrapper = styled.main`
 	z-index: 0;
 
 	font-family: 'Cormorant Garamond';
+
+	scroll-behavior: smooth;
 `;
 
 const ContentWrapper = styled.div`
@@ -99,6 +101,8 @@ const ContentWrapper = styled.div`
 
 	font-weight: normal;
 	font-size: 2rem;
+
+	overflow: hidden;
 `;
 
 const NoisyBg = styled.div`
@@ -118,4 +122,9 @@ const NoisyBg = styled.div`
 	}
 `;
 
-export const s = { HomePageWrapper, ContentWrapper, GlobalStyles, NoisyBg };
+export const s = {
+	HomePageWrapper,
+	ContentWrapper,
+	GlobalStyles,
+	NoisyBg,
+};
