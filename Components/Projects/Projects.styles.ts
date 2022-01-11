@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { until, Device } from '@helpers/media';
 import { brand } from '@helpers/brand';
+import { motion } from 'framer-motion';
 
 const SectionWrapper = styled.section`
 	.sectionTitle {
@@ -19,25 +20,6 @@ const SectionWrapper = styled.section`
 			font-size: 10rem;
 			font-weight: lighter;
 		}
-
-		&::before {
-			content: '';
-			display: block;
-			position: absolute;
-
-			top: 50%;
-			transform: translateY(-50%);
-			left: 59.5%;
-
-			width: 21rem;
-			height: 21rem;
-
-			z-index: -2;
-
-			border-radius: 50%;
-
-			background-color: ${brand.grey.detail};
-		}
 	}
 
 	@media ${until(Device.Tablet)} {
@@ -47,13 +29,6 @@ const SectionWrapper = styled.section`
 			h1 {
 				font-size: 6.5rem;
 				line-height: normal;
-			}
-
-			&::before {
-				left: 52.5%;
-
-				width: 10rem;
-				height: 10rem;
 			}
 		}
 	}
@@ -67,4 +42,27 @@ const SectionWrapper = styled.section`
 	}
 `;
 
-export const s = { SectionWrapper };
+const BackgroundCircle = styled(motion.div)`
+	display: block;
+	position: absolute;
+
+	z-index: -2;
+	border-radius: 50%;
+
+	background-color: ${brand.grey.detail};
+
+	width: 20rem;
+	height: 20rem;
+
+	top: 25%;
+	left: 25%;
+
+	@media ${until(Device.Tablet)} {
+		top: 32%;
+
+		width: 10rem;
+		height: 10rem;
+	}
+`;
+
+export const s = { SectionWrapper, BackgroundCircle };
