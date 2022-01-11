@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Device, until } from '@helpers/media';
 import { motion } from 'framer-motion';
 
@@ -7,35 +7,45 @@ const SectionWrapper = styled.section`
 	flex-direction: column;
 
 	width: 100%;
-	max-width: 1500px;
+	max-width: 93.75rem;
 	margin: 0 auto;
 
 	padding: 0;
 
 	font-weight: lighter;
 
-	.description {
-		align-self: center;
+	overflow: hidden;
+`;
 
-		display: flex;
-		justify-content: flex-end;
+const TxtWrapper = styled.div<{ alignLeft?: boolean }>`
+	align-self: center;
 
-		text-align: right;
+	display: flex;
+	justify-content: flex-end;
 
-		width: 100%;
-		max-width: 76rem;
+	text-align: right;
 
-		padding: 0 1rem;
+	width: 100%;
+	max-width: 76rem;
 
-		overflow: hidden;
-	}
+	padding: 0 1rem;
 
-	.description span {
+	span {
 		width: 85%;
 		max-width: 25rem;
 		line-height: 1.9rem;
 		font-size: 1.35rem;
 	}
+
+	${({ alignLeft }) =>
+		alignLeft &&
+		css`
+			justify-content: flex-start;
+
+			span {
+				text-align: left;
+			}
+		`};
 `;
 
 const StyledImage = styled(motion.img)`
@@ -51,4 +61,4 @@ const StyledImage = styled(motion.img)`
 	}
 `;
 
-export const s = { StyledImage, SectionWrapper };
+export const s = { StyledImage, SectionWrapper, TxtWrapper };

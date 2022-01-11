@@ -9,20 +9,22 @@ import { getOptimizedCloudinaryUrl } from '@helpers/getOptimizedCloudinaryUrl';
 import { motion, Variants } from 'framer-motion';
 import { useInView } from '@hooks/useInView';
 
-const descriptionVariants: Variants = {
+const sectionVariants: Variants = {
 	hiddenLeft: { opacity: 0, x: -80 },
 	hiddenRight: { opacity: 0, x: 80 },
 	visible: { opacity: 1, x: 0 },
 };
 
+const animationTransition = { type: 'tween', duration: 0.7 };
+
 export default function About() {
 	const [elementRef, inView] = useInView<HTMLSpanElement>(
-		{ threshold: 0.45 },
+		{ threshold: 0.4 },
 		true
 	);
 
 	const [elementRef2, inView2] = useInView<HTMLSpanElement>(
-		{ threshold: 0.35 },
+		{ threshold: 0.4 },
 		true
 	);
 
@@ -58,42 +60,38 @@ export default function About() {
 	return (
 		<s.SectionWrapper>
 			<RollingTitle title='ABOUT ME' altMode={false} />
-			<div className='description'>
+			<s.TxtWrapper>
 				<motion.span
 					ref={elementRef}
 					initial='hiddenRight'
 					animate={inView ? 'visible' : 'hidden'}
-					variants={descriptionVariants}
-					transition={{ type: 'tween', duration: 0.7 }}
+					variants={sectionVariants}
+					transition={animationTransition}
 				>
 					{data?.about.about_me_txt}
 				</motion.span>
-			</div>
+			</s.TxtWrapper>
 			<s.StyledImage
 				src={optimizedUrl}
-				alt="Artist's Profile"
+				alt="Indre's picture"
 				ref={elementRefImg}
 				initial='hiddenLeft'
 				animate={inViewImg ? 'visible' : 'hidden'}
-				variants={descriptionVariants}
-				transition={{ type: 'tween', duration: 0.7 }}
+				variants={sectionVariants}
+				transition={animationTransition}
 			/>
 			<RollingTitle title='MY VISION' altMode={true} />
-			<motion.div
-				className='description'
-				style={{ justifyContent: 'flex-start' }}
-			>
+			<s.TxtWrapper alignLeft>
 				<motion.span
 					ref={elementRef2}
 					initial='hiddenLeft'
 					animate={inView2 ? 'visible' : 'hidden'}
-					variants={descriptionVariants}
-					transition={{ type: 'tween', duration: 0.7 }}
-					style={{ textAlign: 'left' }}
+					variants={sectionVariants}
+					transition={animationTransition}
 				>
 					{data?.about.my_vision_txt}
 				</motion.span>
-			</motion.div>
+			</s.TxtWrapper>
 		</s.SectionWrapper>
 	);
 }
