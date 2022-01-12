@@ -1,7 +1,8 @@
 import { Device, until } from '@helpers/media';
+import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
-const SingleCarouselWrapper = styled.div`
+const SingleCarouselWrapper = styled(motion.div)`
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -16,7 +17,7 @@ const SingleCarouselWrapper = styled.div`
 	}
 `;
 
-const CarouselWrapper = styled.div`
+const CarouselWrapper = styled(motion.div)`
 	overflow: hidden;
 
 	> div {
