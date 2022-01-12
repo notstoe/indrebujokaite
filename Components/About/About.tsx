@@ -58,7 +58,7 @@ export default function About() {
 	const optimizedUrl = getOptimizedCloudinaryUrl(url, 'medium');
 
 	return (
-		<s.SectionWrapper>
+		<s.SectionWrapper id='about'>
 			<RollingTitle title='ABOUT ME' altMode={false} />
 			<s.TxtWrapper>
 				<motion.span

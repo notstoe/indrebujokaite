@@ -27,7 +27,7 @@ export default function Contact() {
 	}
 
 	return (
-		<s.Wrapper>
+		<s.Wrapper id='contact'>
 			<s.ContactInfo>
 				<span className='author'>{data?.contact.name}</span>
 				<span>

@@ -62,7 +62,7 @@ export default function Projects() {
 	};
 
 	return (
-		<s.SectionWrapper>
+		<s.SectionWrapper id='projects'>
 			<div className='sectionTitle' ref={wrapperRef}>
 				<motion.h1
 					ref={elementRef}

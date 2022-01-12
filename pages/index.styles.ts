@@ -17,6 +17,10 @@ const GlobalStyles = createGlobalStyle`
 		background: ${brand.black.bg};
 	}
 
+	html {
+		scroll-behavior: smooth;
+	}
+
 	/* HTML5 display-role reset for older browsers */
 	article,
 	aside,
@@ -92,8 +96,6 @@ const HomePageWrapper = styled.main`
 	z-index: 0;
 
 	font-family: 'Cormorant Garamond';
-
-	scroll-behavior: smooth;
 `;
 
 const ContentWrapper = styled.div`
