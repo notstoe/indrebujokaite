@@ -1,5 +1,5 @@
 import { gql, useQuery } from '@apollo/client';
-import { ss } from 'Components/Loading/loading.styles';
+import { ss } from 'Components/Elements/Loading/loading.styles';
 import { s } from './Contact.styles';
 import { DataC } from './Contact.types';
 

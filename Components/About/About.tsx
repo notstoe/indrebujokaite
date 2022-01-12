@@ -1,9 +1,9 @@
 import { gql, useQuery } from '@apollo/client';
 
-import RollingTitle from '../RollingTitle/RollingTitle';
+import RollingTitle from '../Elements/RollingTitle/RollingTitle';
 
 import { s } from './About.styles';
-import { ss } from 'Components/Loading/loading.styles';
+import { ss } from 'Components/Elements/Loading/loading.styles';
 import { DataA } from './About.types';
 import { getOptimizedCloudinaryUrl } from '@helpers/getOptimizedCloudinaryUrl';
 import { motion, Variants } from 'framer-motion';

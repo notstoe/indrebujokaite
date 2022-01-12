@@ -1,3 +1,6 @@
+// TODO - request from client, more collection types option
+// TODO - individual pages for each painting
+
 /* eslint-disable react-hooks/rules-of-hooks */
 import { useInView } from '@hooks/useInView';
 import {
@@ -9,8 +12,8 @@ import {
 } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 
-import Carousel from '../Carousel/Carousel';
-import PaintingDisplay from '../PaintingDisplay/PaintingDisplay';
+import Carousel from '../Elements/Carousel/Carousel';
+import PaintingDisplay from '../Elements/PaintingDisplay/PaintingDisplay';
 
 import { s } from './Projects.styles';
 

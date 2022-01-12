@@ -1,16 +1,15 @@
 import Image from 'next/image';
 
-import Header from '../Components/Header/Header';
+import Header from '../Components/Elements/Header/Header';
 import Intro from '../Components/Intro/Intro';
 import About from '../Components/About/About';
 import Projects from '../Components/Projects/Projects';
 
 import { s } from './index.styles';
 import Contact from 'Components/Contact/Contact';
-import Footer from 'Components/Footer/Footer';
+import Footer from 'Components/Elements/Footer/Footer';
 
 // TODO - loader before page opens
-// TODO - Query from here and pass as props
 
 export default function Home() {
 	return (

@@ -28,7 +28,7 @@ const StyledHeader = styled(motion.header)`
 		text-align: center;
 	}
 
-	span {
+	a {
 		font-size: 1.2rem;
 		cursor: pointer;
 

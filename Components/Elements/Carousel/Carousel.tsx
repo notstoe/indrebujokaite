@@ -2,7 +2,7 @@ import { gql, useQuery } from '@apollo/client';
 
 import useEmblaCarousel from 'embla-carousel-react';
 import { s } from './Carousel.styles';
-import { ss } from 'Components/Loading/loading.styles';
+import { ss } from 'Components/Elements/Loading/loading.styles';
 
 import { DataP } from './Carousel.types';
 import { getOptimizedCloudinaryUrl } from '@helpers/getOptimizedCloudinaryUrl';

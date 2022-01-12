@@ -1,10 +1,10 @@
 import { gql, useQuery } from '@apollo/client';
 
 import { s } from './PaintingDisplay.styles';
-import { ss } from 'Components/Loading/loading.styles';
+import { ss } from 'Components/Elements/Loading/loading.styles';
 
 import { DataD } from './PaintingDisplay.types';
-import SingleDisplay from 'Components/Elements/SingleDisplay';
+import SingleDisplay from 'Components/Elements/SingleDisplay/SingleDisplay';
 
 export default function PaintingDisplay() {
 	const DISPLAY_PAINTINGS_QUERY = gql`

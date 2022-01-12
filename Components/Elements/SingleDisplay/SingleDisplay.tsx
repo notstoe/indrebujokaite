@@ -1,6 +1,6 @@
 import { getOptimizedCloudinaryUrl } from '@helpers/getOptimizedCloudinaryUrl';
 import { useInView } from '@hooks/useInView';
-import { Painting } from 'Components/PaintingDisplay/PaintingDisplay.types';
+import { Painting } from 'Components/Elements/PaintingDisplay/PaintingDisplay.types';
 import { motion, Variants } from 'framer-motion';
 
 import { s } from './SingleDisplay.styles';
@@ -27,8 +27,8 @@ export default function SingleDisplay({
 	);
 
 	const circleVariants: Variants = {
-		hidden: { scale: 0, y: -15 },
-		visible: { scale: 1, y: 0 },
+		hidden: { scale: 0, y: -15, opacity: 0 },
+		visible: { scale: 1, y: 0, opacity: 1 },
 	};
 
 	const txtVariants = (inverted?: boolean): Variants => {
@@ -60,7 +60,7 @@ export default function SingleDisplay({
 				<s.BackgroundCircle
 					initial='hidden'
 					animate={inView ? 'visible' : 'hidden'}
-					transition={{ duration: 0.9, delay: 0.6 }}
+					transition={{ duration: 1, delay: 0.6 }}
 					variants={circleVariants}
 				/>
 				<motion.span
