@@ -2,7 +2,9 @@
 // TODO - individual pages for each painting
 
 /* eslint-disable react-hooks/rules-of-hooks */
+import { gql, useQuery } from '@apollo/client';
 import { useInView } from '@hooks/useInView';
+import { ss } from 'Components/Elements/Loading/loading.styles';
 import {
 	motion,
 	MotionValue,
@@ -16,6 +18,7 @@ import Carousel from '../Elements/Carousel/Carousel';
 import PaintingDisplay from '../Elements/PaintingDisplay/PaintingDisplay';
 
 import { s } from './Projects.styles';
+import { DataCollections } from './Projects.types';
 
 export default function Projects() {
 	const { scrollY } = useViewportScroll();
@@ -61,6 +64,48 @@ export default function Projects() {
 		visible: { opacity: 1 },
 	};
 
+	const COLLECTIONS_PAINTINGS_QUERY = gql`
+		query COLLECTIONS_PAINTINGS {
+			collectionsPaintings(sort: "createdAt:asc") {
+				collectionTitle
+				paintings(sort: "createdAt:desc") {
+					id
+					title
+					painting_collection {
+						collectionTitle
+					}
+					picture {
+						url
+					}
+				}
+			}
+		}
+	`;
+
+	const { data, loading, error } = useQuery<DataCollections>(
+		COLLECTIONS_PAINTINGS_QUERY
+	);
+
+	if (loading) return <ss.Loading>Loading...</ss.Loading>;
+	if (error) {
+		console.log([error, error.message]);
+		return null;
+	}
+
+	console.log(data);
+
+	const CarouselElements = data?.collectionsPaintings.map(
+		(collection, index) => {
+			return (
+				<Carousel
+					key={index}
+					paintings={collection.paintings}
+					collectionTitle={collection.collectionTitle}
+				/>
+			);
+		}
+	);
+
 	return (
 		<s.SectionWrapper id='projects'>
 			<div className='sectionTitle' ref={wrapperRef}>
@@ -78,9 +123,7 @@ export default function Projects() {
 				/>
 			</div>
 			<PaintingDisplay />
-			<Carousel collection='Landscapes' />
-			<Carousel collection='Contemporary_Fine_Art' />
-			<Carousel collection='Modern_Blocks' />
+			{CarouselElements}
 		</s.SectionWrapper>
 	);
 }
