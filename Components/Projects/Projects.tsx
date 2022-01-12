@@ -1,4 +1,3 @@
-// TODO - request from client, more collection types option
 // TODO - individual pages for each painting
 
 /* eslint-disable react-hooks/rules-of-hooks */
@@ -91,8 +90,6 @@ export default function Projects() {
 		console.log([error, error.message]);
 		return null;
 	}
-
-	console.log(data);
 
 	const CarouselElements = data?.collectionsPaintings.map(
 		(collection, index) => {
