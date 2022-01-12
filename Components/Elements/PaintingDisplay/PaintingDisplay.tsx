@@ -3,13 +3,13 @@ import { gql, useQuery } from '@apollo/client';
 import { s } from './PaintingDisplay.styles';
 import { ss } from 'Components/Elements/Loading/loading.styles';
 
-import { DataDisplay } from './PaintingDisplay.types';
+import { DataFeaturedPaintings } from './PaintingDisplay.types';
 import SingleDisplay from 'Components/Elements/SingleDisplay/SingleDisplay';
 
 export default function PaintingDisplay() {
-	const DISPLAY_PAINTINGS_QUERY = gql`
-		query DISPLAY_PAINTINGS {
-			displayPaintings {
+	const FEATURED_PAINTINGS_QUERY = gql`
+		query FEATURED_PAINTINGS {
+			featuredPainting {
 				paintings {
 					id
 					title
@@ -24,8 +24,8 @@ export default function PaintingDisplay() {
 		}
 	`;
 
-	const { data, loading, error } = useQuery<DataDisplay>(
-		DISPLAY_PAINTINGS_QUERY
+	const { data, loading, error } = useQuery<DataFeaturedPaintings>(
+		FEATURED_PAINTINGS_QUERY
 	);
 
 	if (loading) return <ss.Loading>Loading...</ss.Loading>;
@@ -34,7 +34,7 @@ export default function PaintingDisplay() {
 		return null;
 	}
 
-	const displayPaintingsDivs = data?.displayPaintings[0].paintings.map(
+	const featuredPaintingsDivs = data?.featuredPainting.paintings.map(
 		(painting, index) => {
 			return (
 				<SingleDisplay
@@ -46,5 +46,5 @@ export default function PaintingDisplay() {
 		}
 	);
 
-	return <s.DisplaysWrapper>{displayPaintingsDivs}</s.DisplaysWrapper>;
+	return <s.DisplaysWrapper>{featuredPaintingsDivs}</s.DisplaysWrapper>;
 }
