@@ -30,14 +30,8 @@ export default function Contact() {
 		<s.Wrapper id='contact'>
 			<s.ContactInfo>
 				<span className='author'>{data?.contact.name}</span>
-				<span>
-					Email: <br />
-					{data?.contact.email}
-				</span>
-				<span>
-					Phone:
-					<br /> {data?.contact.phone}
-				</span>
+				<span>{data?.contact.email}</span>
+				<span>{data?.contact.phone}</span>
 				<span>{data?.contact.location_based}</span>
 				<s.ExternalLinks>
 					<a href={data?.contact.instagram}>Ig</a>

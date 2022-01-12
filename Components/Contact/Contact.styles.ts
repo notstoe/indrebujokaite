@@ -74,7 +74,7 @@ const ContactInfo = styled.div`
 
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
+	justify-content: center;
 
 	font-size: 1.6rem;
 	font-weight: lighter;
@@ -85,12 +85,13 @@ const ContactInfo = styled.div`
 
 	.author {
 		color: ${brand.white};
-		padding-left: 1.7rem;
 		font-size: 1.8rem;
+		margin-bottom: 4rem;
 	}
 
 	span {
 		line-height: 2.2rem;
+		margin-bottom: 1.2rem;
 	}
 
 	@media ${until(Device.Tablet)} {
@@ -105,6 +106,8 @@ const ContactInfo = styled.div`
 `;
 
 const ExternalLinks = styled.div`
+	margin-top: 2.8rem;
+
 	a {
 		padding-right: 0.5rem;
 
