@@ -1,6 +1,6 @@
 import { getOptimizedCloudinaryUrl } from '@helpers/getOptimizedCloudinaryUrl';
 import { useInView } from '@hooks/useInView';
-import { Painting } from 'Components/Elements/PaintingDisplay/PaintingDisplay.types';
+import { Painting } from 'Components/Projects/Projects.types';
 import { motion, Variants } from 'framer-motion';
 
 import { s } from './SingleDisplay.styles';
@@ -19,8 +19,7 @@ export default function SingleDisplay({
 		true
 	);
 
-	const collectionType = painting.collection_type.split('_').join(' ');
-
+	const paintingCollection = painting.painting_collection.collectionTitle;
 	const optimizedUrl = getOptimizedCloudinaryUrl(
 		painting.picture[0].url,
 		'large'
@@ -69,7 +68,7 @@ export default function SingleDisplay({
 					transition={{ duration: 1.5, delay: inverted ? 0.2 : 0.6 }}
 					variants={txtVariants(inverted)}
 				>
-					{collectionType}
+					{paintingCollection}
 				</motion.span>
 				<s.Title
 					initial='hidden'

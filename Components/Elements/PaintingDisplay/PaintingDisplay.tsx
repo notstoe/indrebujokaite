@@ -3,7 +3,7 @@ import { gql, useQuery } from '@apollo/client';
 import { s } from './PaintingDisplay.styles';
 import { ss } from 'Components/Elements/Loading/loading.styles';
 
-import { DataD } from './PaintingDisplay.types';
+import { DataDisplay } from './PaintingDisplay.types';
 import SingleDisplay from 'Components/Elements/SingleDisplay/SingleDisplay';
 
 export default function PaintingDisplay() {
@@ -13,7 +13,9 @@ export default function PaintingDisplay() {
 				paintings {
 					id
 					title
-					collection_type
+					painting_collection {
+						collectionTitle
+					}
 					picture {
 						url
 					}
@@ -22,7 +24,9 @@ export default function PaintingDisplay() {
 		}
 	`;
 
-	const { data, loading, error } = useQuery<DataD>(DISPLAY_PAINTINGS_QUERY);
+	const { data, loading, error } = useQuery<DataDisplay>(
+		DISPLAY_PAINTINGS_QUERY
+	);
 
 	if (loading) return <ss.Loading>Loading...</ss.Loading>;
 	if (error) {
