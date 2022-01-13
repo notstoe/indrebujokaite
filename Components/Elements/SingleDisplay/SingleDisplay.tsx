@@ -33,16 +33,12 @@ export default function SingleDisplay({
 	const txtVariants = (inverted?: boolean): Variants => {
 		if (inverted) {
 			return {
-				firstSpan: { x: 80, opacity: 0 },
-				secSpan: { x: 80, opacity: 0 },
-				lastSpan: { x: 80, opacity: 0 },
+				hidden: { x: 80, opacity: 0 },
 				visible: { x: 0, opacity: 1 },
 			};
 		} else {
 			return {
-				firstSpan: { x: -80, opacity: 0 },
-				secSpan: { x: -80, opacity: 0 },
-				lastSpan: { x: -80, opacity: 0 },
+				hidden: { x: -80, opacity: 0 },
 				visible: { x: 0, opacity: 1 },
 			};
 		}
@@ -64,7 +60,7 @@ export default function SingleDisplay({
 				/>
 				<motion.span
 					initial='hidden'
-					animate={inView ? 'visible' : 'firstSpan'}
+					animate={inView ? 'visible' : 'hidden'}
 					transition={{ duration: 1.5, delay: inverted ? 0.2 : 0.6 }}
 					variants={txtVariants(inverted)}
 				>
@@ -72,7 +68,7 @@ export default function SingleDisplay({
 				</motion.span>
 				<s.Title
 					initial='hidden'
-					animate={inView ? 'visible' : 'secSpan'}
+					animate={inView ? 'visible' : 'hidden'}
 					transition={{ duration: 1.5, delay: 0.4 }}
 					variants={txtVariants(inverted)}
 				>
@@ -80,7 +76,7 @@ export default function SingleDisplay({
 				</s.Title>
 				<motion.span
 					initial='hidden'
-					animate={inView ? 'visible' : 'lastSpan'}
+					animate={inView ? 'visible' : 'hidden'}
 					transition={{ duration: 1.5, delay: inverted ? 0.6 : 0.2 }}
 					variants={txtVariants(inverted)}
 					className='author'
