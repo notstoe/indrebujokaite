@@ -7,8 +7,6 @@ import useEmblaCarousel from 'embla-carousel-react';
 import { s } from './Carousel.styles';
 import { motion, Variants } from 'framer-motion';
 
-// TODO - add painting title, collection and author on individual hover
-
 export default function Carousel({
 	collectionTitle,
 	paintings,
