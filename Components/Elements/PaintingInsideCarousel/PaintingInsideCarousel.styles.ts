@@ -1,3 +1,4 @@
+import { brand } from '@helpers/brand';
 import { Device, until } from '@helpers/media';
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
@@ -7,7 +8,7 @@ const Painting = styled.a`
 
 	:hover {
 		${() => StyledImage} {
-			opacity: 0.2;
+			opacity: 0.15;
 		}
 	}
 `;
@@ -16,7 +17,7 @@ const StyledImage = styled.img`
 	height: 49vh;
 	max-height: 400px;
 
-	transition: opacity 0.4s ease-out;
+	transition: opacity 0.5s ease-out;
 
 	padding: 1rem 0.5rem;
 
@@ -37,6 +38,28 @@ const PaintingHoverInfo = styled(motion.div)`
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+
+	font-size: 1.3rem;
+
+	color: ${brand.grey.light};
+
+	span {
+		padding-bottom: 0.5rem;
+	}
+
+	.title {
+		color: ${brand.white};
+		font-size: 1.9rem;
+	}
+
+	.collection {
+		font-size: 1.5rem;
+		padding-right: 10%;
+	}
+
+	.author {
+		padding-left: 47%;
+	}
 `;
 
 export const s = {
