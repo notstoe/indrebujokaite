@@ -59,8 +59,9 @@ export default function Projects() {
 	const sectionTitleVariants: Variants = {
 		hidden: {
 			opacity: 0,
+			scale: 1.05,
 		},
-		visible: { opacity: 1 },
+		visible: { opacity: 1, scale: 1 },
 	};
 
 	const COLLECTIONS_PAINTINGS_QUERY = gql`
@@ -111,7 +112,7 @@ export default function Projects() {
 					initial='hidden'
 					animate={inView ? 'visible' : 'hidden'}
 					variants={sectionTitleVariants}
-					transition={{ duration: 0.4 }}
+					transition={{ duration: 0.8 }}
 				>
 					PROJECTS
 				</motion.h1>
