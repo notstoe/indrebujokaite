@@ -64,7 +64,7 @@ export default function About() {
 				<motion.span
 					ref={elementRef}
 					initial='hiddenRight'
-					animate={inView ? 'visible' : 'hidden'}
+					animate={inView ? 'visible' : 'hiddenRight'}
 					variants={sectionVariants}
 					transition={animationTransition}
 				>
@@ -76,7 +76,7 @@ export default function About() {
 				alt="Indre's picture"
 				ref={elementRefImg}
 				initial='hiddenLeft'
-				animate={inViewImg ? 'visible' : 'hidden'}
+				animate={inViewImg ? 'visible' : 'hiddenLeft'}
 				variants={sectionVariants}
 				transition={animationTransition}
 			/>
@@ -85,7 +85,7 @@ export default function About() {
 				<motion.span
 					ref={elementRef2}
 					initial='hiddenLeft'
-					animate={inView2 ? 'visible' : 'hidden'}
+					animate={inView2 ? 'visible' : 'hiddenLeft'}
 					variants={sectionVariants}
 					transition={animationTransition}
 				>
