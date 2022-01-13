@@ -1,5 +1,6 @@
 import { brand } from '@helpers/brand';
 import { Device, until } from '@helpers/media';
+import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
 const Wrapper = styled.section`
@@ -22,24 +23,6 @@ const Wrapper = styled.section`
 
 		font-size: 10rem;
 		font-weight: lighter;
-
-		&::before {
-			content: '';
-			display: block;
-			position: absolute;
-
-			top: 18%;
-			right: 17%;
-
-			width: 23rem;
-			height: 23rem;
-
-			z-index: -2;
-
-			border-radius: 50%;
-
-			background-color: ${brand.grey.detail};
-		}
 	}
 
 	@media ${until(Device.Tablet)} {
@@ -51,14 +34,6 @@ const Wrapper = styled.section`
 			font-size: 6.5rem;
 			text-align: center;
 			order: -1;
-
-			&::before {
-				top: 37%;
-				right: 13%;
-
-				width: 13rem;
-				height: 13rem;
-			}
 		}
 	}
 
@@ -69,7 +44,7 @@ const Wrapper = styled.section`
 	}
 `;
 
-const ContactInfo = styled.div`
+const ContactInfo = styled(motion.div)`
 	flex: 1;
 
 	display: flex;
@@ -105,7 +80,7 @@ const ContactInfo = styled.div`
 	}
 `;
 
-const ExternalLinks = styled.div`
+const ExternalLinks = styled(motion.div)`
 	margin-top: 2.8rem;
 
 	a {
@@ -120,4 +95,105 @@ const ExternalLinks = styled.div`
 	}
 `;
 
-export const s = { Wrapper, ContactInfo, ExternalLinks };
+const BackgroundCircle = styled(motion.div)`
+	display: block;
+	position: absolute;
+
+	z-index: -2;
+	border-radius: 50%;
+
+	background-color: ${brand.grey.detail};
+
+	width: 23rem;
+	height: 23rem;
+
+	top: 18%;
+	left: 17%;
+
+	@media ${until(Device.Tablet)} {
+		top: 37%;
+		right: 13%;
+
+		width: 13rem;
+		height: 13rem;
+	}
+`;
+
+const SvgEmailWrapper = styled.button.attrs({ type: 'button' })`
+	display: inline-block;
+
+	margin-left: 1rem;
+
+	color: ${brand.grey.light};
+
+	background: 0;
+	outline: 0;
+	border: 0;
+	padding-right: 1rem;
+
+	position: relative;
+
+	svg {
+		width: 1.2rem;
+	}
+
+	&:hover {
+		color: ${brand.white};
+		cursor: pointer;
+
+		${() => TxtHelper} {
+			opacity: 1;
+
+			transform: translate(0, -50%);
+
+			pointer-events: all;
+		}
+	}
+`;
+
+const TxtHelper = styled.div`
+	position: absolute;
+
+	left: 100%;
+	top: 50%;
+	transform: translate(-10%, -50%);
+
+	border: 1px solid ${brand.grey.light};
+	padding: 0.2rem 1rem;
+
+	font-size: 1.1rem;
+	text-transform: uppercase;
+
+	opacity: 0;
+
+	transition: all 0.3s ease-out;
+
+	pointer-events: none;
+`;
+
+const SvgFbWrapper = styled.a`
+	color: ${brand.grey.light};
+
+	svg {
+		width: 1.8rem;
+	}
+`;
+
+const SvgIgWrapper = styled.a`
+	color: ${brand.grey.light};
+
+	svg {
+		width: 1.8rem;
+	}
+`;
+
+export const s = {
+	Wrapper,
+	ContactInfo,
+	ExternalLinks,
+	BackgroundCircle,
+	SvgEmailWrapper,
+	TxtHelper,
+	SvgFbWrapper,
+	SvgIgWrapper,
+};

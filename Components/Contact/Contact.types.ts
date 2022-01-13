@@ -10,8 +10,16 @@ interface ContactInfo {
 	facebook: string;
 }
 
-export interface DataC {
-	contact: ContactInfo;
+export interface DataContact {
+	contact: {
+		name: string;
+		email: string;
+		phone: string;
+		location_based: string;
+		shipping_info: string;
+		instagram: string;
+		facebook: string;
+	};
 	loading: boolean;
 	error?: ApolloError;
 }
