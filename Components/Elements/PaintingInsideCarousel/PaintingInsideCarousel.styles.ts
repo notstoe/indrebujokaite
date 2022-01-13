@@ -53,7 +53,6 @@ const PaintingHoverInfo = styled(motion.div)`
 	}
 
 	.collection {
-		font-size: 1.5rem;
 		padding-right: 10%;
 	}
 
