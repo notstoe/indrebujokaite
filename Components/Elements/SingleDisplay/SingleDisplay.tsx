@@ -51,39 +51,31 @@ export default function SingleDisplay({
 
 	return (
 		<s.SingleDisplay ref={elementRef} inverted={inverted}>
-			<div>
+			<motion.div initial='hidden' animate={inView ? 'visible' : 'hidden'}>
 				<s.BackgroundCircle
-					initial='hidden'
-					animate={inView ? 'visible' : 'hidden'}
 					transition={{ duration: 1, delay: 0.6 }}
 					variants={circleVariants}
 				/>
 				<motion.span
-					initial='hidden'
-					animate={inView ? 'visible' : 'hidden'}
 					transition={{ duration: 1.5, delay: inverted ? 0.2 : 0.6 }}
 					variants={txtVariants(inverted)}
 				>
 					{paintingCollection}
 				</motion.span>
 				<s.Title
-					initial='hidden'
-					animate={inView ? 'visible' : 'hidden'}
 					transition={{ duration: 1.5, delay: 0.4 }}
 					variants={txtVariants(inverted)}
 				>
 					{painting.title}
 				</s.Title>
 				<motion.span
-					initial='hidden'
-					animate={inView ? 'visible' : 'hidden'}
 					transition={{ duration: 1.5, delay: inverted ? 0.6 : 0.2 }}
 					variants={txtVariants(inverted)}
 					className='author'
 				>
 					Indrė Bujokaitė
 				</motion.span>
-			</div>
+			</motion.div>
 			<s.StyledImage
 				src={optimizedUrl}
 				alt={`${painting.title} painting`}
