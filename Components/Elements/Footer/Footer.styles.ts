@@ -1,4 +1,5 @@
 import { brand } from '@helpers/brand';
+import { Device, until } from '@helpers/media';
 import styled from 'styled-components';
 
 const Footer = styled.footer`
@@ -21,6 +22,10 @@ const Footer = styled.footer`
 	span a:hover {
 		color: ${brand.white};
 		text-decoration: underline;
+	}
+
+	@media ${until(Device.MobileLarge)} {
+		padding: 1rem;
 	}
 `;
 
