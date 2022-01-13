@@ -1,8 +1,7 @@
-import { Device, until } from '@helpers/media';
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
-const SingleCarouselWrapper = styled(motion.div)`
+const SingleCollectionDisplay = styled(motion.div)`
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -22,29 +21,10 @@ const CarouselWrapper = styled(motion.div)`
 
 	> div {
 		display: flex;
-
-		.embla__slide {
-			position: relative;
-			flex: 0 0 20%;
-		}
 	}
 `;
 
-const StyledImage = styled.img`
-	height: 49vh;
-	max-height: 400px;
-
-	transition: opacity 0.2s ease-out;
-
-	padding: 1rem 0.5rem;
-
-	:hover {
-		opacity: 0.2;
-	}
-
-	@media (${until(Device.Tablet)}) {
-		height: 35vh;
-	}
-`;
-
-export const s = { StyledImage, SingleCarouselWrapper, CarouselWrapper };
+export const s = {
+	SingleCollectionDisplay,
+	CarouselWrapper,
+};
