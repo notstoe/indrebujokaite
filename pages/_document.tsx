@@ -7,7 +7,7 @@ import Document, {
 } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 
-// gets Initial Props and Stylesheet from server (ssr)
+// Stylesheets from server and consistent random classnames between server / client
 
 export default class MyDocument extends Document {
 	static async getInitialProps(ctx: DocumentContext) {
