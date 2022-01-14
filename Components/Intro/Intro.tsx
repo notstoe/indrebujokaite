@@ -20,7 +20,7 @@ const subtitleVariants: Variants = {
 
 export default function Intro() {
 	return (
-		<s.Wrapper id='intro'>
+		<s.Wrapper id='home'>
 			<motion.span
 				variants={titleVariants}
 				initial='hidden'
