@@ -1,26 +1,19 @@
 import { s } from './Header.styles';
 
 import Link from 'next/link';
-
-const headerVariants = {
-	hidden: { y: '-50vh' },
-	visible: {
-		y: 0,
-		transition: { type: 'spring', delay: 2, duration: 1.2 },
-	},
-};
+import { useTransform, useViewportScroll } from 'framer-motion';
 
 export default function Header() {
+	const { scrollYProgress } = useViewportScroll();
+
+	const headerShow = useTransform(scrollYProgress, [0.05, 0.2], [0, 1]);
+
 	return (
-		<s.StyledHeader
-			variants={headerVariants}
-			initial='hidden'
-			animate='visible'
-		>
-			<Link href='#intro'>Home</Link>
+		<s.StyledHeader style={{ opacity: headerShow }}>
+			<Link href='#home'>Home</Link>
 			<Link href='#about'>About</Link>
 			<div>
-				<Link href='#intro' passHref>
+				<Link href='#home' passHref>
 					<a className='ownerName'>Indreta Art</a>
 				</Link>
 			</div>
