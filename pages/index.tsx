@@ -13,7 +13,7 @@ import Footer from 'Components/Elements/Footer/Footer';
 
 export default function Home() {
 	return (
-		<s.HomePageWrapper>
+		<s.PageWrapper>
 			<s.GlobalStyles />
 			<s.NoisyBg>
 				<Image
@@ -33,6 +33,6 @@ export default function Home() {
 			</s.ContentWrapper>
 
 			<Footer />
-		</s.HomePageWrapper>
+		</s.PageWrapper>
 	);
 }

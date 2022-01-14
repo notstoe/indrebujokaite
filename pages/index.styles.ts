@@ -87,7 +87,7 @@ const GlobalStyles = createGlobalStyle`
 	}
 `;
 
-const HomePageWrapper = styled.main`
+const PageWrapper = styled.main`
 	position: relative;
 
 	width: 100%;
@@ -125,7 +125,7 @@ const NoisyBg = styled.div`
 `;
 
 export const s = {
-	HomePageWrapper,
+	PageWrapper,
 	ContentWrapper,
 	GlobalStyles,
 	NoisyBg,
