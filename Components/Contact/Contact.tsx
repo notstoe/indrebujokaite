@@ -101,12 +101,7 @@ export default function Contact() {
 					</s.SvgIgWrapper>
 				</s.ExternalLinks>
 			</s.ContactInfo>
-			<motion.h1
-				initial='hidden'
-				animate={inView ? 'visible' : 'hidden'}
-				variants={opacityChange}
-				transition={{ duration: 1, delay: 0.2 }}
-			>
+			<motion.h1>
 				<s.BackgroundCircle
 					initial='hidden'
 					animate={inView ? 'visible' : 'hidden'}
