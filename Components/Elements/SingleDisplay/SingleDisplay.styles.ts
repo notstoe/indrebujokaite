@@ -57,18 +57,24 @@ const StyledImage = styled(motion.img)`
 	width: 95%;
 	max-width: 40rem;
 
+	cursor: pointer;
+
 	@media ${until(Device.TabletLarge)} {
 		align-self: center;
 	}
 `;
 
-const Title = styled(motion.span)`
+const Title = styled(motion.a)`
 	font-weight: normal;
 	font-size: 3rem;
 	align-self: center;
 
 	@media ${until(Device.TabletLarge)} {
 		padding-left: 2rem;
+	}
+
+	&:hover {
+		color: ${brand.grey.light};
 	}
 `;
 

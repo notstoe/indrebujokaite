@@ -5,5 +5,5 @@ export default function SinglePaintingPage() {
 	const router = useRouter();
 	const { id } = router.query;
 
-	return <SinglePainting id={id} />;
+	return <SinglePainting paintingId={id as string} />;
 }

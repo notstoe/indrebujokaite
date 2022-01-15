@@ -5,6 +5,7 @@ import { Painting } from 'Components/Projects/Projects.types';
 
 import { s } from './PaintingInsideCarousel.styles';
 import { motion, Variants } from 'framer-motion';
+import Link from 'next/link';
 
 export default function PaintingInsideCarousel({
 	collectionTitle,
@@ -29,43 +30,44 @@ export default function PaintingInsideCarousel({
 	};
 
 	return (
-		<s.Painting
-			onMouseEnter={() => setIsHovered(true)}
-			onMouseLeave={() => setIsHovered(false)}
-			href=''
-		>
-			<s.StyledImage src={optimizedUrl} alt={`${painting?.title} painting`} />
-			{isHovered && (
-				<s.PaintingHoverInfo>
-					<motion.span
-						initial='hidden'
-						animate={isHovered ? 'visible' : 'hidden'}
-						variants={hoverInfoVariants}
-						transition={{ type: 'tween', duration: 1, delay: 0.4 }}
-						className='collection'
-					>
-						{collectionTitle}
-					</motion.span>
-					<motion.span
-						initial='hidden'
-						animate={isHovered ? 'visible' : 'hidden'}
-						transition={{ duration: 1, delay: 0.2 }}
-						variants={hoverInfoVariants}
-						className='title'
-					>
-						{painting?.title}
-					</motion.span>
-					<motion.span
-						initial='hidden'
-						animate={isHovered ? 'visible' : 'hidden'}
-						transition={{ duration: 1 }}
-						variants={hoverInfoVariants}
-						className='author'
-					>
-						Indrė Bujokaitė
-					</motion.span>
-				</s.PaintingHoverInfo>
-			)}
-		</s.Painting>
+		<Link passHref href={`/painting/${painting?.id}`}>
+			<s.Painting
+				onMouseEnter={() => setIsHovered(true)}
+				onMouseLeave={() => setIsHovered(false)}
+			>
+				<s.StyledImage src={optimizedUrl} alt={`${painting?.title} painting`} />
+				{isHovered && (
+					<s.PaintingHoverInfo>
+						<motion.span
+							initial='hidden'
+							animate={isHovered ? 'visible' : 'hidden'}
+							variants={hoverInfoVariants}
+							transition={{ type: 'tween', duration: 1, delay: 0.4 }}
+							className='collection'
+						>
+							{collectionTitle}
+						</motion.span>
+						<motion.span
+							initial='hidden'
+							animate={isHovered ? 'visible' : 'hidden'}
+							transition={{ duration: 1, delay: 0.2 }}
+							variants={hoverInfoVariants}
+							className='title'
+						>
+							{painting?.title}
+						</motion.span>
+						<motion.span
+							initial='hidden'
+							animate={isHovered ? 'visible' : 'hidden'}
+							transition={{ duration: 1 }}
+							variants={hoverInfoVariants}
+							className='author'
+						>
+							Indrė Bujokaitė
+						</motion.span>
+					</s.PaintingHoverInfo>
+				)}
+			</s.Painting>
+		</Link>
 	);
 }

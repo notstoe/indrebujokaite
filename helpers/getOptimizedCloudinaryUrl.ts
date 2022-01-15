@@ -1,10 +1,10 @@
 export function getOptimizedCloudinaryUrl(
 	url: string | undefined,
 	size: string
-): string | undefined {
+): string {
 	const positionToSplit = url?.lastIndexOf('/');
 
-	if (!positionToSplit) return;
+	if (!positionToSplit) return '';
 
 	const optimizedUrl =
 		url?.substring(0, positionToSplit) +

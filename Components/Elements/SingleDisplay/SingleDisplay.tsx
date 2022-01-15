@@ -2,6 +2,7 @@ import { getOptimizedCloudinaryUrl } from '@helpers/getOptimizedCloudinaryUrl';
 import { useInView } from '@hooks/useInView';
 import { Painting } from 'Components/Projects/Projects.types';
 import { motion, Variants } from 'framer-motion';
+import Link from 'next/link';
 
 import { s } from './SingleDisplay.styles';
 
@@ -62,12 +63,14 @@ export default function SingleDisplay({
 				>
 					{paintingCollection}
 				</motion.span>
-				<s.Title
-					transition={{ duration: 1.5, delay: 0.4 }}
-					variants={txtVariants(inverted)}
-				>
-					{painting.title}
-				</s.Title>
+				<Link passHref href={`/painting/${painting.id}`}>
+					<s.Title
+						transition={{ duration: 1.5, delay: 0.4 }}
+						variants={txtVariants(inverted)}
+					>
+						{painting.title}
+					</s.Title>
+				</Link>
 				<motion.span
 					transition={{ duration: 1.5, delay: inverted ? 0.6 : 0.2 }}
 					variants={txtVariants(inverted)}
@@ -76,14 +79,16 @@ export default function SingleDisplay({
 					Indrė Bujokaitė
 				</motion.span>
 			</motion.div>
-			<s.StyledImage
-				src={optimizedUrl}
-				alt={`${painting.title} painting`}
-				initial='hidden'
-				animate={inView ? 'visible' : 'hidden'}
-				transition={{ duration: 0.6 }}
-				variants={imageVariants}
-			/>
+			<Link passHref href={`/painting/${painting.id}`}>
+				<s.StyledImage
+					src={optimizedUrl}
+					alt={`${painting.title} painting`}
+					initial='hidden'
+					animate={inView ? 'visible' : 'hidden'}
+					transition={{ duration: 0.6 }}
+					variants={imageVariants}
+				/>
+			</Link>
 		</s.SingleDisplay>
 	);
 }
