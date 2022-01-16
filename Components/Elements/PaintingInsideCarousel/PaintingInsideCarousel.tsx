@@ -42,7 +42,7 @@ export default function PaintingInsideCarousel({
 							initial='hidden'
 							animate={isHovered ? 'visible' : 'hidden'}
 							variants={hoverInfoVariants}
-							transition={{ type: 'tween', duration: 1, delay: 0.4 }}
+							transition={{ type: 'tween', duration: 0.8, delay: 0.4 }}
 							className='collection'
 						>
 							{collectionTitle}
@@ -50,7 +50,7 @@ export default function PaintingInsideCarousel({
 						<motion.span
 							initial='hidden'
 							animate={isHovered ? 'visible' : 'hidden'}
-							transition={{ duration: 1, delay: 0.2 }}
+							transition={{ duration: 0.8, delay: 0.2 }}
 							variants={hoverInfoVariants}
 							className='title'
 						>
@@ -59,7 +59,7 @@ export default function PaintingInsideCarousel({
 						<motion.span
 							initial='hidden'
 							animate={isHovered ? 'visible' : 'hidden'}
-							transition={{ duration: 1 }}
+							transition={{ duration: 0.8 }}
 							variants={hoverInfoVariants}
 							className='author'
 						>

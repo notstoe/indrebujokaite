@@ -5,16 +5,16 @@ const titleVariants: Variants = {
 	hidden: { opacity: 0 },
 	visible: {
 		opacity: 1,
-		transition: { delay: 0.5, duration: 1.2 },
+		transition: { delay: 0.5, duration: 1.5 },
 	},
 };
 
 const subtitleVariants: Variants = {
-	hidden: { x: '+10vw', opacity: 0 },
+	hidden: { x: 30, opacity: 0 },
 	visible: {
 		x: 0,
 		opacity: 1,
-		transition: { type: 'spring', duration: 1.8, delay: 1 },
+		transition: { type: 'spring', duration: 1.5, delay: 1 },
 	},
 };
 
