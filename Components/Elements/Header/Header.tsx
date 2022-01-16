@@ -5,15 +5,16 @@ import { useRouter } from 'next/router';
 
 import { useTransform, useViewportScroll } from 'framer-motion';
 
-// TODO - make it link properly to home page links when in single product
-
 export default function Header() {
 	const { scrollYProgress } = useViewportScroll();
 
-	const headerShow = useTransform(scrollYProgress, [0.05, 0.2], [0, 1]);
+	const router = useRouter();
+	const { id } = router.query;
 
-	// const router = useRouter();
-	// const { id } = router.query;
+	const headerShow = useTransform(scrollYProgress, id ? [0, 0] : [0.05, 0.2], [
+		0,
+		1,
+	]);
 
 	return (
 		<s.StyledHeader style={{ opacity: headerShow }}>
