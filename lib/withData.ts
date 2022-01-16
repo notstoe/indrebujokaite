@@ -21,7 +21,7 @@ function withData({ headers, initialState }: withDataProps): ApolloClient<any> {
 			createHttpLink({
 				uri: process.env.NODE_ENV === 'development' ? endpoint : prodEndpoint,
 				fetchOptions: {
-					credentials: 'include',
+					credentials: 'omit',
 				},
 				headers,
 			}),

@@ -46,26 +46,6 @@ export default function SinglePainting({ paintingId }: { paintingId: string }) {
 		return null;
 	}
 
-	const mockedPainting = {
-		id: '61d5b87df2d5726e461c2c4c',
-		title: 'Lorem Ipsum',
-		collection: 'Contemporary Fine Art',
-		description:
-			'Sed in ligula gravida, luctus velit vitae, ultricies sem. Maecenas malesuada tortor vel ipsum sagittis semper. Aliquam mattis et odio sit amet sodales.',
-		price: 800,
-		pictureUrl: [
-			'https://res.cloudinary.com/dowa8tjdi/image/upload/v1637685777/indrebujokaite/DSC_0840_2_6930451a7d.jpg',
-			'https://res.cloudinary.com/dowa8tjdi/image/upload/v1637685777/indrebujokaite/DSC_0840_2_6930451a7d.jpg',
-			'https://res.cloudinary.com/dowa8tjdi/image/upload/v1637685777/indrebujokaite/DSC_0840_2_6930451a7d.jpg',
-		],
-	};
-	const mockedContact = {
-		email: 'Indre.bujokaite@example.com',
-		phone: '+44 999999999',
-		location_based: 'Based in Liverpool, UK.',
-		shipping_info: 'Shipping only to the UK.',
-	};
-
 	const thumbnailsDivs = data?.paintings[0].picture.map((picture, index) => {
 		const optimizedThumbnailUrl = getOptimizedCloudinaryUrl(
 			picture.url,
@@ -97,8 +77,8 @@ export default function SinglePainting({ paintingId }: { paintingId: string }) {
 						radius={{ normal: '12rem', mobile: '10rem' }}
 						positioning={{ top: '13%', left: '11%' }}
 					/>
-					<span>{mockedPainting.collection}</span>
-					<s.Title>{mockedPainting.title}</s.Title>
+					<span>{data?.paintings[0].painting_collection.collectionTitle}</span>
+					<s.Title>{data?.paintings[0].title}</s.Title>
 					<span className='author'>Indrė Bujokaitė</span>
 				</section>
 				<s.StyledImageWrapper>
@@ -106,7 +86,7 @@ export default function SinglePainting({ paintingId }: { paintingId: string }) {
 						src={optimizedUrl}
 						layout='fill'
 						objectFit='contain'
-						alt={`${mockedPainting.title} painting`}
+						alt={`${data?.paintings[0].title} painting`}
 					/>
 				</s.StyledImageWrapper>
 				<s.ThumbnailsWrapper>{thumbnailsDivs}</s.ThumbnailsWrapper>
@@ -124,8 +104,8 @@ export default function SinglePainting({ paintingId }: { paintingId: string }) {
 						}}
 					/>
 				</h2>
-				<p>{mockedPainting.description}</p>
-				<span>{`£${mockedPainting.price}`}</span>
+				<p>{data?.paintings[0].description}</p>
+				<span>{`£${data?.paintings[0].price}`}</span>
 			</s.TextWrapper>
 			<s.TextWrapper alignRight={true}>
 				<h2>
@@ -141,10 +121,10 @@ export default function SinglePainting({ paintingId }: { paintingId: string }) {
 					/>
 				</h2>
 				<p>
-					{mockedContact.email}{' '}
+					{data?.contact.email}{' '}
 					<s.SvgEmailWrapper
 						onClick={() =>
-							navigator.clipboard.writeText(mockedContact.email ?? '')
+							navigator.clipboard.writeText(data?.contact.email ?? '')
 						}
 					>
 						<Copy />
@@ -152,7 +132,7 @@ export default function SinglePainting({ paintingId }: { paintingId: string }) {
 						<s.TxtHelper>Copy</s.TxtHelper>
 					</s.SvgEmailWrapper>
 				</p>
-				<p className='phone'>{mockedContact.phone}</p>
+				<p className='phone'>{data?.contact.phone}</p>
 			</s.TextWrapper>
 			<s.TextWrapper>
 				<h2>
@@ -167,9 +147,11 @@ export default function SinglePainting({ paintingId }: { paintingId: string }) {
 						}}
 					/>
 				</h2>
-				<p>{mockedContact.location_based} </p>
-				<p>{mockedContact.shipping_info}</p>
+				<p>{data?.contact.location_based} </p>
+				<p>{data?.contact.shipping_info}</p>
 			</s.TextWrapper>
 		</s.Wrapper>
 	);
 }
+
+// TODO - add facebook and instagram links in Contact
