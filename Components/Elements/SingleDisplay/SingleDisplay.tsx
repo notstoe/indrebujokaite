@@ -1,10 +1,35 @@
+import Link from 'next/link';
 import { getOptimizedCloudinaryUrl } from '@helpers/getOptimizedCloudinaryUrl';
 import { useInView } from '@hooks/useInView';
-import { Painting } from 'Components/Projects/Projects.types';
-import { motion, Variants } from 'framer-motion';
-import Link from 'next/link';
 
+import { Painting } from 'Components/Projects/Projects.types';
+
+import { motion, Variants } from 'framer-motion';
 import { s } from './SingleDisplay.styles';
+
+const circleVariants: Variants = {
+	hidden: { scale: 0, y: -15, opacity: 0 },
+	visible: { scale: 1, y: 0, opacity: 1 },
+};
+
+const txtVariants = (inverted?: boolean): Variants => {
+	if (inverted) {
+		return {
+			hidden: { x: 80, opacity: 0 },
+			visible: { x: 0, opacity: 1 },
+		};
+	} else {
+		return {
+			hidden: { x: -80, opacity: 0 },
+			visible: { x: 0, opacity: 1 },
+		};
+	}
+};
+
+const imageVariants: Variants = {
+	hidden: { opacity: 0 },
+	visible: { opacity: 1 },
+};
 
 export default function SingleDisplay({
 	painting,
@@ -25,30 +50,6 @@ export default function SingleDisplay({
 		painting.picture[0].url,
 		'large'
 	);
-
-	const circleVariants: Variants = {
-		hidden: { scale: 0, y: -15, opacity: 0 },
-		visible: { scale: 1, y: 0, opacity: 1 },
-	};
-
-	const txtVariants = (inverted?: boolean): Variants => {
-		if (inverted) {
-			return {
-				hidden: { x: 80, opacity: 0 },
-				visible: { x: 0, opacity: 1 },
-			};
-		} else {
-			return {
-				hidden: { x: -80, opacity: 0 },
-				visible: { x: 0, opacity: 1 },
-			};
-		}
-	};
-
-	const imageVariants: Variants = {
-		hidden: { opacity: 0 },
-		visible: { opacity: 1 },
-	};
 
 	return (
 		<s.SingleDisplay ref={elementRef} inverted={inverted}>
