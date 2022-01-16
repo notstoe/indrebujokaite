@@ -1,6 +1,7 @@
 import styled, { createGlobalStyle } from 'styled-components';
 import { brand } from '@helpers/brand';
 import { until, Device } from '@helpers/media';
+import { motion } from 'framer-motion';
 
 const GlobalStyles = createGlobalStyle`
 
@@ -108,7 +109,7 @@ const ContentWrapper = styled.div`
 	min-height: 100vh;
 `;
 
-const NoisyBg = styled.div`
+const NoisyBg = styled(motion.div)`
 	content: '';
 	position: fixed;
 	width: 100%;
