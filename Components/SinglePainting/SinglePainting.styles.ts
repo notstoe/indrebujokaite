@@ -1,5 +1,7 @@
 import { brand } from '@helpers/brand';
 import { Device, until } from '@helpers/media';
+
+import { motion } from 'framer-motion';
 import styled, { css } from 'styled-components';
 
 const Wrapper = styled.div`
@@ -9,14 +11,13 @@ const Wrapper = styled.div`
 
 	width: 95%;
 	max-width: 95rem;
-	padding: 1rem 8rem 5rem 8rem;
+	padding: 5rem 8rem 5rem 8rem;
 	margin: 0 auto;
 
 	font-weight: lighter;
 
 	@media ${until(Device.TabletLarge)} {
-		padding: 0;
-		padding-bottom: 8rem;
+		padding: 3rem 0;
 	} ;
 `;
 
@@ -50,10 +51,14 @@ const PaintingDisplay = styled.div`
 	@media ${until(Device.LaptopLarge)} {
 		flex-direction: column;
 		align-items: center;
+
+		> section {
+			margin-bottom: 3.5rem;
+		}
 	}
 `;
 
-const Title = styled.a`
+const Title = styled(motion.a)`
 	font-weight: normal;
 	font-size: 2.2rem;
 	align-self: center;
@@ -65,7 +70,7 @@ const Title = styled.a`
 	}
 `;
 
-const StyledImageWrapper = styled.div`
+const StyledImageWrapper = styled(motion.div)`
 	position: relative;
 
 	width: 95%;
@@ -73,7 +78,7 @@ const StyledImageWrapper = styled.div`
 	height: 28rem;
 `;
 
-const TextWrapper = styled.div<{ alignRight?: boolean }>`
+const TextWrapper = styled(motion.div)<{ alignRight?: boolean }>`
 	font-size: 1.7rem;
 
 	display: flex;
@@ -172,7 +177,7 @@ const TxtHelper = styled.div`
 	pointer-events: none;
 `;
 
-const ThumbnailsWrapper = styled.div`
+const ThumbnailsWrapper = styled(motion.div)`
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
@@ -182,10 +187,6 @@ const ThumbnailsWrapper = styled.div`
 	@media ${until(Device.LaptopLarge)} {
 		flex-direction: row;
 		align-items: center;
-	}
-
-	@media ${until(Device.MobileLarge)} {
-		margin-top: -4rem;
 	}
 `;
 
@@ -204,7 +205,35 @@ const StyledThumbnail = styled.div`
 	transition: opacity 0.2s;
 `;
 
-const BackgroundCircle = styled.div<{
+const ExternalLinks = styled(motion.div)`
+	margin-top: 1.8rem;
+
+	a {
+		padding-right: 0.5rem;
+
+		:hover {
+			color: ${brand.white};
+		}
+	}
+`;
+
+const SvgFbWrapper = styled.a`
+	color: ${brand.grey.light};
+
+	svg {
+		width: 1.8rem;
+	}
+`;
+
+const SvgIgWrapper = styled.a`
+	color: ${brand.grey.light};
+
+	svg {
+		width: 1.8rem;
+	}
+`;
+
+const BackgroundCircle = styled(motion.div)<{
 	radius: { normal: string; mobile: string };
 	positioning: {
 		top: string;
@@ -245,4 +274,7 @@ export const s = {
 	TxtHelper,
 	ThumbnailsWrapper,
 	StyledThumbnail,
+	ExternalLinks,
+	SvgFbWrapper,
+	SvgIgWrapper,
 };

@@ -105,6 +105,7 @@ const ContentWrapper = styled.div`
 	font-size: 2rem;
 
 	overflow: hidden;
+	min-height: 100vh;
 `;
 
 const NoisyBg = styled.div`

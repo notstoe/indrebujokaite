@@ -1,5 +1,3 @@
-// TODO - individual pages for each painting
-
 /* eslint-disable react-hooks/rules-of-hooks */
 import { gql, useQuery } from '@apollo/client';
 import { useInView } from '@hooks/useInView';
