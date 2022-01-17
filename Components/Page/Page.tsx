@@ -8,7 +8,7 @@ import { s } from './Page.styles';
 
 const noiseVariants: Variants = {
 	hidden: { opacity: 0 },
-	visible: { opacity: 1, transition: { duration: 1 } },
+	visible: { opacity: 1, transition: { duration: 1, delay: 1 } },
 };
 
 export default function Page({ children }: any) {
