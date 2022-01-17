@@ -21,7 +21,6 @@ export default function Carousel({
 
 	const [emblaRef] = useEmblaCarousel({
 		dragFree: true,
-		align: 'center',
 		startIndex: 1,
 	});
 
