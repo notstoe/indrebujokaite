@@ -1,18 +1,19 @@
 import Image from 'next/image';
 import { gql, useQuery } from '@apollo/client';
+import Head from 'next/head';
+import { useState } from 'react';
+import { useInView } from '@hooks/useInView';
+import { getOptimizedCloudinaryUrl } from '@helpers/getOptimizedCloudinaryUrl';
 
 import { s } from './SinglePainting.styles';
 import { ss } from 'Components/Elements/Loading/loading.styles';
 import { motion, Variants } from 'framer-motion';
-import { useState } from 'react';
 
 import { DataSinglePage } from './SinglePainting.types';
 
 import Copy from '@assets/copy.svg';
 import Fb from '@assets/Fb.svg';
 import Ig from '@assets/Ig.svg';
-import { getOptimizedCloudinaryUrl } from '@helpers/getOptimizedCloudinaryUrl';
-import { useInView } from '@hooks/useInView';
 
 const circleVariants: Variants = {
 	hidden: { scale: 0, y: -15, opacity: 0 },
@@ -115,6 +116,9 @@ export default function SinglePainting({ paintingId }: { paintingId: string }) {
 
 	return (
 		<s.Wrapper>
+			<Head>
+				<title>Indreta | {data?.paintings[0].title}</title>
+			</Head>
 			<s.PaintingDisplay>
 				<motion.section initial='hidden' animate='visible'>
 					<s.BackgroundCircle
