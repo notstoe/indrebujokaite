@@ -12,10 +12,9 @@ import { endpoint, prodEndpoint } from '../config';
 
 type withDataProps = {
 	initialState?: any;
-	headers?: any;
 };
 
-function withData({ headers, initialState }: withDataProps): ApolloClient<any> {
+function withData({ initialState }: withDataProps): ApolloClient<any> {
 	return new ApolloClient({
 		link: ApolloLink.from([
 			createHttpLink({
@@ -23,7 +22,6 @@ function withData({ headers, initialState }: withDataProps): ApolloClient<any> {
 				fetchOptions: {
 					credentials: 'omit',
 				},
-				headers,
 			}),
 		]),
 		cache: new InMemoryCache().restore(initialState || {}),
