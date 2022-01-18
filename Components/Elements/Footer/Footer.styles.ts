@@ -19,9 +19,12 @@ const Footer = styled.footer`
 	color: ${brand.grey.light};
 	background: ${brand.black.base};
 
+	span a {
+		text-decoration: underline;
+	}
+
 	span a:hover {
 		color: ${brand.white};
-		text-decoration: underline;
 	}
 
 	@media ${until(Device.MobileLarge)} {
