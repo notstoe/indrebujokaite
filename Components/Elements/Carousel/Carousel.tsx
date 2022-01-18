@@ -21,7 +21,7 @@ export default function Carousel({
 
 	const [emblaRef] = useEmblaCarousel({
 		dragFree: true,
-		startIndex: 1,
+		containScroll: 'keepSnaps',
 	});
 
 	const carouselVariants: Variants = {

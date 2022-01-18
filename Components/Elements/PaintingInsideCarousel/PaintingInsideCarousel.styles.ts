@@ -14,15 +14,13 @@ const Painting = styled.a`
 `;
 
 const StyledImage = styled.img`
-	height: 49vh;
-	max-height: 400px;
+	height: 23rem;
+	padding: 1rem 0.5rem;
 
 	transition: opacity 0.5s ease-out;
 
-	padding: 1rem 0.5rem;
-
 	@media (${until(Device.Tablet)}) {
-		height: 35vh;
+		height: 21rem;
 	}
 `;
 
