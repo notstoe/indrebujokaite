@@ -25,7 +25,7 @@ export default function Header() {
 					<a className='ownerName'>Indreta Art</a>
 				</Link>
 			</div>
-			<Link href='/#projects'>Projects</Link>
+			<Link href='/#projects'>Portfolio</Link>
 			<Link href='/#contact'>Contact</Link>
 		</s.StyledHeader>
 	);

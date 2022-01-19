@@ -1,5 +1,9 @@
+import { gql, useQuery } from '@apollo/client';
+import { getOptimizedCloudinaryUrl } from '@helpers/getOptimizedCloudinaryUrl';
+import { ss } from 'Components/Elements/Loading/loading.styles';
 import { motion, Variants } from 'framer-motion';
 import { s } from './Intro.styles';
+import { DataIntro } from './Intro.types';
 
 const titleVariants: Variants = {
 	hidden: { opacity: 0 },
@@ -18,7 +22,29 @@ const subtitleVariants: Variants = {
 	},
 };
 
+const ABOUT_ME_QUERY = gql`
+	query ABOUT_ME_TXT {
+		about {
+			background_intro_picture {
+				url
+			}
+		}
+	}
+`;
+
 export default function Intro() {
+	const { data, loading, error } = useQuery<DataIntro>(ABOUT_ME_QUERY);
+
+	if (loading) return <ss.Loading>Loading...</ss.Loading>;
+	if (error) {
+		console.log([error, error.message]);
+		return null;
+	}
+
+	const url = data?.about.background_intro_picture.url;
+
+	const optimizedUrl = getOptimizedCloudinaryUrl(url, 'medium');
+
 	return (
 		<s.Wrapper id='home'>
 			<motion.span
@@ -37,10 +63,7 @@ export default function Intro() {
 			>
 				Acrylic Painting
 			</motion.span>
-			<s.StyledImage
-				src='https://res.cloudinary.com/dowa8tjdi/image/upload/v1641758923/indrebujokaite/medium_test2darker_170f3b96b5.jpg'
-				alt='the back of a canvas board'
-			/>
+			<s.StyledImage src={optimizedUrl} alt='the back of a canvas board' />
 		</s.Wrapper>
 	);
 }
