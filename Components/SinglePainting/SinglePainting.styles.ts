@@ -78,7 +78,7 @@ const StyledImageWrapper = styled(motion.div)`
 	height: 28rem;
 `;
 
-const TextWrapper = styled(motion.div)<{ alignRight?: boolean }>`
+const TextWrapper = styled(motion.div)<{ alignright?: boolean }>`
 	font-size: 1.7rem;
 
 	display: flex;
@@ -86,8 +86,8 @@ const TextWrapper = styled(motion.div)<{ alignRight?: boolean }>`
 
 	margin-bottom: 7rem;
 
-	${({ alignRight }) =>
-		alignRight
+	${({ alignright }) =>
+		alignright
 			? css`
 					text-align: right;
 
@@ -135,7 +135,7 @@ const SvgEmailWrapper = styled.button.attrs({ type: 'button' })`
 	background: 0;
 	outline: 0;
 	border: 0;
-	padding-right: 1rem;
+	padding: 0 1rem;
 
 	position: relative;
 
@@ -160,9 +160,9 @@ const SvgEmailWrapper = styled.button.attrs({ type: 'button' })`
 const TxtHelper = styled.div`
 	position: absolute;
 
-	left: 100%;
+	right: 100%;
 	top: 50%;
-	transform: translate(-10%, -50%);
+	transform: translate(10%, -50%);
 
 	border: 1px solid ${brand.grey.light};
 	padding: 0.7rem 1rem;

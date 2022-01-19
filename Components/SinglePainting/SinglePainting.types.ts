@@ -8,6 +8,7 @@ type Painting = {
 	picture: {
 		url: string;
 	}[];
+	available: boolean;
 };
 
 type ContactInfo = {

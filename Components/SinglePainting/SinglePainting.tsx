@@ -50,6 +50,7 @@ const SINGLE_PAINTINGS_QUERY = gql`
 			picture {
 				url
 			}
+			available
 		}
 		contact {
 			email
@@ -192,10 +193,13 @@ export default function SinglePainting({ paintingId }: { paintingId: string }) {
 					/>
 				</h2>
 				<p>{data?.paintings[0].description}</p>
-				<span>{`£${data?.paintings[0].price}`}</span>
+				<span>{data?.paintings[0].price && `£${data.paintings[0].price}`}</span>
+				<span>
+					{data?.paintings[0].available ? 'Available' : 'Unavailable'}
+				</span>
 			</s.TextWrapper>
 			<s.TextWrapper
-				alignRight={true}
+				alignright={true}
 				ref={elementRef2}
 				initial='hidden'
 				animate={inView2 ? 'visible' : 'hiddenRight'}
@@ -219,7 +223,6 @@ export default function SinglePainting({ paintingId }: { paintingId: string }) {
 					/>
 				</h2>
 				<p>
-					{data?.contact.email}{' '}
 					<s.SvgEmailWrapper
 						onClick={() =>
 							navigator.clipboard.writeText(data?.contact.email ?? '')
@@ -229,6 +232,7 @@ export default function SinglePainting({ paintingId }: { paintingId: string }) {
 
 						<s.TxtHelper>Copy</s.TxtHelper>
 					</s.SvgEmailWrapper>
+					{data?.contact.email}
 				</p>
 				<p className='phone'>{data?.contact.phone}</p>
 				<s.ExternalLinks
