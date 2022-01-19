@@ -12,7 +12,6 @@
     "@types/styled-components": "^5.1.17",
     "apollo-link-http": "^1.5.17",
     "apollo-upload-client": "^16.0.0",
-    "babel-plugin-styled-components": "^2.0.2",
     "embla-carousel-react": "^6.0.2",
     "framer-motion": "^5.5.6",
     "graphql": "^16.0.1",
