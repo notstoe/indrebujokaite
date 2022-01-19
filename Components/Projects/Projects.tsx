@@ -112,7 +112,7 @@ export default function Projects() {
 					variants={sectionTitleVariants}
 					transition={{ duration: 0.8 }}
 				>
-					PROJECTS
+					PORTFOLIO
 				</motion.h1>
 				<s.BackgroundCircle
 					style={{ scale: ballScale, x: horizontalSlide() }}
