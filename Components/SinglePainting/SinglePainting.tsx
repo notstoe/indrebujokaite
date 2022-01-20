@@ -1,15 +1,14 @@
 import Image from 'next/image';
-import { gql, useQuery } from '@apollo/client';
 import Head from 'next/head';
 import { useState } from 'react';
 import { useInView } from '@hooks/useInView';
 import { getOptimizedCloudinaryUrl } from '@helpers/getOptimizedCloudinaryUrl';
 
 import { s } from './SinglePainting.styles';
-import { ss } from 'Components/Elements/Loading/loading.styles';
 import { motion, Variants } from 'framer-motion';
 
-import { DataSinglePage } from './SinglePainting.types';
+import { ContactInfo } from 'pages/index.types';
+import { PaintingFullInfo } from 'pages/painting/id.types';
 
 import Copy from '@assets/copy.svg';
 import Fb from '@assets/Fb.svg';
@@ -38,32 +37,15 @@ const txtWrapperVariants: Variants = {
 const textTransition = { type: 'tween', duration: 1 };
 const circleTransition = { duration: 1.5, delay: 0.6 };
 
-const SINGLE_PAINTINGS_QUERY = gql`
-	query SINGLE_PAINTING_QUERY($paintingId: String) {
-		paintings(where: { id: $paintingId }) {
-			title
-			painting_collection {
-				collectionTitle
-			}
-			description
-			price
-			picture {
-				url
-			}
-			available
-		}
-		contact {
-			email
-			phone
-			instagram
-			facebook
-			location_based
-			shipping_info
-		}
-	}
-`;
+interface SinglePaintingComponentProps {
+	contactData: ContactInfo;
+	paintingData: PaintingFullInfo;
+}
 
-export default function SinglePainting({ paintingId }: { paintingId: string }) {
+export default function SinglePainting({
+	contactData,
+	paintingData,
+}: SinglePaintingComponentProps) {
 	const [currentPicture, setCurrentPicture] = useState('');
 
 	const [elementRef, inView] = useInView<HTMLDivElement>({ threshold: 0.45 });
@@ -72,25 +54,12 @@ export default function SinglePainting({ paintingId }: { paintingId: string }) {
 
 	const [elementRef3, inView3] = useInView<HTMLDivElement>({ threshold: 0.45 });
 
-	const { data, loading, error } = useQuery<DataSinglePage>(
-		SINGLE_PAINTINGS_QUERY,
-		{
-			variables: { paintingId },
-		}
-	);
-
-	if (loading) return <ss.Loading>Loading...</ss.Loading>;
-	if (error) {
-		console.log([error, error.message]);
-		return null;
-	}
-
 	const initialPicture = getOptimizedCloudinaryUrl(
-		data?.paintings[0].picture[0].url,
+		paintingData?.picture[0].url,
 		'large'
 	);
 
-	const thumbnailsDivs = data?.paintings[0].picture.map((picture, index) => {
+	const thumbnailsDivs = paintingData?.picture.map((picture, index) => {
 		const optimizedThumbnailUrl = getOptimizedCloudinaryUrl(
 			picture.url,
 			'thumbnail'
@@ -118,7 +87,7 @@ export default function SinglePainting({ paintingId }: { paintingId: string }) {
 	return (
 		<s.Wrapper>
 			<Head>
-				<title>Indreta | {data?.paintings[0].title}</title>
+				<title>Indreta | {paintingData.title}</title>
 			</Head>
 			<s.PaintingDisplay>
 				<motion.section initial='hidden' animate='visible'>
@@ -132,13 +101,13 @@ export default function SinglePainting({ paintingId }: { paintingId: string }) {
 						transition={{ duration: 1.7, delay: 0.6 }}
 						variants={paintingInfoVariants}
 					>
-						{data?.paintings[0].painting_collection.collectionTitle}
+						{paintingData.painting_collection.collectionTitle}
 					</motion.span>
 					<s.Title
 						transition={{ duration: 1.7, delay: 0.4 }}
 						variants={paintingInfoVariants}
 					>
-						{data?.paintings[0].title}
+						{paintingData.title}
 					</s.Title>
 					<motion.span
 						transition={{ duration: 1.7, delay: 0.2 }}
@@ -158,7 +127,7 @@ export default function SinglePainting({ paintingId }: { paintingId: string }) {
 						src={currentPicture.length > 0 ? currentPicture : initialPicture}
 						layout='fill'
 						objectFit='contain'
-						alt={`${data?.paintings[0].title} painting`}
+						alt={`${paintingData.title} painting`}
 					/>
 				</s.StyledImageWrapper>
 				<s.ThumbnailsWrapper
@@ -192,11 +161,9 @@ export default function SinglePainting({ paintingId }: { paintingId: string }) {
 						}}
 					/>
 				</h2>
-				<p>{data?.paintings[0].description}</p>
-				<span>{data?.paintings[0].price && `£${data.paintings[0].price}`}</span>
-				<span>
-					{data?.paintings[0].available ? 'Available' : 'Unavailable'}
-				</span>
+				<p>{paintingData.description}</p>
+				<span>{paintingData.price && `£${paintingData.price}`}</span>
+				<span>{paintingData.available ? 'Available' : 'Unavailable'}</span>
 			</s.TextWrapper>
 			<s.TextWrapper
 				alignright={true}
@@ -225,24 +192,24 @@ export default function SinglePainting({ paintingId }: { paintingId: string }) {
 				<p>
 					<s.SvgEmailWrapper
 						onClick={() =>
-							navigator.clipboard.writeText(data?.contact.email ?? '')
+							navigator.clipboard.writeText(contactData.email ?? '')
 						}
 					>
 						<Copy />
 
 						<s.TxtHelper>Copy</s.TxtHelper>
 					</s.SvgEmailWrapper>
-					{data?.contact.email}
+					{contactData.email}
 				</p>
-				<p className='phone'>{data?.contact.phone}</p>
+				<p className='phone'>{contactData.phone}</p>
 				<s.ExternalLinks
 					variants={opacityVariants}
 					transition={{ duration: 0.8, delay: 1 }}
 				>
-					<s.SvgFbWrapper href={data?.contact.facebook}>
+					<s.SvgFbWrapper href={contactData.facebook}>
 						<Fb />
 					</s.SvgFbWrapper>
-					<s.SvgIgWrapper href={data?.contact.instagram}>
+					<s.SvgIgWrapper href={contactData.instagram}>
 						<Ig />
 					</s.SvgIgWrapper>
 				</s.ExternalLinks>
@@ -270,8 +237,8 @@ export default function SinglePainting({ paintingId }: { paintingId: string }) {
 						}}
 					/>
 				</h2>
-				<p>{data?.contact.location_based} </p>
-				<p>{data?.contact.shipping_info}</p>
+				<p>{contactData.location_based} </p>
+				<p>{contactData.shipping_info}</p>
 			</s.TextWrapper>
 		</s.Wrapper>
 	);

@@ -1,10 +1,11 @@
 import Footer from 'Components/Elements/Footer/Footer';
 import Header from 'Components/Elements/Header/Header';
-import { Variants } from 'framer-motion';
 import Image from 'next/image';
+
 import PropTypes from 'prop-types';
 
 import { s } from './Page.styles';
+import { Variants } from 'framer-motion';
 
 const noiseVariants: Variants = {
 	hidden: { opacity: 0 },

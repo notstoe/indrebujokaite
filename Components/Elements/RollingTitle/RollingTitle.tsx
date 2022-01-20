@@ -3,7 +3,10 @@ import { MotionValue, useTransform, useViewportScroll } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import { s } from './RollingTitle.styles';
 
-import { RollingTitleProps } from './RollingTitle.types';
+interface RollingTitleProps {
+	title: string;
+	altMode: boolean;
+}
 
 export default function RollingTitle({ title, altMode }: RollingTitleProps) {
 	const { scrollY } = useViewportScroll();

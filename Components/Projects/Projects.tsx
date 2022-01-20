@@ -1,7 +1,4 @@
-/* eslint-disable react-hooks/rules-of-hooks */
-import { gql, useQuery } from '@apollo/client';
 import { useInView } from '@hooks/useInView';
-import { ss } from 'Components/Elements/Loading/loading.styles';
 import {
 	motion,
 	MotionValue,
@@ -9,15 +6,31 @@ import {
 	useViewportScroll,
 	Variants,
 } from 'framer-motion';
-import { useEffect, useRef, useState } from 'react';
+import { s } from './Projects.styles';
 
+import { useEffect, useRef, useState } from 'react';
 import Carousel from '../Elements/Carousel/Carousel';
 import PaintingDisplay from '../Elements/PaintingDisplay/PaintingDisplay';
 
-import { s } from './Projects.styles';
-import { DataCollections } from './Projects.types';
+import { CollectionsPaintings, Painting } from 'pages/index.types';
 
-export default function Projects() {
+interface ProjectsProps {
+	collectionsPaintings: CollectionsPaintings[];
+	featuredPaintings: Painting[];
+}
+
+const sectionTitleVariants: Variants = {
+	hidden: {
+		opacity: 0,
+		scale: 1.05,
+	},
+	visible: { opacity: 1, scale: 1 },
+};
+
+export default function Projects({
+	collectionsPaintings,
+	featuredPaintings,
+}: ProjectsProps) {
 	const { scrollY } = useViewportScroll();
 
 	const wrapperRef = useRef<HTMLDivElement>(null);
@@ -45,8 +58,11 @@ export default function Projects() {
 		}
 	}, [wrapperRef]);
 
-	const horizontalSlide = (): MotionValue =>
-		useTransform(scrollY, [scrollStart, scrollEnd], ['0%', '90%']);
+	const horizontalSlide: MotionValue = useTransform(
+		scrollY,
+		[scrollStart, scrollEnd],
+		['0%', '90%']
+	);
 
 	const ballScale = useTransform(
 		scrollY,
@@ -54,53 +70,15 @@ export default function Projects() {
 		['1.2', '0.7']
 	);
 
-	const sectionTitleVariants: Variants = {
-		hidden: {
-			opacity: 0,
-			scale: 1.05,
-		},
-		visible: { opacity: 1, scale: 1 },
-	};
-
-	const COLLECTIONS_PAINTINGS_QUERY = gql`
-		query COLLECTIONS_PAINTINGS {
-			collectionsPaintings(sort: "createdAt:asc") {
-				collectionTitle
-				paintings(sort: "createdAt:desc") {
-					id
-					title
-					painting_collection {
-						collectionTitle
-					}
-					picture {
-						url
-					}
-				}
-			}
-		}
-	`;
-
-	const { data, loading, error } = useQuery<DataCollections>(
-		COLLECTIONS_PAINTINGS_QUERY
-	);
-
-	if (loading) return <ss.Loading>Loading...</ss.Loading>;
-	if (error) {
-		console.log([error, error.message]);
-		return null;
-	}
-
-	const CarouselElements = data?.collectionsPaintings.map(
-		(collection, index) => {
-			return (
-				<Carousel
-					key={index}
-					paintings={collection.paintings}
-					collectionTitle={collection.collectionTitle}
-				/>
-			);
-		}
-	);
+	const CarouselElements = collectionsPaintings?.map((collection, index) => {
+		return (
+			<Carousel
+				key={index}
+				paintings={collection.paintings}
+				collectionTitle={collection.collectionTitle}
+			/>
+		);
+	});
 
 	return (
 		<s.SectionWrapper id='projects'>
@@ -114,11 +92,9 @@ export default function Projects() {
 				>
 					PORTFOLIO
 				</motion.h1>
-				<s.BackgroundCircle
-					style={{ scale: ballScale, x: horizontalSlide() }}
-				/>
+				<s.BackgroundCircle style={{ scale: ballScale, x: horizontalSlide }} />
 			</div>
-			<PaintingDisplay />
+			<PaintingDisplay featuredPaintings={featuredPaintings} />
 			{CarouselElements}
 		</s.SectionWrapper>
 	);

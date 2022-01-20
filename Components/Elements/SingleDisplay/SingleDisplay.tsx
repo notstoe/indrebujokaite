@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { getOptimizedCloudinaryUrl } from '@helpers/getOptimizedCloudinaryUrl';
 import { useInView } from '@hooks/useInView';
 
-import { Painting } from 'Components/Projects/Projects.types';
+import { Painting } from 'pages/index.types';
 
 import { motion, Variants } from 'framer-motion';
 import { s } from './SingleDisplay.styles';

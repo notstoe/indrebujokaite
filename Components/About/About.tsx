@@ -1,13 +1,10 @@
-import { gql, useQuery } from '@apollo/client';
-
 import RollingTitle from '../Elements/RollingTitle/RollingTitle';
 
 import { s } from './About.styles';
-import { ss } from 'Components/Elements/Loading/loading.styles';
-import { DataA } from './About.types';
 import { getOptimizedCloudinaryUrl } from '@helpers/getOptimizedCloudinaryUrl';
 import { motion, Variants } from 'framer-motion';
 import { useInView } from '@hooks/useInView';
+import { AboutMeInfo } from 'pages/index.types';
 
 const sectionVariants: Variants = {
 	hiddenLeft: { opacity: 0, x: -80 },
@@ -17,7 +14,7 @@ const sectionVariants: Variants = {
 
 const animationTransition = { type: 'tween', duration: 0.7 };
 
-export default function About() {
+export default function About({ aboutData }: { aboutData: AboutMeInfo }) {
 	const [elementRef, inView] = useInView<HTMLSpanElement>(
 		{ threshold: 0.4 },
 		true
@@ -33,29 +30,10 @@ export default function About() {
 		true
 	);
 
-	const ABOUT_ME_QUERY = gql`
-		query ABOUT_ME_TXT {
-			about {
-				about_me_txt
-				my_vision_txt
-				ProfilePic {
-					url
-				}
-			}
-		}
-	`;
-
-	const { data, loading, error } = useQuery<DataA>(ABOUT_ME_QUERY);
-
-	if (loading) return <ss.Loading>Loading...</ss.Loading>;
-	if (error) {
-		console.log([error, error.message]);
-		return null;
-	}
-
-	const url = data?.about.ProfilePic.url;
-
-	const optimizedUrl = getOptimizedCloudinaryUrl(url, 'medium');
+	const optimizedUrl = getOptimizedCloudinaryUrl(
+		aboutData.ProfilePic.url,
+		'medium'
+	);
 
 	return (
 		<s.SectionWrapper id='about'>
@@ -68,7 +46,7 @@ export default function About() {
 					variants={sectionVariants}
 					transition={animationTransition}
 				>
-					{data?.about.about_me_txt}
+					{aboutData.about_me_txt}
 				</motion.span>
 			</s.TxtWrapper>
 			<s.StyledImage
@@ -89,7 +67,7 @@ export default function About() {
 					variants={sectionVariants}
 					transition={animationTransition}
 				>
-					{data?.about.my_vision_txt}
+					{aboutData.my_vision_txt}
 				</motion.span>
 			</s.TxtWrapper>
 		</s.SectionWrapper>

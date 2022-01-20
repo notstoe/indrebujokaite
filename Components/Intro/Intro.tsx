@@ -1,9 +1,8 @@
-import { gql, useQuery } from '@apollo/client';
 import { getOptimizedCloudinaryUrl } from '@helpers/getOptimizedCloudinaryUrl';
-import { ss } from 'Components/Elements/Loading/loading.styles';
+
 import { motion, Variants } from 'framer-motion';
+
 import { s } from './Intro.styles';
-import { DataIntro } from './Intro.types';
 
 const titleVariants: Variants = {
 	hidden: { opacity: 0 },
@@ -22,28 +21,12 @@ const subtitleVariants: Variants = {
 	},
 };
 
-const ABOUT_ME_QUERY = gql`
-	query ABOUT_ME_TXT {
-		about {
-			background_intro_picture {
-				url
-			}
-		}
-	}
-`;
+interface IntroProps {
+	backgroundImgUrl: string;
+}
 
-export default function Intro() {
-	const { data, loading, error } = useQuery<DataIntro>(ABOUT_ME_QUERY);
-
-	if (loading) return <ss.Loading>Loading...</ss.Loading>;
-	if (error) {
-		console.log([error, error.message]);
-		return null;
-	}
-
-	const url = data?.about.background_intro_picture.url;
-
-	const optimizedUrl = getOptimizedCloudinaryUrl(url, 'medium');
+export default function Intro({ backgroundImgUrl }: IntroProps) {
+	const optimizedUrl = getOptimizedCloudinaryUrl(backgroundImgUrl, 'large');
 
 	return (
 		<s.Wrapper id='home'>

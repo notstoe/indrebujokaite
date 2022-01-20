@@ -1,11 +1,10 @@
-import { Painting } from 'Components/Projects/Projects.types';
-
 import { useInView } from '@hooks/useInView';
 import PaintingInsideCarousel from '../PaintingInsideCarousel/PaintingInsideCarousel';
 
 import useEmblaCarousel from 'embla-carousel-react';
 import { s } from './Carousel.styles';
 import { motion, Variants } from 'framer-motion';
+import { Painting } from 'pages/index.types';
 
 export default function Carousel({
 	collectionTitle,
