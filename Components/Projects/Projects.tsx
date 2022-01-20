@@ -12,7 +12,7 @@ import { useEffect, useRef, useState } from 'react';
 import Carousel from '../Elements/Carousel/Carousel';
 import PaintingDisplay from '../Elements/PaintingDisplay/PaintingDisplay';
 
-import { CollectionsPaintings, Painting } from 'pages/index.types';
+import { CollectionsPaintings, Painting } from 'types/index.types';
 
 interface ProjectsProps {
 	collectionsPaintings: CollectionsPaintings[];

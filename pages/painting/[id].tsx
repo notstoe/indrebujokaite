@@ -2,14 +2,17 @@ import apollo from '@lib/apolloClient';
 import SinglePainting from 'Components/SinglePainting/SinglePainting';
 import { revalidateStaticPages } from 'config';
 
-import { ALL_PAINTINGS_IDS_QUERY, SINGLE_PAINTINGS_QUERY } from './id.queries';
+import {
+	ALL_PAINTINGS_IDS_QUERY,
+	SINGLE_PAINTINGS_QUERY,
+} from '../../queries/id.queries';
 
 import {
 	DataSinglePage,
 	IParams,
 	SinglePaintingPageProps,
 	dataAllPaintingsIds,
-} from './id.types';
+} from '../../types/id.types';
 
 export default function SinglePaintingPage({
 	contact,

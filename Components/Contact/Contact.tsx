@@ -3,7 +3,7 @@ import { useInView } from '@hooks/useInView';
 import { motion, Variants } from 'framer-motion';
 import { s } from './Contact.styles';
 
-import { ContactInfo } from 'pages/index.types';
+import { ContactInfo } from 'types/index.types';
 
 import Copy from '@assets/copy.svg';
 import Fb from '@assets/Fb.svg';

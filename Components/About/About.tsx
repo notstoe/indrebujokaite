@@ -4,7 +4,7 @@ import { s } from './About.styles';
 import { getOptimizedCloudinaryUrl } from '@helpers/getOptimizedCloudinaryUrl';
 import { motion, Variants } from 'framer-motion';
 import { useInView } from '@hooks/useInView';
-import { AboutMeInfo } from 'pages/index.types';
+import { AboutMeInfo } from 'types/index.types';
 
 const sectionVariants: Variants = {
 	hiddenLeft: { opacity: 0, x: -80 },

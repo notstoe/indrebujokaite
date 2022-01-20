@@ -1,4 +1,4 @@
-import { ContactInfo } from 'pages/index.types';
+import { ContactInfo } from 'types/index.types';
 import { ParsedUrlQuery } from 'querystring';
 
 export type PaintingFullInfo = {

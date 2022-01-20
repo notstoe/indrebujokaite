@@ -1,7 +1,7 @@
 import { s } from './PaintingDisplay.styles';
 
 import SingleDisplay from 'Components/Elements/SingleDisplay/SingleDisplay';
-import { Painting } from 'pages/index.types';
+import { Painting } from 'types/index.types';
 
 interface PaintingDisplayProps {
 	featuredPaintings?: Painting[];

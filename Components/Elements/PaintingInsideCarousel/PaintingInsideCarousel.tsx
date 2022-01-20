@@ -1,7 +1,7 @@
 import { getOptimizedCloudinaryUrl } from '@helpers/getOptimizedCloudinaryUrl';
 import { useState } from 'react';
 
-import { Painting } from 'pages/index.types';
+import { Painting } from 'types/index.types';
 
 import { s } from './PaintingInsideCarousel.styles';
 import { motion, Variants } from 'framer-motion';

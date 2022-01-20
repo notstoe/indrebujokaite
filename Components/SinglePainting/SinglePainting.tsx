@@ -7,8 +7,8 @@ import { getOptimizedCloudinaryUrl } from '@helpers/getOptimizedCloudinaryUrl';
 import { s } from './SinglePainting.styles';
 import { motion, Variants } from 'framer-motion';
 
-import { ContactInfo } from 'pages/index.types';
-import { PaintingFullInfo } from 'pages/painting/id.types';
+import { ContactInfo } from 'types/index.types';
+import { PaintingFullInfo } from 'types/id.types';
 
 import Copy from '@assets/copy.svg';
 import Fb from '@assets/Fb.svg';

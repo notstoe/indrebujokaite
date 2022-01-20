@@ -6,9 +6,9 @@ import Head from 'next/head';
 import apollo from '@lib/apolloClient';
 import { revalidateStaticPages } from 'config';
 
-import { DataHomePage, HomePageProps } from './index.types';
+import { DataHomePage, HomePageProps } from '../types/index.types';
 
-import { HOME_PAGE_DATA_QUERY } from './index.queries';
+import { HOME_PAGE_DATA_QUERY } from '../queries/index.queries';
 
 export default function Home({
 	about,

@@ -4,7 +4,7 @@ import PaintingInsideCarousel from '../PaintingInsideCarousel/PaintingInsideCaro
 import useEmblaCarousel from 'embla-carousel-react';
 import { s } from './Carousel.styles';
 import { motion, Variants } from 'framer-motion';
-import { Painting } from 'pages/index.types';
+import { Painting } from 'types/index.types';
 
 export default function Carousel({
 	collectionTitle,
