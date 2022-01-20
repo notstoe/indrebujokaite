@@ -5,14 +5,14 @@ import { revalidateStaticPages } from 'config';
 import {
 	ALL_PAINTINGS_IDS_QUERY,
 	SINGLE_PAINTINGS_QUERY,
-} from '../../queries/id.queries';
+} from 'queries/id.queries';
 
 import {
 	DataSinglePage,
 	IParams,
 	SinglePaintingPageProps,
 	dataAllPaintingsIds,
-} from '../../types/id.types';
+} from 'types/id.types';
 
 export default function SinglePaintingPage({
 	contact,
