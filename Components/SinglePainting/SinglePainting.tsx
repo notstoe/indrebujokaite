@@ -84,18 +84,14 @@ export default function SinglePainting({
 		setCurrentPicture(getOptimizedCloudinaryUrl(url, 'large'));
 	}
 
-	let descriptionPTags: JSX.Element[];
+	// considering line breaks from string that comes back from backend
+	const descriptionArrayWithLineBreaks: Array<string> = paintingData.description.split(
+		'\n'
+	);
 
-	if (paintingData.description) {
-		// considering line breaks from string that comes back from backend
-		const descriptionArrayWithLineBreaks: Array<string> = paintingData.description.split(
-			'\n'
-		);
-
-		descriptionPTags = descriptionArrayWithLineBreaks.map((lineStr, index) => (
-			<p key={index}>{lineStr}</p>
-		));
-	}
+	const descriptionPTags: JSX.Element[] = descriptionArrayWithLineBreaks.map(
+		(lineStr, index) => <p key={index}>{lineStr}</p>
+	);
 
 	return (
 		<s.Wrapper>
