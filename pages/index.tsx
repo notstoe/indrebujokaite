@@ -41,7 +41,7 @@ export async function getStaticProps() {
 		props: {
 			about: data.about,
 			collectionsPaintings: data.collectionsPaintings,
-			featuredPainting: data.featuredPainting.paintings,
+			featuredPaintings: data.featuredPainting.paintings,
 			contact: data.contact,
 		},
 		revalidate: revalidateStaticPages,
