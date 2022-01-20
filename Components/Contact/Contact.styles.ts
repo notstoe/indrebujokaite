@@ -58,7 +58,7 @@ const ContactInfo = styled(motion.div)`
 
 	color: ${brand.grey.light};
 
-	.author {
+	.white {
 		color: ${brand.white};
 		font-size: 1.8rem;
 		margin-bottom: 4rem;

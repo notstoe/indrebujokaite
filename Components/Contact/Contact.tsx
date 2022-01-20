@@ -32,11 +32,20 @@ export default function Contact({ contactData }: { contactData: ContactInfo }) {
 			<s.ContactInfo initial='hidden' animate={inView ? 'visible' : 'hidden'}>
 				<motion.span
 					variants={contactInfoVariants}
-					className='author'
+					className='white'
 					transition={{ duration: 1 }}
 				>
 					{contactData.name}
 				</motion.span>
+				{contactData.call_to_action_small_txt && (
+					<motion.span
+						variants={contactInfoVariants}
+						className='white'
+						transition={{ duration: 1 }}
+					>
+						{contactData.call_to_action_small_txt}
+					</motion.span>
+				)}
 				<motion.span
 					transition={{ duration: 1, delay: 0.4 }}
 					variants={contactInfoVariants}

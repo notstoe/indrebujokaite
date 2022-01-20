@@ -48,4 +48,5 @@ export type ContactInfo = {
 	shipping_info: string;
 	instagram: string;
 	facebook: string;
+	call_to_action_small_txt?: string;
 };

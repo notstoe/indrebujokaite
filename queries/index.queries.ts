@@ -45,6 +45,7 @@ export const HOME_PAGE_DATA_QUERY: DocumentNode = gql`
 			shipping_info
 			instagram
 			facebook
+			call_to_action_small_txt
 		}
 	}
 `;
