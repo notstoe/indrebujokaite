@@ -21,7 +21,9 @@ const TxtWrapper = styled.div<{ alignLeft?: boolean }>`
 	align-self: center;
 
 	display: flex;
+	flex-direction: column;
 	justify-content: flex-end;
+	align-items: flex-end;
 
 	text-align: right;
 
@@ -30,19 +32,20 @@ const TxtWrapper = styled.div<{ alignLeft?: boolean }>`
 
 	padding: 0 1rem;
 
-	span {
+	p {
 		width: 85%;
 		max-width: 25rem;
 		line-height: 1.9rem;
 		font-size: 1.35rem;
+		padding-top: 0.5rem;
 	}
 
 	${({ alignLeft }) =>
 		alignLeft &&
 		css`
-			justify-content: flex-start;
+			align-items: flex-start;
 
-			span {
+			p {
 				text-align: left;
 			}
 		`};
