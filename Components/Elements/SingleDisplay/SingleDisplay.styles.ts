@@ -54,13 +54,16 @@ const SingleDisplay = styled.div<{ inverted: boolean }>`
 `;
 
 const StyledImage = styled(motion.img)`
-	width: 95%;
+	max-height: 85vh;
 	max-width: 40rem;
 
 	cursor: pointer;
 
 	@media ${until(Device.TabletLarge)} {
 		align-self: center;
+
+		height: 75vw;
+		max-height: 32rem;
 	}
 `;
 
