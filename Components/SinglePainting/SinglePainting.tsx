@@ -84,6 +84,15 @@ export default function SinglePainting({
 		setCurrentPicture(getOptimizedCloudinaryUrl(url, 'large'));
 	}
 
+	// considering line breaks from string that comes back from backend
+	const descriptionArrayWithLineBreaks: Array<string> = paintingData.description.split(
+		'\n'
+	);
+
+	const descriptionPTags = descriptionArrayWithLineBreaks.map(
+		(lineStr, index) => <p key={index}>{lineStr}</p>
+	);
+
 	return (
 		<s.Wrapper>
 			<Head>
@@ -161,8 +170,8 @@ export default function SinglePainting({
 						}}
 					/>
 				</h2>
-				<p>{paintingData.description}</p>
-				<span>{paintingData.price && `£${paintingData.price}`}</span>
+				{descriptionPTags}
+				{paintingData.price && <span>{`£${paintingData.price}`}</span>}
 				<span>{paintingData.available ? 'Available' : 'Unavailable'}</span>
 			</s.TextWrapper>
 			<s.TextWrapper

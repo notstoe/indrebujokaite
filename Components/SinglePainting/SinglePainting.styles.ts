@@ -101,10 +101,9 @@ const TextWrapper = styled(motion.div)<{ alignright?: boolean }>`
 
 	h2 {
 		position: relative;
+		padding-bottom: 3rem;
 
 		font-weight: lighter;
-
-		padding-bottom: 3rem;
 
 		color: ${brand.grey.light};
 	}
@@ -113,11 +112,11 @@ const TextWrapper = styled(motion.div)<{ alignright?: boolean }>`
 		font-size: 1.45rem;
 
 		max-width: 24rem;
-		padding-top: 1rem;
+		padding-top: 0.5rem;
 	}
 
 	span {
-		padding-top: 2rem;
+		padding-top: 1.2rem;
 	}
 
 	.phone {
