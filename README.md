@@ -1,17 +1,43 @@
-Under Construction...
+# private-portfolio
 
-<!--
+Incremental Static Regeneration (ISR) website using Next.JS 12 (frontend) and a Headless CMS (Strapi) on the backend server.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+> See it live on [indreta.art](https://www.indreta.art)
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+# objectives
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+The main objectives of this freelance project are:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- Create a fast, responsive portfolio website with a modern stack
+- Use a Headless CMS on the backend server so the client can control all content easily
+- Statically generate pages for a faster website
+- Work with the client to match the design with the existing brand
 
-## Deploy on Vercel
+# libraries, extensions and tools
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### frontend
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details. -->
+> - Next.js
+> - Typescript
+> - Styled-Components
+> - Apollo Client
+> - Framer motion
+
+### backend
+
+> - Strapi CMS
+> - GraphQL
+> - mongoDB Atlas
+> - Cloudinary
+
+### design
+
+> - Figma
+
+# more information
+
+Design based on early mockup done using the software [Figma](https://www.figma.com/file/InPJI6vQ1CIOjx8yJ9ouTb/Indre's-Website?node-id=0%3A1)
+
+[Vercel Repo](https://vercel.com/notstoe/indrebujokaite)
+
+[Backend Repo](https://github.com/notstoe/indrebujokaite_server)
