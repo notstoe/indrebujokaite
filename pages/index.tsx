@@ -9,6 +9,7 @@ import { revalidateStaticPages } from 'config';
 import { DataHomePage, HomePageProps } from '../types/index.types';
 
 import { HOME_PAGE_DATA_QUERY } from '../queries/index.queries';
+import { getOptimizedCloudinaryUrl } from '@helpers/getOptimizedCloudinaryUrl';
 
 export default function Home({
 	about,
@@ -16,10 +17,24 @@ export default function Home({
 	featuredPaintings,
 	contact,
 }: HomePageProps) {
+	const optimizedImgUrl = getOptimizedCloudinaryUrl(
+		about.background_intro_picture.url,
+		'small'
+	);
+
 	return (
 		<>
 			<Head>
-				<title>Indreta Art</title>
+				<title>Indreta Art | Acrylic Painting</title>
+				<meta
+					name='description'
+					content='Original acrylic paintings done by Indre Bujokaite. Prints are also available for sale and ready to hang.'
+				/>
+				<meta
+					property='og:title'
+					content='Original acrylic paintings and prints. By Indre Bujokaite'
+				/>
+				<meta property='og:image' content={optimizedImgUrl} />
 			</Head>
 			<Intro backgroundImgUrl={about.background_intro_picture.url} />
 			<About aboutData={about} />

@@ -97,6 +97,22 @@ export default function SinglePainting({
 		<s.Wrapper>
 			<Head>
 				<title>Indreta | {paintingData.title}</title>
+				<meta
+					property='og:title'
+					content='Original acrylic paintings. By Indre Bujokaite'
+				/>
+				<meta
+					property='og:image'
+					content={currentPicture.length > 0 ? currentPicture : initialPicture}
+				/>
+				<meta
+					name='description'
+					content={`${paintingData.title} from the ${paintingData.painting_collection.collectionTitle}`}
+				/>
+				<meta
+					property='og:description'
+					content={`Painting from the ${paintingData.painting_collection.collectionTitle}`}
+				/>
 			</Head>
 			<s.PaintingDisplay>
 				<motion.section initial='hidden' animate='visible'>
@@ -185,7 +201,6 @@ export default function SinglePainting({
 				<h2>
 					Contact
 					<s.BackgroundCircle
-						initial='hidden'
 						animate={inView2 ? 'visible' : 'hidden'}
 						variants={circleVariants}
 						transition={circleTransition}
@@ -233,7 +248,6 @@ export default function SinglePainting({
 				<h2>
 					Where Am I
 					<s.BackgroundCircle
-						initial='hidden'
 						animate={inView3 ? 'visible' : 'hidden'}
 						variants={circleVariants}
 						transition={circleTransition}

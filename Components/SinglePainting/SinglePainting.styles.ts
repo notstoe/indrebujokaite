@@ -58,7 +58,7 @@ const PaintingDisplay = styled.div`
 	}
 `;
 
-const Title = styled(motion.a)`
+const Title = styled(motion.h1)`
 	font-weight: normal;
 	font-size: 2.2rem;
 	align-self: center;
