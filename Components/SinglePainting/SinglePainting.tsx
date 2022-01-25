@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import Head from 'next/head';
 import { useState } from 'react';
-import { useInView } from '@hooks/useInView';
 import { getOptimizedCloudinaryUrl } from '@helpers/getOptimizedCloudinaryUrl';
 
 import { s } from './SinglePainting.styles';
@@ -13,11 +12,7 @@ import { PaintingFullInfo } from 'types/id.types';
 import Copy from '@assets/copy.svg';
 import Fb from '@assets/Fb.svg';
 import Ig from '@assets/Ig.svg';
-
-const circleVariants: Variants = {
-	hidden: { scale: 0, y: -15, opacity: 0 },
-	visible: { scale: 1, y: 0, opacity: 1 },
-};
+import TextWrapperPaintingPage from 'Components/Elements/TextWrapperPaintingPage/TextWrapperPaintingPage';
 
 const paintingInfoVariants: Variants = {
 	hidden: { x: -80, opacity: 0 },
@@ -28,14 +23,41 @@ const opacityVariants: Variants = {
 	hidden: { opacity: 0 },
 	visible: { opacity: 1 },
 };
-const txtWrapperVariants: Variants = {
-	hiddenLeft: { opacity: 0, x: -80 },
-	hiddenRight: { opacity: 0, x: 80 },
-	visible: { opacity: 1, x: 0 },
+
+const circleVariants: Variants = {
+	hidden: { scale: 0, y: -15, opacity: 0 },
+	visible: { scale: 1, y: 0, opacity: 1 },
 };
 
-const textTransition = { type: 'tween', duration: 1 };
-const circleTransition = { duration: 1.5, delay: 0.6 };
+const textWrapperCircleOptions = {
+	description: {
+		positioning: {
+			top: '-55%',
+			left: '4.5%',
+			topMobile: '-35%',
+			leftMobile: '9%',
+		},
+		radius: { normal: '8rem', mobile: '6rem' },
+	},
+	contact: {
+		positioning: {
+			top: '-60%',
+			left: `87.5%`,
+			topMobile: '-38%',
+			leftMobile: '84%',
+		},
+		radius: { normal: '8rem', mobile: '6rem' },
+	},
+	location: {
+		positioning: {
+			top: '-55%',
+			left: '4.5%',
+			topMobile: '-35%',
+			leftMobile: '9%',
+		},
+		radius: { normal: '8rem', mobile: '6rem' },
+	},
+};
 
 interface SinglePaintingComponentProps {
 	contactData: ContactInfo;
@@ -47,12 +69,6 @@ export default function SinglePainting({
 	paintingData,
 }: SinglePaintingComponentProps) {
 	const [currentPicture, setCurrentPicture] = useState('');
-
-	const [elementRef, inView] = useInView<HTMLDivElement>({ threshold: 0.45 });
-
-	const [elementRef2, inView2] = useInView<HTMLDivElement>({ threshold: 0.45 });
-
-	const [elementRef3, inView3] = useInView<HTMLDivElement>({ threshold: 0.45 });
 
 	const initialPicture = getOptimizedCloudinaryUrl(
 		paintingData?.picture[0].url,
@@ -101,10 +117,7 @@ export default function SinglePainting({
 					property='og:title'
 					content='Original acrylic paintings. By Indre Bujokaite'
 				/>
-				<meta
-					property='og:image'
-					content={currentPicture.length > 0 ? currentPicture : initialPicture}
-				/>
+				<meta property='og:image' content={initialPicture} />
 				<meta
 					name='description'
 					content={`${paintingData.title} from the ${paintingData.painting_collection.collectionTitle}`}
@@ -163,56 +176,21 @@ export default function SinglePainting({
 					{thumbnailsDivs}
 				</s.ThumbnailsWrapper>
 			</s.PaintingDisplay>
-			<s.TextWrapper
-				ref={elementRef}
-				initial='hidden'
-				animate={inView ? 'visible' : 'hiddenLeft'}
-				variants={txtWrapperVariants}
-				transition={textTransition}
+			<TextWrapperPaintingPage
+				title='Description'
+				fromLeft
+				circleOptions={textWrapperCircleOptions.description}
 			>
-				<h2>
-					Description
-					<s.BackgroundCircle
-						initial='hidden'
-						animate={inView ? 'visible' : 'hidden'}
-						variants={circleVariants}
-						transition={circleTransition}
-						radius={{ normal: '8rem', mobile: '6rem' }}
-						positioning={{
-							top: '-55%',
-							left: '4.5%',
-							topMobile: '-35%',
-							leftMobile: '9%',
-						}}
-					/>
-				</h2>
 				{descriptionPTags}
-				{paintingData.price && <span>{`£${paintingData.price}`}</span>}
-				<span>{paintingData.available ? 'Available' : 'Unavailable'}</span>
-			</s.TextWrapper>
-			<s.TextWrapper
-				alignright={true}
-				ref={elementRef2}
-				initial='hidden'
-				animate={inView2 ? 'visible' : 'hiddenRight'}
-				variants={txtWrapperVariants}
-				transition={textTransition}
+				{paintingData.price && <p>{`£${paintingData.price}`}</p>}
+				<p>{paintingData.available ? 'Available' : 'Unavailable'}</p>
+			</TextWrapperPaintingPage>
+
+			<TextWrapperPaintingPage
+				title='Contact'
+				fromLeft={false}
+				circleOptions={textWrapperCircleOptions.contact}
 			>
-				<h2>
-					Contact
-					<s.BackgroundCircle
-						animate={inView2 ? 'visible' : 'hidden'}
-						variants={circleVariants}
-						transition={circleTransition}
-						radius={{ normal: '8rem', mobile: '6rem' }}
-						positioning={{
-							top: '-60%',
-							left: `87.5%`,
-							topMobile: '-38%',
-							leftMobile: '84%',
-						}}
-					/>
-				</h2>
 				<p>
 					<s.SvgEmailWrapper
 						onClick={() =>
@@ -225,7 +203,7 @@ export default function SinglePainting({
 					</s.SvgEmailWrapper>
 					{contactData.email}
 				</p>
-				<p className='phone'>{contactData.phone}</p>
+				<p>{contactData.phone}</p>
 				<s.ExternalLinks
 					variants={opacityVariants}
 					transition={{ duration: 0.8, delay: 1 }}
@@ -237,32 +215,15 @@ export default function SinglePainting({
 						<Ig />
 					</s.SvgIgWrapper>
 				</s.ExternalLinks>
-			</s.TextWrapper>
-			<s.TextWrapper
-				ref={elementRef3}
-				initial='hidden'
-				animate={inView3 ? 'visible' : 'hiddenLeft'}
-				variants={txtWrapperVariants}
-				transition={textTransition}
+			</TextWrapperPaintingPage>
+			<TextWrapperPaintingPage
+				title='Where Am I'
+				fromLeft
+				circleOptions={textWrapperCircleOptions.location}
 			>
-				<h2>
-					Where Am I
-					<s.BackgroundCircle
-						animate={inView3 ? 'visible' : 'hidden'}
-						variants={circleVariants}
-						transition={circleTransition}
-						radius={{ normal: '8rem', mobile: '6rem' }}
-						positioning={{
-							top: '-55%',
-							left: '4.5%',
-							topMobile: '-35%',
-							leftMobile: '9%',
-						}}
-					/>
-				</h2>
 				<p>{contactData.location_based} </p>
 				<p>{contactData.shipping_info}</p>
-			</s.TextWrapper>
+			</TextWrapperPaintingPage>
 		</s.Wrapper>
 	);
 }

@@ -78,52 +78,6 @@ const StyledImageWrapper = styled(motion.div)`
 	height: 28rem;
 `;
 
-const TextWrapper = styled(motion.div)<{ alignright?: boolean }>`
-	font-size: 1.7rem;
-
-	display: flex;
-	flex-direction: column;
-
-	margin-bottom: 7rem;
-
-	${({ alignright }) =>
-		alignright
-			? css`
-					text-align: right;
-
-					p {
-						align-self: flex-end;
-					}
-			  `
-			: css`
-					text-align: left;
-			  `}
-
-	h2 {
-		position: relative;
-		padding-bottom: 3rem;
-
-		font-weight: lighter;
-
-		color: ${brand.grey.light};
-	}
-
-	p {
-		font-size: 1.45rem;
-
-		max-width: 24rem;
-		padding-top: 0.5rem;
-	}
-
-	span {
-		padding-top: 1.2rem;
-	}
-
-	.phone {
-		padding-right: 1rem;
-	}
-`;
-
 const SvgEmailWrapper = styled.button.attrs({ type: 'button' })`
 	display: inline-block;
 
@@ -267,8 +221,6 @@ export const s = {
 	Title,
 	StyledImageWrapper,
 	PaintingDisplay,
-	TextWrapper,
-	BackgroundCircle,
 	SvgEmailWrapper,
 	TxtHelper,
 	ThumbnailsWrapper,
@@ -276,4 +228,5 @@ export const s = {
 	ExternalLinks,
 	SvgFbWrapper,
 	SvgIgWrapper,
+	BackgroundCircle,
 };
