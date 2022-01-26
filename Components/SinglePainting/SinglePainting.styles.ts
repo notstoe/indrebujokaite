@@ -2,7 +2,7 @@ import { brand } from '@helpers/brand';
 import { Device, until } from '@helpers/media';
 
 import { motion } from 'framer-motion';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 const Wrapper = styled.div`
 	display: flex;
@@ -21,7 +21,7 @@ const Wrapper = styled.div`
 	} ;
 `;
 
-const PaintingDisplay = styled.div`
+const PaintingDisplay = styled(motion.div)`
 	display: flex;
 	justify-content: center;
 
@@ -70,12 +70,14 @@ const Title = styled(motion.h1)`
 	}
 `;
 
-const StyledImageWrapper = styled(motion.div)`
+const ImageWrapper = styled(motion.div)`
 	position: relative;
 
 	width: 95%;
 	max-width: 40rem;
 	height: 28rem;
+
+	cursor: zoom-in;
 `;
 
 const SvgEmailWrapper = styled.button.attrs({ type: 'button' })`
@@ -134,12 +136,14 @@ const ThumbnailsWrapper = styled(motion.div)`
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
+	flex-wrap: wrap;
 
 	gap: 0.8rem;
 
 	@media ${until(Device.LaptopLarge)} {
 		flex-direction: row;
 		align-items: center;
+		justify-content: center;
 	}
 `;
 
@@ -219,7 +223,7 @@ const BackgroundCircle = styled(motion.div)<{
 export const s = {
 	Wrapper,
 	Title,
-	StyledImageWrapper,
+	ImageWrapper,
 	PaintingDisplay,
 	SvgEmailWrapper,
 	TxtHelper,

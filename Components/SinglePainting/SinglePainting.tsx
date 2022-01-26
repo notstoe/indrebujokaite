@@ -13,6 +13,7 @@ import Copy from '@assets/copy.svg';
 import Fb from '@assets/Fb.svg';
 import Ig from '@assets/Ig.svg';
 import TextWrapperPaintingPage from 'Components/Elements/TextWrapperPaintingPage/TextWrapperPaintingPage';
+import ModalPainting from 'Components/ModalPainting/ModalPainting';
 
 const paintingInfoVariants: Variants = {
 	hidden: { x: -80, opacity: 0 },
@@ -69,6 +70,7 @@ export default function SinglePainting({
 	paintingData,
 }: SinglePaintingComponentProps) {
 	const [currentPicture, setCurrentPicture] = useState('');
+	const [showModal, setShowModal] = useState(false);
 
 	const initialPicture = getOptimizedCloudinaryUrl(
 		paintingData?.picture[0].url,
@@ -109,6 +111,10 @@ export default function SinglePainting({
 		(lineStr, index) => <p key={index}>{lineStr}</p>
 	);
 
+	function handlePaintingClick(): void {
+		setShowModal((stateValue) => !stateValue);
+	}
+
 	return (
 		<s.Wrapper>
 			<Head>
@@ -127,8 +133,8 @@ export default function SinglePainting({
 					content={`Painting from the ${paintingData.painting_collection.collectionTitle}`}
 				/>
 			</Head>
-			<s.PaintingDisplay>
-				<motion.section initial='hidden' animate='visible'>
+			<s.PaintingDisplay initial='hidden' animate='visible'>
+				<motion.section>
 					<s.BackgroundCircle
 						radius={{ normal: '12rem', mobile: '10rem' }}
 						positioning={{ top: '13%', left: '11%' }}
@@ -155,11 +161,10 @@ export default function SinglePainting({
 						Indrė Bujokaitė
 					</motion.span>
 				</motion.section>
-				<s.StyledImageWrapper
-					initial='hidden'
-					animate='visible'
+				<s.ImageWrapper
 					variants={opacityVariants}
 					transition={{ duration: 3 }}
+					onClick={handlePaintingClick}
 				>
 					<Image
 						src={currentPicture.length > 0 ? currentPicture : initialPicture}
@@ -167,12 +172,8 @@ export default function SinglePainting({
 						objectFit='contain'
 						alt={`${paintingData.title} painting`}
 					/>
-				</s.StyledImageWrapper>
-				<s.ThumbnailsWrapper
-					initial='hidden'
-					animate='visible'
-					variants={opacityVariants}
-				>
+				</s.ImageWrapper>
+				<s.ThumbnailsWrapper variants={opacityVariants}>
 					{thumbnailsDivs}
 				</s.ThumbnailsWrapper>
 			</s.PaintingDisplay>
@@ -224,6 +225,14 @@ export default function SinglePainting({
 				<p>{contactData.location_based} </p>
 				<p>{contactData.shipping_info}</p>
 			</TextWrapperPaintingPage>
+
+			{showModal && (
+				<ModalPainting
+					handleModalClick={handlePaintingClick}
+					paintingTitle={paintingData.title}
+					url={currentPicture.length > 0 ? currentPicture : initialPicture}
+				/>
+			)}
 		</s.Wrapper>
 	);
 }
