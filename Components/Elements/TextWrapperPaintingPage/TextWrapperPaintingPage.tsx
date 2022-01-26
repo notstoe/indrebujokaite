@@ -1,6 +1,7 @@
 import { useInView } from '@hooks/useInView';
 import { Variants } from 'framer-motion';
 import { s } from './TextWrapperPaintingPage.styles';
+import { s as ss } from 'Components/SinglePainting/SinglePainting.styles';
 
 interface TextWrapperPaintingPageProps {
 	children: any;
@@ -51,7 +52,7 @@ export default function TextWrapperPaintingPage({
 		>
 			<h2>
 				{title}
-				<s.BackgroundCircle
+				<ss.BackgroundCircle
 					variants={circleVariants}
 					transition={circleTransition}
 					radius={radius}

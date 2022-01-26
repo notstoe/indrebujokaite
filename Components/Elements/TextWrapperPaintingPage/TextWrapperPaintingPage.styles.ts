@@ -1,5 +1,4 @@
 import { brand } from '@helpers/brand';
-import { Device, until } from '@helpers/media';
 import { motion } from 'framer-motion';
 import styled, { css } from 'styled-components';
 
@@ -39,40 +38,6 @@ const TextWrapper = styled(motion.div)<{ alignRight?: boolean }>`
 		max-width: 24rem;
 		padding-top: 0.56rem;
 	}
-
-	.phone {
-		padding-right: 1rem;
-	}
 `;
 
-const BackgroundCircle = styled(motion.div)<{
-	radius: { normal: string; mobile: string };
-	positioning: {
-		top: string;
-		left: string;
-		topMobile?: string | '';
-		leftMobile?: string | '';
-	};
-}>`
-	display: block;
-	position: absolute;
-
-	z-index: -2;
-	border-radius: 50%;
-
-	background-color: ${brand.grey.detail};
-
-	width: ${({ radius }) => radius.normal};
-	height: ${({ radius }) => radius.normal};
-	top: ${({ positioning }) => positioning.top};
-	left: ${({ positioning }) => positioning.left};
-
-	@media ${until(Device.Tablet)} {
-		width: ${({ radius }) => radius.mobile};
-		height: ${({ radius }) => radius.mobile};
-		top: ${({ positioning }) => positioning.topMobile};
-		left: ${({ positioning }) => positioning.leftMobile};
-	}
-`;
-
-export const s = { TextWrapper, BackgroundCircle };
+export const s = { TextWrapper };
