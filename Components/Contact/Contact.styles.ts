@@ -76,6 +76,11 @@ const ContactInfo = styled(motion.div)`
 
 		span {
 			text-align: center;
+			margin-bottom: 0.8rem;
+		}
+
+		.white {
+			margin-bottom: 2rem;
 		}
 	}
 `;
