@@ -29,8 +29,9 @@ const ImageWrapper = styled(motion.div)`
 	position: relative;
 
 	width: 95%;
-	max-width: 60rem;
 	height: 40rem;
+	max-width: 60rem;
+	max-height: 95%;
 `;
 
 export const s = { Overlay, ImageWrapper };
