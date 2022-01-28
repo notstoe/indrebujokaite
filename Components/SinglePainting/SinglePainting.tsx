@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import Head from 'next/head';
 import { useState } from 'react';
 import { getOptimizedCloudinaryUrl } from '@helpers/getOptimizedCloudinaryUrl';
 
@@ -14,6 +13,7 @@ import Fb from '@assets/Fb.svg';
 import Ig from '@assets/Ig.svg';
 import TextWrapperPaintingPage from 'Components/Elements/TextWrapperPaintingPage/TextWrapperPaintingPage';
 import ModalPainting from 'Components/ModalPainting/ModalPainting';
+import SeoHead from 'Components/Head/SeoHead';
 
 const paintingInfoVariants: Variants = {
 	hidden: { x: -80, opacity: 0 },
@@ -115,24 +115,15 @@ export default function SinglePainting({
 		setShowModal((stateValue) => !stateValue);
 	}
 
+	const SeoInfo = {
+		title: `Indreta | ${paintingData.title}`,
+		description: `${paintingData.title} from the ${paintingData.painting_collection.collectionTitle}`,
+		imageUrl: initialPicture,
+	};
+
 	return (
 		<s.Wrapper>
-			<Head>
-				<title>Indreta | {paintingData.title}</title>
-				<meta
-					property='og:title'
-					content='Original acrylic paintings. By Indre Bujokaite'
-				/>
-				<meta property='og:image' content={initialPicture} />
-				<meta
-					name='description'
-					content={`${paintingData.title} from the ${paintingData.painting_collection.collectionTitle}`}
-				/>
-				<meta
-					property='og:description'
-					content={`Painting from the ${paintingData.painting_collection.collectionTitle}`}
-				/>
-			</Head>
+			<SeoHead SeoInfo={SeoInfo} />
 			<s.PaintingDisplay initial='hidden' animate='visible'>
 				<motion.section>
 					<s.BackgroundCircle

@@ -2,7 +2,8 @@ import Intro from '../Components/Intro/Intro';
 import About from '../Components/About/About';
 import Projects from '../Components/Projects/Projects';
 import Contact from 'Components/Contact/Contact';
-import Head from 'next/head';
+import SeoHead from 'Components/Head/SeoHead';
+
 import apollo from '@lib/apolloClient';
 import { revalidateStaticPages } from 'config';
 
@@ -22,20 +23,15 @@ export default function Home({
 		'small'
 	);
 
+	const SeoInfo = {
+		title: 'Indreta Art | Acrylic Painting',
+		description: `Original acrylic paintings and prints. By Indre Bujokaite`,
+		imageUrl: optimizedImgUrl,
+	};
+
 	return (
 		<>
-			<Head>
-				<title>Indreta Art | Acrylic Painting</title>
-				<meta
-					name='description'
-					content='Original acrylic paintings done by Indre Bujokaite. Prints are also available for sale and ready to hang.'
-				/>
-				<meta
-					property='og:title'
-					content='Original acrylic paintings and prints. By Indre Bujokaite'
-				/>
-				<meta property='og:image' content={optimizedImgUrl} />
-			</Head>
+			<SeoHead SeoInfo={SeoInfo} />
 			<Intro backgroundImgUrl={about.background_intro_picture.url} />
 			<About aboutData={about} />
 			<Projects
