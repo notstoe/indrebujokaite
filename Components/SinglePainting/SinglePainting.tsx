@@ -13,7 +13,7 @@ import Fb from '@assets/Fb.svg';
 import Ig from '@assets/Ig.svg';
 import TextWrapperPaintingPage from 'Components/Elements/TextWrapperPaintingPage/TextWrapperPaintingPage';
 import ModalPainting from 'Components/ModalPainting/ModalPainting';
-import SeoHead from 'Components/Head/SeoHead';
+import SeoHead, { SeoProps } from 'Components/Head/SeoHead';
 
 const paintingInfoVariants: Variants = {
 	hidden: { x: -80, opacity: 0 },
@@ -115,15 +115,21 @@ export default function SinglePainting({
 		setShowModal((stateValue) => !stateValue);
 	}
 
-	const SeoInfo = {
+	const SeoInfo: SeoProps = {
 		title: `Indreta | ${paintingData.title}`,
 		description: `${paintingData.title} from the ${paintingData.painting_collection.collectionTitle}`,
 		imageUrl: initialPicture,
+		websiteUrl: 'https://indreta.art',
 	};
 
 	return (
 		<s.Wrapper>
-			<SeoHead SeoInfo={SeoInfo} />
+			<SeoHead
+				title={SeoInfo.title}
+				description={SeoInfo.description}
+				imageUrl={SeoInfo.imageUrl}
+				websiteUrl={SeoInfo.websiteUrl}
+			/>
 			<s.PaintingDisplay initial='hidden' animate='visible'>
 				<motion.section>
 					<s.BackgroundCircle
