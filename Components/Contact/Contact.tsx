@@ -85,7 +85,7 @@ export default function Contact({ contactData }: { contactData: ContactInfo }) {
 					</s.SvgIgWrapper>
 				</s.ExternalLinks>
 			</s.ContactInfo>
-			<motion.h1>
+			<motion.h3>
 				<s.BackgroundCircle
 					initial='hidden'
 					animate={inView ? 'visible' : 'hidden'}
@@ -93,7 +93,7 @@ export default function Contact({ contactData }: { contactData: ContactInfo }) {
 					transition={{ duration: 1, delay: 1.4 }}
 				/>
 				GET IN TOUCH
-			</motion.h1>
+			</motion.h3>
 		</s.Wrapper>
 	);
 }

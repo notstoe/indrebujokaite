@@ -39,14 +39,14 @@ export default function Carousel({
 
 	return (
 		<s.SingleCollectionDisplay ref={elementRef}>
-			<motion.h1
+			<motion.h2
 				initial='hidden'
 				animate={inView ? 'hidden' : 'title'}
 				variants={carouselVariants}
 				transition={{ duration: 1, delay: 0.2 }}
 			>
 				{collectionTitle}
-			</motion.h1>
+			</motion.h2>
 			<s.CarouselWrapper
 				initial='hidden'
 				animate={inView ? 'hidden' : 'singleCarousel'}

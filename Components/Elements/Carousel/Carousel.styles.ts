@@ -9,7 +9,7 @@ const SingleCollectionDisplay = styled(motion.div)`
 
 	padding: 2rem 0;
 
-	h1 {
+	h2 {
 		text-align: center;
 		font-size: 2rem;
 		font-weight: lighter;

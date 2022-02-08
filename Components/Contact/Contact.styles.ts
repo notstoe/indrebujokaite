@@ -15,7 +15,7 @@ const Wrapper = styled.section`
 
 	height: 45rem;
 
-	h1 {
+	h3 {
 		position: relative;
 
 		max-width: 40rem;
@@ -30,7 +30,7 @@ const Wrapper = styled.section`
 
 		padding-bottom: 10rem;
 
-		h1 {
+		h3 {
 			font-size: 6.5rem;
 			text-align: center;
 			order: -1;
@@ -38,7 +38,7 @@ const Wrapper = styled.section`
 	}
 
 	@media ${until(Device.MobileLarge)} {
-		h1 {
+		h3 {
 			font-size: 4.5rem;
 		}
 	}
