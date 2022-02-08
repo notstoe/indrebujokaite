@@ -23,7 +23,7 @@ export default function Home({
 		'small'
 	);
 
-	const SeoInfo: SeoProps = {
+	const seoInfo: SeoProps = {
 		title: 'Indreta Art | Acrylic Painting',
 		description: `Original acrylic paintings and prints. By Indre Bujokaite`,
 		imageUrl: optimizedImgUrl,
@@ -33,10 +33,10 @@ export default function Home({
 	return (
 		<>
 			<SeoHead
-				title={SeoInfo.title}
-				description={SeoInfo.description}
-				imageUrl={SeoInfo.imageUrl}
-				websiteUrl={SeoInfo.websiteUrl}
+				title={seoInfo.title}
+				description={seoInfo.description}
+				imageUrl={seoInfo.imageUrl}
+				websiteUrl={seoInfo.websiteUrl}
 			/>
 			<Intro backgroundImgUrl={about.background_intro_picture.url} />
 			<About aboutData={about} />

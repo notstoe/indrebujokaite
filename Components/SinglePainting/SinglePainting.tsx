@@ -115,7 +115,7 @@ export default function SinglePainting({
 		setShowModal((stateValue) => !stateValue);
 	}
 
-	const SeoInfo: SeoProps = {
+	const seoInfo: SeoProps = {
 		title: `Indreta | ${paintingData.title}`,
 		description: `${paintingData.title} from the ${paintingData.painting_collection.collectionTitle}`,
 		imageUrl: initialPicture,
@@ -125,10 +125,10 @@ export default function SinglePainting({
 	return (
 		<s.Wrapper>
 			<SeoHead
-				title={SeoInfo.title}
-				description={SeoInfo.description}
-				imageUrl={SeoInfo.imageUrl}
-				websiteUrl={SeoInfo.websiteUrl}
+				title={seoInfo.title}
+				description={seoInfo.description}
+				imageUrl={seoInfo.imageUrl}
+				websiteUrl={seoInfo.websiteUrl}
 			/>
 			<s.PaintingDisplay initial='hidden' animate='visible'>
 				<motion.section>
