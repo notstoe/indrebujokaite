@@ -7,7 +7,7 @@ export default function Footer() {
 		<s.Footer>
 			<span>Copyright {currentYear} • Indrė Bujokaitė</span>
 			<span>
-				Developed by <a href='https://github.com/notstoe'>Gustavo Tonin</a>
+				Developed by <a href='https://www.gustavotonin.com/'>Gustavo Tonin</a>
 			</span>
 		</s.Footer>
 	);
