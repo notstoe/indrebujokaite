@@ -21,7 +21,7 @@ const Wrapper = styled.div<{ altMode: boolean }>`
 						right: 50%;
 					}
 
-					${Text} {
+					${Title} {
 						text-align: left;
 
 						&:nth-child(2) {
@@ -37,7 +37,7 @@ const Wrapper = styled.div<{ altMode: boolean }>`
 			  `}
 `;
 
-const Text = styled(motion.p)`
+const Title = styled(motion.p)`
 	font-size: 10rem;
 	line-height: 10rem;
 
@@ -78,4 +78,4 @@ const BackgroundCircle = styled(motion.div)`
 	}
 `;
 
-export const s = { Wrapper, Text, BackgroundCircle };
+export const s = { Wrapper, Title, BackgroundCircle };
