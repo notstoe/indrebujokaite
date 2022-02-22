@@ -1,5 +1,4 @@
-/* eslint-disable react-hooks/rules-of-hooks */
-import { MotionValue, useTransform, useViewportScroll } from 'framer-motion';
+import { useTransform, useViewportScroll } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import { s } from './RollingTitle.styles';
 
@@ -52,35 +51,51 @@ export default function RollingTitle({ title, altMode }: RollingTitleProps) {
 		[0, 1, 1, 0]
 	);
 
-	const verticalSlide = (isInverse?: boolean): MotionValue => {
-		if (isInverse) {
-			return useTransform(scrollY, [scrollStart, scrollEnd], ['-100%', '0%']);
+	const verticalSlideOutputRange = (slideDown?: boolean): Array<string> => {
+		if (slideDown) {
+			return ['-100%', '0%'];
+		} else {
+			return ['100%', '0%'];
 		}
-
-		return useTransform(scrollY, [scrollStart, scrollEnd], ['100%', '0%']);
 	};
 
-	const horizontalSlide = (isInverse?: boolean): MotionValue => {
-		if (isInverse) {
-			return useTransform(scrollY, [scrollStart, scrollEnd], ['0', '50%']);
-		}
+	const verticalSlide = useTransform(
+		scrollY,
+		[scrollStart, scrollEnd],
+		verticalSlideOutputRange(altMode)
+	);
 
-		return useTransform(scrollY, [scrollStart, scrollEnd], ['0', '-50%']);
+	const horizontalSlideOutputRange = (alignLeft?: boolean): Array<string> => {
+		if (alignLeft) {
+			return ['0%', '50%'];
+		} else {
+			return ['0%', '-50%'];
+		}
 	};
+
+	const horizontalSlideEdge = useTransform(
+		scrollY,
+		[scrollStart, scrollEnd],
+		horizontalSlideOutputRange(altMode)
+	);
+
+	const horizontalSlideMiddle = useTransform(
+		scrollY,
+		[scrollStart, scrollEnd],
+		horizontalSlideOutputRange(!altMode)
+	);
 
 	return (
 		<s.Wrapper ref={wrapperRef} altMode={altMode}>
-			<s.Text style={{ x: horizontalSlide(altMode), opacity: textOpacity }}>
+			<s.Title style={{ x: horizontalSlideEdge, opacity: textOpacity }}>
 				{title}
-			</s.Text>
-			<s.Text style={{ x: horizontalSlide(!altMode) }}>{title}</s.Text>
-			<s.Text style={{ x: horizontalSlide(altMode), opacity: textOpacity }}>
+			</s.Title>
+			<s.Title style={{ x: horizontalSlideMiddle }}>{title}</s.Title>
+			<s.Title style={{ x: horizontalSlideEdge, opacity: textOpacity }}>
 				{title}
-			</s.Text>
+			</s.Title>
 
-			<s.BackgroundCircle
-				style={{ scale: ballScale, y: verticalSlide(altMode) }}
-			/>
+			<s.BackgroundCircle style={{ scale: ballScale, y: verticalSlide }} />
 		</s.Wrapper>
 	);
 }
