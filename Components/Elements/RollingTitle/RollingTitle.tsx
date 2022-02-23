@@ -22,20 +22,21 @@ export default function RollingTitle({ title, altMode }: RollingTitleProps) {
 	useEffect(() => {
 		if (wrapperRef?.current) {
 			const {
-				y: elementY,
+				top,
 				height: elementHeight,
 			} = wrapperRef.current.getBoundingClientRect();
 
-			const calculatedScrollStart = Math.max(elementY - window.innerHeight, 0);
+			const elementY = top + window.scrollY;
+			const calculatedScrollStart = elementY - window.innerHeight;
 			const calculatedScrollEnd = elementY + elementHeight;
 
 			setScrollStart(calculatedScrollStart);
 			setScrollEnd(calculatedScrollEnd);
 
-			setOpacityStart(calculatedScrollStart + elementHeight / 4);
+			setOpacityStart(calculatedScrollStart + elementHeight * 0.25);
 			setOpacityIn(calculatedScrollStart + elementHeight);
-			setOpacityOut(calculatedScrollEnd - elementHeight / 2);
-			setOpacityEnd(calculatedScrollEnd);
+			setOpacityOut(calculatedScrollEnd - elementHeight * 0.5);
+			setOpacityEnd(calculatedScrollEnd - elementHeight * 0.15);
 		}
 	}, [wrapperRef]);
 
