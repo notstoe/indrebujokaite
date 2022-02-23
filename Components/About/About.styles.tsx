@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { Device, until } from '@helpers/media';
 import { motion } from 'framer-motion';
 
@@ -17,51 +17,20 @@ const SectionWrapper = styled.section`
 	overflow: hidden;
 `;
 
-const TxtWrapper = styled.div<{ alignLeft?: boolean }>`
-	align-self: center;
+const ImageWrapper = styled(motion.div)`
+	position: relative;
 
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-end;
-	align-items: flex-end;
-
-	text-align: right;
-
-	width: 100%;
-	max-width: 76rem;
-
-	padding: 0 1rem;
-
-	p {
-		width: 85%;
-		max-width: 25rem;
-		line-height: 1.9rem;
-		font-size: 1.35rem;
-		padding-top: 0.5rem;
-	}
-
-	${({ alignLeft }) =>
-		alignLeft &&
-		css`
-			align-items: flex-start;
-
-			p {
-				text-align: left;
-			}
-		`};
-`;
-
-const StyledImage = styled(motion.img)`
 	align-self: flex-start;
 
+	height: 500px;
 	width: 50%;
-	max-width: 25rem;
+	max-width: 21rem;
 
-	padding: 10rem 0 0 3rem;
+	margin: 10rem 0 0 7rem;
 
 	@media (${until(Device.Tablet)}) {
-		padding-left: 1rem;
+		margin-left: 1rem;
 	}
 `;
 
-export const s = { StyledImage, SectionWrapper, TxtWrapper };
+export const s = { SectionWrapper, ImageWrapper };
