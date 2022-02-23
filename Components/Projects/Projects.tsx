@@ -46,12 +46,14 @@ export default function Projects({
 	useEffect(() => {
 		if (wrapperRef?.current) {
 			const {
-				y: elementY,
+				y,
 				height: elementHeight,
 			} = wrapperRef.current.getBoundingClientRect();
 
-			const calculatedScrollStart = Math.max(elementY - window.innerHeight, 0);
-			const calculatedScrollEnd = elementY + elementHeight + 400;
+			const elementY = y + window.scrollY;
+
+			const calculatedScrollStart = elementY - window.innerHeight;
+			const calculatedScrollEnd = elementY + elementHeight;
 
 			setScrollStart(calculatedScrollStart);
 			setScrollEnd(calculatedScrollEnd);

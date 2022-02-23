@@ -58,7 +58,14 @@ const BackgroundCircle = styled(motion.div)`
 	left: 25%;
 
 	@media ${until(Device.Tablet)} {
-		top: 32%;
+		top: 33%;
+
+		width: 17rem;
+		height: 17rem;
+	}
+
+	@media ${until(Device.MobileLarge)} {
+		top: 35%;
 
 		width: 10rem;
 		height: 10rem;
