@@ -37,10 +37,11 @@ export default function PaintingInsideCarousel({
 			>
 				<s.StyledImage src={optimizedUrl} alt={`${painting.title} painting`} />
 				{isHovered && (
-					<s.PaintingHoverInfo>
+					<s.PaintingHoverInfo
+						initial='hidden'
+						animate={isHovered ? 'visible' : 'hidden'}
+					>
 						<motion.span
-							initial='hidden'
-							animate={isHovered ? 'visible' : 'hidden'}
 							variants={hoverInfoVariants}
 							transition={{ type: 'tween', duration: 0.8, delay: 0.4 }}
 							className='collection'
@@ -48,8 +49,6 @@ export default function PaintingInsideCarousel({
 							{collectionTitle}
 						</motion.span>
 						<motion.span
-							initial='hidden'
-							animate={isHovered ? 'visible' : 'hidden'}
 							transition={{ duration: 0.8, delay: 0.2 }}
 							variants={hoverInfoVariants}
 							className='title'
@@ -57,8 +56,6 @@ export default function PaintingInsideCarousel({
 							{painting.title}
 						</motion.span>
 						<motion.span
-							initial='hidden'
-							animate={isHovered ? 'visible' : 'hidden'}
 							transition={{ duration: 0.8 }}
 							variants={hoverInfoVariants}
 							className='author'
