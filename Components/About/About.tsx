@@ -4,7 +4,6 @@ import Image from 'next/image';
 import RollingTitle from '../Elements/RollingTitle/RollingTitle';
 import TextBlock from 'Components/Elements/TextBlock/TextBlock';
 import { s } from './About.styles';
-
 import { getOptimizedCloudinaryUrl } from '@helpers/getOptimizedCloudinaryUrl';
 import { useInView } from '@hooks/useInView';
 import { AboutMeInfo } from 'types/index.types';
@@ -22,7 +21,11 @@ const imgVariants: Variants = {
 	},
 };
 
-export default function About({ aboutData }: { aboutData: AboutMeInfo }) {
+interface AboutProps {
+	aboutData: AboutMeInfo;
+}
+
+export default function About({ aboutData }: AboutProps) {
 	const [elementRefImg, inViewImg] = useInView<HTMLDivElement>(
 		{ threshold: 0.4 },
 		true
