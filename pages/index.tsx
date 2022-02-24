@@ -1,16 +1,15 @@
 import Intro from '../Components/Intro/Intro';
 import About from '../Components/About/About';
-import Projects from '../Components/Projects/Projects';
 import Contact from 'Components/Contact/Contact';
 import SeoHead, { SeoProps } from 'Components/Head/SeoHead';
-
-import apollo from '@lib/apolloClient';
-import { revalidateStaticPages } from 'config';
+import Portfolio from '../Components/Portfolio/Portfolio';
 
 import { DataHomePage, HomePageProps } from '../types/index.types';
-
 import { HOME_PAGE_DATA_QUERY } from '../queries/index.queries';
 import { getOptimizedCloudinaryUrl } from '@helpers/getOptimizedCloudinaryUrl';
+import { revalidateStaticPages } from 'config';
+
+import apollo from '@lib/apolloClient';
 
 export default function Home({
 	about,
@@ -40,7 +39,7 @@ export default function Home({
 			/>
 			<Intro backgroundImgUrl={about.background_intro_picture.url} />
 			<About aboutData={about} />
-			<Projects
+			<Portfolio
 				collectionsPaintings={collectionsPaintings}
 				featuredPaintings={featuredPaintings}
 			/>
