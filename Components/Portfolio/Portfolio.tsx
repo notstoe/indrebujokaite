@@ -6,7 +6,7 @@ import {
 	useViewportScroll,
 	Variants,
 } from 'framer-motion';
-import { s } from './Projects.styles';
+import { s } from './Portfolio.styles';
 
 import { useEffect, useRef, useState } from 'react';
 import Carousel from '../Elements/Carousel/Carousel';
@@ -14,7 +14,7 @@ import PaintingDisplay from '../Elements/PaintingDisplay/PaintingDisplay';
 
 import { CollectionsPaintings, Painting } from 'types/index.types';
 
-interface ProjectsProps {
+interface PortfolioProps {
 	collectionsPaintings: CollectionsPaintings[];
 	featuredPaintings: Painting[];
 }
@@ -27,10 +27,10 @@ const sectionTitleVariants: Variants = {
 	visible: { opacity: 1, scale: 1 },
 };
 
-export default function Projects({
+export default function Portfolio({
 	collectionsPaintings,
 	featuredPaintings,
-}: ProjectsProps) {
+}: PortfolioProps) {
 	const { scrollY } = useViewportScroll();
 
 	const wrapperRef = useRef<HTMLDivElement>(null);
@@ -83,7 +83,7 @@ export default function Projects({
 	});
 
 	return (
-		<s.SectionWrapper id='projects'>
+		<s.SectionWrapper id='portfolio'>
 			<div className='sectionTitle' ref={wrapperRef}>
 				<motion.h1
 					ref={elementRef}
